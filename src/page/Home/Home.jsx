@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { AiFillLinkedin } from "react-icons/ai";
-import { AiFillInstagram } from "react-icons/ai";
-import { AiFillGithub } from "react-icons/ai";
-import { AiFillTwitterCircle } from "react-icons/ai";
+import Typed from 'typed.js';
+import VanillaTilt from 'vanilla-tilt';
+import { AiFillLinkedin,AiFillInstagram,AiFillGithub,AiFillTwitterCircle } from "react-icons/ai";
 import { FaTelegram } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { FaRegArrowAltCircleDown } from "react-icons/fa";
+import hero from "../../assets/images/hero.png"
 import "./Home.css"
 
 
@@ -12,6 +13,7 @@ import "./Home.css"
 function Home() {
     const menuRef=useRef(null)
     const navbarRef=useRef(null)
+    const particlesRef = useRef(null); // Added particlesRef
 
     const [isMenuActive,setMenuActive]=useState(false)
 
@@ -25,6 +27,60 @@ function Home() {
           navbarRef.current.classList.toggle('nav-toggle', isMenuActive);
         }
       }, [isMenuActive]);
+
+      useEffect(() => {
+        const typed=new Typed('.typing-text',{
+            strings:["Frontend Developer","Backend Developer","Web Designing"],
+            loop:true,
+            typeSpeed:50,
+            backSpeed:25,
+            backDelay:500,
+        })
+
+        VanillaTilt.init(document.querySelectorAll(".tilt"),{
+            max:15,
+        })
+
+        const container = document.getElementById('particles-js');
+        const containerStyle = getComputedStyle(container);
+        const bgColor = containerStyle.backgroundColor;
+
+        particlesJS('particles-js', {
+            particles: {
+                number: {
+                    value: 50,
+                },
+                size: {
+                    value: 3,
+                },
+                color: {
+                    value: bgColor === 'rgb(0, 0, 0)' ? '#fff' : '#000', 
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: bgColor === 'rgb(0, 0, 0)' ? '#fff' : '#000', 
+                    opacity: 0.4,
+                    width: 1,
+                },
+                move: {
+                    speed: 10, 
+                },
+            },
+            interactivity: {
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: 'repulse',
+                    },
+                },
+            },
+        });
+        return ()=>{
+            typed.destroy()
+        }
+        
+      },[])
   return (
     <>
       {/* Navbar start */}
@@ -48,13 +104,13 @@ function Home() {
      </header>
 
      <section class="home" id="home">
-    <div id="particles-js"></div>
+     <div id="particles-js" ref={particlesRef}></div>
 
     <div class="content">
     <h2>Hi There,<br/> I'm Jigar <span>Sable</span></h2>
     <p>i am into <span class="typing-text"></span></p>
     <a href="#about" class="btn"><span>About Me</span>
-      <i class="fas fa-arrow-circle-down"></i>
+     <span className='icon'> <FaRegArrowAltCircleDown/></span>
     </a>
     <div class="socials">
         <ul class="social-icons">
@@ -66,9 +122,9 @@ function Home() {
         </ul>
       </div>
     </div>
-<div class="image">
-    <img draggable="false" class="tilt" src="./assets/images/hero.png" alt=""/>
-</div>
+    <div class="image">
+        <img draggable="false" class="tilt" src={hero} alt=""/>
+    </div>
 </section>
     </>
   )
