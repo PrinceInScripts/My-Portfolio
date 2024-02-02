@@ -2,10 +2,13 @@ import React, { useEffect, useRef, useState } from 'react'
 import Typed from 'typed.js';
 import VanillaTilt from 'vanilla-tilt';
 import { AiFillLinkedin,AiFillInstagram,AiFillGithub,AiFillTwitterCircle } from "react-icons/ai";
-import { FaTelegram } from "react-icons/fa";
+import { FaTelegram, FaUser } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FaRegArrowAltCircleDown } from "react-icons/fa";
+import { FaAngleRight } from "react-icons/fa";
+import { Link, animateScroll as scroll,scroller } from 'react-scroll';
 import hero from "../../assets/images/hero.png"
+import profile from "../../assets/images/profile.jpg"
 import "./Home.css"
 
 
@@ -13,7 +16,7 @@ import "./Home.css"
 function Home() {
     const menuRef=useRef(null)
     const navbarRef=useRef(null)
-    const particlesRef = useRef(null); // Added particlesRef
+    const particlesRef = useRef(null); 
 
     const [isMenuActive,setMenuActive]=useState(false)
 
@@ -76,6 +79,8 @@ function Home() {
                 },
             },
         });
+
+        
         return ()=>{
             typed.destroy()
         }
@@ -91,14 +96,43 @@ function Home() {
         <GiHamburgerMenu />
         </div>
         <nav className={`navbar ${isMenuActive ? 'nav-toggle' : ''}`} ref={navbarRef}>
+            
             <ul>
-            <li><a class="active" href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#work">Work</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li>
+              <Link to="home" smooth={true} duration={500}>
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link to="about" smooth={true} duration={500}>
+                About
+              </Link>
+            </li>
+            <li>
+              <Link to="skills" smooth={true} duration={500}>
+                Skills
+              </Link>
+            </li>
+            <li>
+              <Link to="education" smooth={true} duration={500}>
+                Education
+              </Link>
+            </li>
+            <li>
+              <Link to="work" smooth={true} duration={500}>
+                Work
+              </Link>
+            </li>
+            <li>
+              <Link to="experience" smooth={true} duration={500}>
+                Experience
+              </Link>
+            </li>
+            <li>
+              <Link to="contact" smooth={true} duration={500}>
+                Contact
+              </Link>
+            </li>
             </ul>
         </nav>
      </header>
@@ -107,7 +141,7 @@ function Home() {
      <div id="particles-js" ref={particlesRef}></div>
 
     <div class="content">
-    <h2>Hi There,<br/> I'm Jigar <span>Sable</span></h2>
+    <h2>Hi There,<br/> I'm Prince <span>Kumar</span></h2>
     <p>i am into <span class="typing-text"></span></p>
     <a href="#about" class="btn"><span>About Me</span>
      <span className='icon'> <FaRegArrowAltCircleDown/></span>
@@ -126,6 +160,46 @@ function Home() {
         <img draggable="false" class="tilt" src={hero} alt=""/>
     </div>
 </section>
+
+<section class="about" id="about">
+    <h2 class="heading"><FaUser/> About <span>Me</span></h2>
+    
+    <div class="row">
+
+    <div class="image">
+        <img draggable="false" class="tilt" src={profile} alt=""/>
+    </div>
+    <div class="content">
+        <h3>I'm Prince</h3>
+        <span class="tag">Full Stack Developer</span>
+        
+        <p>I am a Full-Stack developer based in Kota, India. 
+          I am very passionate about improving my coding skills & developing applications & websites.
+          I build WebApps and Websites using MERN Stack.
+          Working for myself to improve my skills.
+          Love to build Full-Stack clones. </p>
+        
+        <div class="box-container">
+             <div class="box">
+              <p><span> age: </span> 20</p>
+              <p><span> phone : </span> +91 XXX-XXX-XXXX</p>
+            </div>
+            <div class="box">
+              <p><span> email : </span> princepk7878@gmail.com</p>
+              <p><span> place : </span> Kota, India </p>
+            </div>
+        </div>
+        
+        <div class="resumebtn">
+            <a href="#" target="_blank" class="btn"><span>Resume</span>
+               <span class="icon"><FaAngleRight/></span> 
+            </a>
+        </div>
+
+    </div>
+    </div>
+</section>
+
     </>
   )
 }
