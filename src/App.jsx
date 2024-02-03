@@ -1,14 +1,12 @@
-import { useState } from 'react'
-import Home from './page/Home/Home'
+import { useState } from "react";
+import Home from "./page/Home/Home";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <Home/>
+      <Home />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
