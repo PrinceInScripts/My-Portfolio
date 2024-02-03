@@ -5,6 +5,7 @@ import Hero from "../../components/Hero/Hero";
 import About from "../../components/About/About";
 import Skills from "../../components/Skills/Skills";
 import Education from "../../components/Education/Education";
+import Project from "../../components/Project/Project";
 
 function Home() {
   return (
@@ -19,6 +20,8 @@ function Home() {
       <Skills />
     {/* Education */}
       <Education />
+    {/* Project */}
+      <Project/>
     </>
   );
 }
