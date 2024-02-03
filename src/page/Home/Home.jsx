@@ -2,14 +2,16 @@ import React, { useEffect, useRef, useState } from 'react'
 import Typed from 'typed.js';
 import VanillaTilt from 'vanilla-tilt';
 import { AiFillLinkedin,AiFillInstagram,AiFillGithub,AiFillTwitterCircle } from "react-icons/ai";
-import { FaTelegram, FaUser } from "react-icons/fa";
+import {  FaTelegram, FaUser } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FaRegArrowAltCircleDown } from "react-icons/fa";
 import { FaAngleRight } from "react-icons/fa";
 import { Link, animateScroll as scroll,scroller } from 'react-scroll';
 import hero from "../../assets/images/hero.png"
 import profile from "../../assets/images/profile.jpg"
+import axios from 'axios';
 import "./Home.css"
+import skills from '../../data/skills';
 
 
 
@@ -31,6 +33,7 @@ function Home() {
         }
       }, [isMenuActive]);
 
+     
       useEffect(() => {
         const typed=new Typed('.typing-text',{
             strings:["Frontend Developer","Backend Developer","Web Designing"],
@@ -39,6 +42,7 @@ function Home() {
             backSpeed:25,
             backDelay:500,
         })
+        
 
         VanillaTilt.init(document.querySelectorAll(".tilt"),{
             max:15,
@@ -86,11 +90,31 @@ function Home() {
         }
         
       },[])
+
+
+      function showSkills(skills){
+        let skillsContainer=document.getElementById("skillsContainer")
+        let skillsHTML=""
+        skills.forEach(skill=>{
+            skillsHTML+=`
+            <div class="bar">
+            <img src="${skill.icon}" alt="${skill.name}" width="55px"/>
+            <span>${skill.name}</span>
+            </div>
+            `
+        })
+        skillsContainer.innerHTML=skillsHTML
+      }
+
+      useEffect(()=>{
+        showSkills(skills)
+      },[])
   return (
     <>
       {/* Navbar start */}
       <header>
         <a href="/" class="logo"> Prince</a>
+       
 
         <div id="menu" className={isMenuActive ? 'fa-bars' : 'fa-times'} onClick={handleMenuClick}>
         <GiHamburgerMenu />
@@ -199,6 +223,21 @@ function Home() {
     </div>
     </div>
 </section>
+
+{/* skills section starts  */}
+<section class="skills" id="skills">
+
+    <h2 class="heading"> Skills & <span>Abilities</span></h2>
+
+    <div class="container">
+          <div class="row" id="skillsContainer">
+
+           
+
+      </div>
+</div>
+</section>
+{/* skills section ends */}
 
     </>
   )
