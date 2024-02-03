@@ -6,6 +6,7 @@ import About from "../../components/About/About";
 import Skills from "../../components/Skills/Skills";
 import Education from "../../components/Education/Education";
 import Project from "../../components/Project/Project";
+import Contact from "../../components/Contact/Contact";
 
 function Home() {
   return (
@@ -22,6 +23,8 @@ function Home() {
       <Education />
     {/* Project */}
       <Project/>
+    {/* Contact */}
+    <Contact/>
     </>
   );
 }
