@@ -4,18 +4,21 @@ import Header from "../../components/Header/Header";
 import Hero from "../../components/Hero/Hero";
 import About from "../../components/About/About";
 import Skills from "../../components/Skills/Skills";
+import Education from "../../components/Education/Education";
 
 function Home() {
   return (
     <>
-    //Header
+    {/* Header */}
       <Header />
-    //Hero 
+    {/* Hero  */}
       <Hero />
-    //About
+    {/* About */}
       <About />
-    //Skills
+    {/* Skills */}
       <Skills />
+    {/* Education */}
+      <Education />
     </>
   );
 }
