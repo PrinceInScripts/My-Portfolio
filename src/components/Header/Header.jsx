@@ -27,7 +27,7 @@ function Header() {
        
 
         <div id="menu" className={isMenuActive ? 'fa-bars' : 'fa-times'} onClick={handleMenuClick}>
-        {isMenuActive ? <GiHamburgerMenu/> : <RxCross1/>}
+        {isMenuActive ? <RxCross1/> : <GiHamburgerMenu/>}
         </div>
         <nav className={`navbar ${isMenuActive ? 'nav-toggle' : ''}`} ref={navbarRef}>
             
