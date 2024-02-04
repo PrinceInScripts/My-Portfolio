@@ -1,6 +1,7 @@
 import React from 'react'
 import { FaAngleRight, FaUser } from 'react-icons/fa'
 import profile from "../../assets/images/profile.jpg"
+import about from "../../assets/images/about.jpg"
 import "./About.css"
 
 function About() {
@@ -11,7 +12,7 @@ function About() {
     <div class="row">
 
     <div class="image">
-        <img draggable="false" class="tilt" src={profile} alt=""/>
+        <img draggable="false" class="tilt" src={about} alt=""/>
     </div>
     <div class="content">
         <h3>I'm Prince</h3>
