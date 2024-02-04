@@ -33,6 +33,7 @@ header .logo {
 }
 header .logo:hover {
     color: #fc8c05;
+    cursor: pointer;
 }
 header .navbar ul{
     list-style: none;
@@ -56,6 +57,7 @@ header .navbar ul li:hover {
   color: #011aff;
   border-bottom: 0.2rem solid #011aff;
   padding: 0.5rem 0;
+  cursor: pointer;
 }
 
 
