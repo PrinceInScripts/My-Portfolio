@@ -3,7 +3,6 @@ import Typed from 'typed.js';
 import VanillaTilt from 'vanilla-tilt';
 import { AiFillLinkedin,AiFillInstagram,AiFillGithub,AiFillTwitterCircle } from "react-icons/ai";
 import {  FaRegArrowAltCircleDown, FaTelegram, FaUser } from "react-icons/fa";
-import hero from "../../assets/images/hero.png"
 import ScrollReveal from 'scrollreveal';
 import profile from "../../assets/images/profile.jpg"
 import "./Hero.css"
