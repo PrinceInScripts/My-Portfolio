@@ -4,6 +4,7 @@ import VanillaTilt from 'vanilla-tilt';
 import { AiFillLinkedin,AiFillInstagram,AiFillGithub,AiFillTwitterCircle } from "react-icons/ai";
 import {  FaRegArrowAltCircleDown, FaTelegram, FaUser } from "react-icons/fa";
 import hero from "../../assets/images/hero.png"
+import ScrollReveal from 'scrollreveal';
 import profile from "../../assets/images/profile.jpg"
 import "./Hero.css"
 
@@ -11,7 +12,7 @@ function Hero() {
     const particlesRef = useRef(null); 
     useEffect(() => {
         const typed=new Typed('.typing-text',{
-            strings:["Frontend Developer","Backend Developer","Web Designing"],
+            strings:["Frontend Developer","Backend Developer","MERN Developer","Web Designing"],
             loop:true,
             typeSpeed:50,
             backSpeed:25,
@@ -59,12 +60,35 @@ function Hero() {
             },
         });
 
+        const srtop = ScrollReveal({
+            origin: 'top',
+            distance: '80px',
+            duration: 1000,
+            reset: true,
+          });
+      
+          srtop.reveal('.home .content h2', { delay: 200 });
+          srtop.reveal('.home .content p', { delay: 200 });
+          srtop.reveal('.home .content .btn', { delay: 200 });
+      
+          srtop.reveal('.home .image', { delay: 400 });
+          srtop.reveal('.home .linkedin', { interval: 600 });
+          srtop.reveal('.home .github', { interval: 800 });
+          srtop.reveal('.home .twitter', { interval: 1000 });
+          srtop.reveal('.home .telegram', { interval: 600 });
+          srtop.reveal('.home .instagram', { interval: 600 });
+          srtop.reveal('.home .dev', { interval: 600 });
+
         
         return ()=>{
             typed.destroy()
+            srtop.destroy();
         }
         
       },[])
+
+
+
   return (
     <section class="home" id="home">
     <div id="particles-js" ref={particlesRef}></div>
@@ -77,11 +101,11 @@ function Hero() {
    </a>
    <div class="socials">
        <ul class="social-icons">
-         <li><a class="linkedin" aria-label="LinkedIn" href="#" target="_blank"><AiFillLinkedin/></a></li> 
-         <li><a class="github" aria-label="GitHub" href="#" target="_blank"><AiFillGithub/></a></li>
-         <li><a class="twitter" aria-label="Twitter" href="#" target="_blank"><AiFillTwitterCircle/></a></li>
-         <li><a class="telegram" aria-label="Telegram" href="#" target="_blank"><FaTelegram/></a></li>
-         <li><a class="instagram" aria-label="Instagram" href="#"><AiFillInstagram/></a></li>
+         <li><a class="linkedin" aria-label="LinkedIn" href="https://www.linkedin.com/in/prince-kumar-788673253/" target="_blank"><AiFillLinkedin/></a></li> 
+         <li><a class="github" aria-label="GitHub" href="https://github.com/PrinceInScripts" target="_blank"><AiFillGithub/></a></li>
+         <li><a class="twitter" aria-label="Twitter" href="https://twitter.com/Princek02057932" target="_blank"><AiFillTwitterCircle/></a></li>
+         <li><a class="telegram" aria-label="Telegram" href="" target="_blank"><FaTelegram/></a></li>
+         <li><a class="instagram" aria-label="Instagram" href="https://www.instagram.com/cds_knightprince/" target='_blank'><AiFillInstagram/></a></li>
        </ul>
      </div>
    </div>

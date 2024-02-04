@@ -1,9 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import ScrollReveal from 'scrollreveal';
 import jnv from "../../assets/images/jnv.jpg"
 import mb from "../../assets/images/mb.jpg"
 import "./Education.css"
 
 function Education() {
+
+  const srtop = ScrollReveal({
+    origin: 'top',
+    distance: '80px',
+    duration: 1000,
+    reset: true
+});
+
+useEffect(() => {
+
+  srtop.reveal('.education .box', { interval: 200 });
+},[srtop])
+
   return (
     <section class="education" id="education">
 

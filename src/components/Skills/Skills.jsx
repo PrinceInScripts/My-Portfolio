@@ -1,8 +1,23 @@
 import React, { useEffect } from "react";
+import ScrollReveal from 'scrollreveal';
 import skills from "../../data/skills";
 import "./skills.css";
 
 function Skills() {
+
+  const srtop = ScrollReveal({
+    origin: 'top',
+    distance: '80px',
+    duration: 1000,
+    reset: true
+});
+
+useEffect(() => {
+  srtop.reveal('.skills .container', { interval: 200 });
+  srtop.reveal('.skills .container .bar', { interval: 200, delay: 400 });
+}, [srtop]);
+
+
   function showSkills(skills) {
     let skillsContainer = document.getElementById("skillsContainer");
     let skillsHTML = "";

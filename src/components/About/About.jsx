@@ -1,10 +1,26 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FaAngleRight, FaUser } from 'react-icons/fa'
-import profile from "../../assets/images/profile.jpg"
 import about from "../../assets/images/about.jpg"
+import ScrollReveal from 'scrollreveal';
 import "./About.css"
 
 function About() {
+   const srtop = ScrollReveal({
+    origin: 'top',
+    distance: '80px',
+    duration: 1000,
+    reset: true
+  });
+
+  useEffect(() => {
+    srtop.reveal('.about .content h3', { delay: 200 });
+    srtop.reveal('.about .row .image', { delay: 200 });
+    srtop.reveal('.about .content .tag', { delay: 200 });
+    srtop.reveal('.about .content p', { delay: 200 });
+    srtop.reveal('.about .content .box-container', { delay: 200 });
+    srtop.reveal('.about .content .resumebtn', { delay: 200 });
+  }, [srtop]);
+
   return (
     <section class="about" id="about">
     <h2 class="heading"><FaUser/> About <span>Me</span></h2>
@@ -19,16 +35,15 @@ function About() {
         <span class="tag">Full Stack Developer</span>
         
         <p>I am a Full-Stack developer based in Kota, India. 
-          I am very passionate about improving my coding skills & developing applications & websites.
-          I build WebApps and Websites using MERN Stack.
-          Working for myself to improve my skills.
-          Love to build Full-Stack clones. </p>
+        Hello there! 👋 I'm Prince Kumar, a passionate MERN stack developer on a journey to bring innovative web solutions to life. 
+        I find joy in turning ideas into reality through the art of coding. 
+        With a solid foundation in HTML, CSS, and JavaScript, coupled with the power of React, Node.js, and MongoDB, 
+        I embark on a mission to create seamless and engaging user experiences.</p>
+       <p>Beyond the lines of code, I thrive in the world of continuous learning. Exploring advanced JavaScript, 
+        diving into data structures, and delving into the basics of machine learning are just a few stops on my learning roadmap. 
+        I believe in the transformative power of technology and its ability to simplify complexities. </p>
         
         <div class="box-container">
-             <div class="box">
-              <p><span> age: </span> 20</p>
-              <p><span> phone : </span> +91 XXX-XXX-XXXX</p>
-            </div>
             <div class="box">
               <p><span> email : </span> princepk7878@gmail.com</p>
               <p><span> place : </span> Kota, India </p>

@@ -14,8 +14,7 @@ function Footer() {
           <h3>Prince's Portfolio</h3>
           <p>
             Thank you for visiting my personal portfolio website. Connect with
-            me over socials. <br /> <br /> Keep Rising 🚀. Connect with me over
-            live chat!
+            me over socials. <br /> <br /> Keep Rising 🚀. 
           </p>
         </div>
 
@@ -45,10 +44,6 @@ function Footer() {
           <h3>contact info</h3>
           <p>
             {" "}
-           <span><FaPhone/></span>+91 XXX-XXX-XXXX
-          </p>
-          <p>
-            {" "}
             <span><FaEnvelope/></span>princepk7878kumar@gmail.com
           </p>
           <p>
@@ -56,13 +51,13 @@ function Footer() {
             <span><FaMapMarked/></span>Kota, India
           </p>
           <div class="share">
-            <a class="linkedin" aria-label="LinkedIn" href="#" target="_blank">
+            <a class="linkedin" aria-label="LinkedIn" href="https://www.linkedin.com/in/prince-kumar-788673253/" target="_blank">
               <AiFillLinkedin />
             </a>
-            <a class="github" aria-label="GitHub" href="#" target="_blank">
+            <a class="github" aria-label="GitHub" href="https://github.com/PrinceInScripts" target="_blank">
               <AiFillGithub />
             </a>
-            <a class="twitter" aria-label="Twitter" href="#" target="_blank">
+            <a class="twitter" aria-label="Twitter" href="https://twitter.com/Princek02057932" target="_blank">
               <AiFillTwitterCircle />
             </a>
             <a
@@ -79,7 +74,7 @@ function Footer() {
 
       <h1 class="credit">
         <p>Designed with</p> <p className="heart"><FaHeart size={18}/></p> by{" "}
-        <a href="#"> Prince kumar</a>
+        <a href="https://www.linkedin.com/in/prince-kumar-788673253/"> Prince kumar</a>
       </h1>
     </section>
 

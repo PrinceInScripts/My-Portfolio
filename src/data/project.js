@@ -12,7 +12,7 @@ const projects = [
   },
   {
     name: "Blog App MERN",
-    desc: "A dynamic and user-friendly blog application using the MERN stack, providing an intuitive platform for content creation, publication, and engagement.",
+    desc: "A dynamic blog application using the MERN stack, providing an platform for content creation, publication, and engagement.",
     image:
       "https://res.cloudinary.com/di3wqoq9z/image/upload/v1706955576/boqz6vlwwusupmt4vwjv.png",
     category: "mern",
@@ -45,7 +45,7 @@ const projects = [
   },
   {
     name: "Registration MERN",
-    desc: "A secure Registration Page allowing users to sign up and log in, with information securely stored in MongoDB for persistent data.",
+    desc: "A secure Registration Page allowing users to sign up and log in, with stored in MongoDB for persistent data.",
     image:
       "https://res.cloudinary.com/di3wqoq9z/image/upload/v1706955656/ebghe2lz0q9ybxiubyqd.png",
     category: "mern",
@@ -56,7 +56,7 @@ const projects = [
   },
   {
     name: "Currency Changer",
-    desc: "A Currency Changer app to provide users with real-time currency conversion, making it easy to stay updated on exchange rates.",
+    desc: "A Currency Changer app to provide users with real-time currency conversion.",
     image:
       "https://res.cloudinary.com/di3wqoq9z/image/upload/v1706955850/mkxoadk7z50olubir0ac.png",
     category: "mern",
