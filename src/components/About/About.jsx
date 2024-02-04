@@ -51,7 +51,7 @@ function About() {
         </div>
         
         <div class="resumebtn">
-            <a href="#" target="_blank" class="btn"><span>Resume</span>
+            <a href="https://drive.google.com/file/d/1FZ4_dw--pgy9W625tOvkAS6w_zA7hxJT/view?usp=sharing" target="_blank" class="btn"><span>Resume</span>
                <span class="icon"><FaAngleRight/></span> 
             </a>
         </div>
