@@ -5,7 +5,6 @@ import {
   FaComment,
   FaEnvelope,
   FaPaperPlane,
-  FaPhone,
   FaPhoneAlt,
   FaUser,
 } from "react-icons/fa";

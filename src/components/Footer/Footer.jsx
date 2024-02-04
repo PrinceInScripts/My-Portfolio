@@ -1,7 +1,7 @@
 import React from "react";
 import { AiFillGithub, AiFillLinkedin, AiFillTwitterCircle } from "react-icons/ai";
-import {FaChevronCircleRight, FaEnvelope, FaHeart, FaMapMarked, FaPhone} from "react-icons/fa";
-import { Link, animateScroll as scroll, scroller } from "react-scroll";
+import {FaChevronCircleRight, FaEnvelope, FaHeart, FaMapMarked} from "react-icons/fa";
+import { Link } from "react-scroll";
 import "./Footer.css";
 
 

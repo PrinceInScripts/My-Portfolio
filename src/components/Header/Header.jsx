@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { GiHamburgerMenu } from 'react-icons/gi';
-import { Link, animateScroll as scroll,scroller } from 'react-scroll';
+import { Link } from 'react-scroll';
 import { RxCross1 } from "react-icons/rx";
 
 import "./Header.css"

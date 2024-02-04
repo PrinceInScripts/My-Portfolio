@@ -46,7 +46,6 @@ function Project() {
         max: 15,
       });
 
-      // ScrollReveal initialization
       srtop.reveal('.work .box', { interval: 200 });
     }
 
@@ -60,7 +59,7 @@ function Project() {
       window.removeEventListener('load', showProjects);
     };
   }, [srtop]);
-  
+
   return (
     <section class="work" id="work">
       <h2 class="heading">
