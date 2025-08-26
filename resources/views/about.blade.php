@@ -13,7 +13,7 @@
 		<link rel="apple-touch-icon" sizes="32x32" href="assets/images/GI_favicon_io/favicon-32x32.png">
 		<link rel="apple-touch-icon" sizes="512x512" href="assets/images/GI_favicon_io/android-chrome-512x512.png">
 
-		<title>GRAPHICINDIA - TERMS & CONDITIONS</title>
+		 <title>Prince Kumar | Hire Freelance Developer</title>
 
 		<!-- fonts -->
 		<link href="css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
@@ -389,6 +389,203 @@
 					</div><!-- flex-container end -->
 				</div><!-- lines-container end -->
 			</section><!-- about end -->
+
+			 <!-- clients start -->
+        <section class="pos-rel section-bg-dark-1">
+            <!-- pos-rel start -->
+            <div class="pos-rel flex-min-height-100vh">
+                <!-- container start -->
+                <div class="padding-top-bottom-30 container">
+                    <!-- title start -->
+                    <h2 class="headline-l js-scrollanim">
+                        <span class="hidden-box d-block">
+                            <span class="anim-slide">
+                                <span class="text-color-red">Partners</span>
+                            </span>
+                        </span>
+                        <!-- <span class="hidden-box d-block">
+							<span class="anim-slide tr-delay-01">We’ve Worked</span>
+						</span>
+						<span class="hidden-box d-block">
+							<span class="anim-slide tr-delay-02">With</span>
+						</span> -->
+                    </h2><!-- title end -->
+
+
+                    <!-- clients-lines start -->
+                    <div class="clients-lines padding-top-90">
+                        <!-- clients-lines__column start -->
+                        <div class="clients-lines__column">
+                            <div class="clients-lines__inner hover-box pos-rel">
+                                <img class="client-logo client-hover-out pos-abs pos-center-center"
+                                    src="assets/images/GI_Partners_Logo/White/Hotstar.png" alt="clients logo">
+                                <img class="client-logo client-hover-in pos-abs pos-center-center"
+                                    src="assets/images/GI_Partners_Logo/Red/HotStar_R.png" alt="clients logo">
+                            </div>
+                        </div><!-- clients-lines__column end -->
+
+                        <!-- clients-lines__column start -->
+                        <div class="clients-lines__column">
+                            <div class="clients-lines__inner hover-box pos-rel">
+                                <img class="client-logo client-hover-out pos-abs pos-center-center"
+                                    src="assets/images/GI_Partners_Logo/White/Arka_W.png" alt="clients logo">
+                                <img class="client-logo client-hover-in pos-abs pos-center-center"
+                                    src="assets/images/GI_Partners_Logo/Red/Arka_R.png" alt="clients logo">
+                            </div>
+                        </div><!-- clients-lines__column end -->
+
+                        <!-- clients-lines__column start -->
+                        <div class="clients-lines__column">
+                            <div class="clients-lines__inner hover-box pos-rel">
+                                <img class="client-logo client-hover-out pos-abs pos-center-center"
+                                    src="assets/images/GI_Partners_Logo/White/Amazon.png" alt="clients logo">
+                                <img class="client-logo client-hover-in pos-abs pos-center-center"
+                                    src="assets/images/GI_Partners_Logo/Red/Amazon_R.png" alt="clients logo">
+                            </div>
+                        </div><!-- clients-lines__column end -->
+
+                        <!-- clients-lines__column start -->
+                        <div class="clients-lines__column">
+                            <div class="clients-lines__inner hover-box pos-rel">
+                                <img class="client-logo client-hover-out pos-abs pos-center-center"
+                                    src="assets/images/GI_Partners_Logo/White/netflix.png" alt="clients logo">
+                                <img class="client-logo client-hover-in pos-abs pos-center-center"
+                                    src="assets/images/GI_Partners_Logo/Red/netflix.png" alt="clients logo">
+                            </div>
+                        </div><!-- clients-lines__column end -->
+
+                        <!-- clients-lines__column start -->
+                        <div class="clients-lines__column">
+                            <div class="clients-lines__inner hover-box pos-rel">
+                                <img class="client-logo client-hover-out pos-abs pos-center-center"
+                                    src="assets/images/GI_Partners_Logo/White/Cartoon%20Network.png"
+                                    alt="clients logo">
+                                <img class="client-logo client-hover-in pos-abs pos-center-center"
+                                    src="assets/images/GI_Partners_Logo/Red/CartoonNetwork_R.png" alt="clients logo">
+                            </div>
+                        </div><!-- clients-lines__column end -->
+
+                        <!-- clients-lines__column start -->
+                        <div class="clients-lines__column">
+                            <div class="clients-lines__inner hover-box pos-rel">
+                                <img class="client-logo client-hover-out pos-abs pos-center-center"
+                                    src="assets/images/GI_Partners_Logo/White/Disney-W.png" alt="clients logo">
+                                <img class="client-logo client-hover-in pos-abs pos-center-center"
+                                    src="assets/images/GI_Partners_Logo/Red/disneychannel-R.png" alt="clients logo">
+                            </div>
+                        </div><!-- clients-lines__column end -->
+
+                        <!-- clients-lines__column start -->
+                        <div class="clients-lines__column">
+                            <div class="clients-lines__inner hover-box pos-rel">
+                                <img class="client-logo client-hover-out pos-abs pos-center-center"
+                                    src="assets/images/GI_Partners_Logo/White/Astro.png" alt="clients logo">
+                                <img class="client-logo client-hover-in pos-abs pos-center-center"
+                                    src="assets/images/GI_Partners_Logo/Red/Astro_R.png" alt="clients logo">
+                            </div>
+                        </div><!-- clients-lines__column end -->
+
+                        <!-- clients-lines__column start -->
+                        <div class="clients-lines__column">
+                            <div class="clients-lines__inner hover-box pos-rel">
+                                <img class="client-logo client-hover-out pos-abs pos-center-center"
+                                    src="assets/images/GI_Partners_Logo/White/Audible.png" alt="clients logo">
+                                <img class="client-logo client-hover-in pos-abs pos-center-center"
+                                    src="assets/images/GI_Partners_Logo/Red/Audible_R.png" alt="clients logo">
+                            </div>
+                        </div><!-- clients-lines__column end -->
+
+                        <!-- clients-lines__column start -->
+                        <div class="clients-lines__column">
+                            <div class="clients-lines__inner hover-box pos-rel">
+                                <img class="client-logo client-hover-out pos-abs pos-center-center"
+                                    src="assets/images/GI_Partners_Logo/White/Colors.png" alt="clients logo">
+                                <img class="client-logo client-hover-in pos-abs pos-center-center"
+                                    src="assets/images/GI_Partners_Logo/Red/Colors_R.png" alt="clients logo">
+                            </div>
+                        </div>
+                        <!-- clients-lines__column end -->
+
+                        <!-- clients-lines__column start -->
+                        <div class="clients-lines__column">
+                            <div class="clients-lines__inner hover-box pos-rel">
+                                <img class="client-logo client-hover-out pos-abs pos-center-center"
+                                    src="assets/images/GI_Partners_Logo/White/Media.png" alt="clients logo">
+                                <img class="client-logo client-hover-in pos-abs pos-center-center"
+                                    src="assets/images/GI_Partners_Logo/Red/Media_R.png" alt="clients logo">
+                            </div>
+                        </div>
+                        <!-- clients-lines__column end -->
+
+                        <!-- clients-lines__column start -->
+                        <div class="clients-lines__column">
+                            <div class="clients-lines__inner hover-box pos-rel">
+                                <img class="client-logo client-hover-out pos-abs pos-center-center"
+                                    src="assets/images/GI_Partners_Logo/White/Rovio.png" alt="clients logo">
+                                <img class="client-logo client-hover-in pos-abs pos-center-center"
+                                    src="assets/images/GI_Partners_Logo/Red/Rovio_R.png" alt="clients logo">
+                            </div>
+                        </div>
+                        <!-- clients-lines__column end -->
+
+                        <!-- clients-lines__column start -->
+                        <div class="clients-lines__column">
+                            <div class="clients-lines__inner hover-box pos-rel">
+                                <img class="client-logo client-hover-out pos-abs pos-center-center"
+                                    src="assets/images/GI_Partners_Logo/White/tata%20Sky.png" alt="clients logo">
+                                <img class="client-logo client-hover-in pos-abs pos-center-center"
+                                    src="assets/images/GI_Partners_Logo/Red/TataSky_R.png" alt="clients logo">
+                            </div>
+                        </div>
+                        <!-- clients-lines__column end -->
+                        <!-- clients-lines__column start -->
+                        <div class="clients-lines__column">
+                            <div class="clients-lines__inner hover-box pos-rel">
+                                <img class="client-logo client-hover-out pos-abs pos-center-center"
+                                    src="assets/images/GI_Partners_Logo/White/Airtel-Logo_W.png" alt="clients logo">
+                                <img class="client-logo client-hover-in pos-abs pos-center-center"
+                                    src="assets/images/GI_Partners_Logo/Red/Airtel-Logo_R.png" alt="clients logo">
+                            </div>
+                        </div>
+                        <!-- clients-lines__column end -->
+                        <!-- clients-lines__column start -->
+                        <div class="clients-lines__column">
+                            <div class="clients-lines__inner hover-box pos-rel">
+                                <img class="client-logo client-hover-out pos-abs pos-center-center"
+                                    src="assets/images/GI_Partners_Logo/White/POW!_Entertainment_logo_W.png"
+                                    alt="clients logo">
+                                <img class="client-logo client-hover-in pos-abs pos-center-center"
+                                    src="assets/images/GI_Partners_Logo/Red/POW!_Entertainment_logo_R.png"
+                                    alt="clients logo">
+                            </div>
+                        </div>
+                        <!-- clients-lines__column end -->
+                        <!-- clients-lines__column start -->
+                        <div class="clients-lines__column">
+                            <div class="clients-lines__inner hover-box pos-rel">
+                                <img class="client-logo client-hover-out pos-abs pos-center-center"
+                                    src="assets/images/GI_Partners_Logo/White/Reliance_Entertainment_Logo_W.png"
+                                    alt="clients logo">
+                                <img class="client-logo client-hover-in pos-abs pos-center-center"
+                                    src="assets/images/GI_Partners_Logo/Red/Reliance_Entertainment_Logo_R.png"
+                                    alt="clients logo">
+                            </div>
+                        </div>
+                        <!-- clients-lines__column end -->
+                        <!-- clients-lines__column start -->
+                        <div class="clients-lines__column">
+                            <div class="clients-lines__inner hover-box pos-rel">
+                                <img class="client-logo client-hover-out pos-abs pos-center-center"
+                                    src="assets/images/GI_Partners_Logo/White/westland-logo_W.png" alt="clients logo">
+                                <img class="client-logo client-hover-in pos-abs pos-center-center"
+                                    src="assets/images/GI_Partners_Logo/Red/westland-logo_R.png" alt="clients logo">
+                            </div>
+                        </div>
+                        <!-- clients-lines__column end -->
+                    </div><!-- clients-lines end -->
+                </div><!-- container end -->
+            </div><!-- pos-rel end -->
+        </section><!-- clients end -->
 		</main><!-- main end -->
 
 		<!-- footer start -->
