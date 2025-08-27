@@ -140,7 +140,69 @@ class PageController extends Controller
 
     public function about()
     {
-        return view('about');
+        $main_lang=[
+            [
+                'name'=>'C',
+                'image'=>'c.png'
+            ],
+            [
+                'name'=>'C++',
+                'image'=>'cpp.png'
+            ],
+            [
+                'name'=>'Express',
+                'image'=>'express.png'
+            ],
+            [
+                'name'=>'Java',
+                'image'=>'java.png'
+            ],
+            [
+                'name'=>'js',
+                'image'=>'js.png'
+            ],
+            [
+                'name'=>'Laravel',
+                'image'=>'laravel.png'
+            ],
+            [
+                'name'=>'PHP',
+                'image'=>'php.png'
+            ],
+            [
+                'name'=>'Python',
+                'image'=>'python.png'
+            ],
+            [
+                'name'=>'React',
+                'image'=>'react.png'
+            ],
+            [
+                'name'=>'Node Js',
+                'image'=>'nodejs.png'
+            ],
+           
+        ];
+
+       $main_lang2 = [
+        ['name' => 'Ajax',       'image' => 'ajax.png'],
+        ['name' => 'Bootstrap',  'image' => 'bootstrap.png'],
+        ['name' => 'CSS',        'image' => 'css.png'],
+        ['name' => 'Git',        'image' => 'git.png'],
+        ['name' => 'GitHub',     'image' => 'github.png'],
+        ['name' => 'HTML',       'image' => 'html.png'],
+        ['name' => 'jQuery',     'image' => 'jquery.png'],
+        ['name' => 'JSON',       'image' => 'json.png'],
+        ['name' => 'Linux',      'image' => 'linux.jpeg'],
+        ['name' => 'MongoDB',    'image' => 'mongodb.png'],
+        ['name' => 'MySQL',      'image' => 'mysql.png'],
+        ['name' => 'Postman',    'image' => 'postman.png'],
+        ['name' => 'Redux',      'image' => 'redux.png'],
+        ['name' => 'Tailwind',   'image' => 'tailwind.png'],
+        ['name' => 'Vite',       'image' => 'vite.jpeg'],
+        ['name' => 'XAMPP',      'image' => 'xampp.png'],
+    ];
+        return view('about', compact('main_lang', 'main_lang2'));
     }
 
     public function contact()

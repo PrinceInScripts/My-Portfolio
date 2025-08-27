@@ -88,55 +88,32 @@
 					<!-- nav-btn-box start -->
 					<li class="nav-btn-box">
 						<a href="animation.html" class="nav-btn large dropdown-hidden-btn js-pointer-large">
-							<span class="nav-btn__inner" data-text="Animation">Animation</span>
+							<span class="nav-btn__inner" data-text="Animation">About Us</span>
 						</a>
 					</li>
                     <!-- nav-btn-box end -->
 					<!-- nav-btn-box start -->
 					<li class="nav-btn-box">
 						<a href="motion-comics.html" class="nav-btn large dropdown-hidden-btn js-pointer-large">
-							<span class="nav-btn__inner" data-text="Motion Comics">Motion Comics</span>
+							<span class="nav-btn__inner" data-text="Motion Comics">Projects</span>
 						</a>
 					</li>
                     <!-- nav-btn-box end -->
 					<!-- nav-btn-box start -->
 					<li class="nav-btn-box">
 						<a href="audio-comics.html" class="nav-btn large dropdown-hidden-btn js-pointer-large">
-							<span class="nav-btn__inner" data-text="Audio Comics">Audio Comics</span>
+							<span class="nav-btn__inner" data-text="Audio Comics">Contact Me</span>
 						</a>
 					</li>
                     <!-- nav-btn-box end -->										
 
-                    <!-- nav-btn-box start -->
-                    <li class="nav-btn-box">
-						<a href="news.html" class="nav-btn large dropdown-hidden-btn js-pointer-large">
-							<span class="nav-btn__inner" data-text="News">News</span>
-						</a>
-                    </li><!-- nav-btn-box end -->
-                    <!-- nav-btn-box start -->
-                    <li class="nav-btn-box">
-						<a href="https://medium.com/graphicindia-com" target="_blank" class="nav-btn large dropdown-hidden-btn js-pointer-large">
-							<span class="nav-btn__inner" data-text="Press Release">Press Release</span>
-						</a>
-                    </li><!-- nav-btn-box end -->
-					<!-- nav-btn-box start -->
-					<li class="nav-btn-box">
-						<a href="termsnconditions.html" class="nav-btn large dropdown-hidden-btn js-animsition-link js-pointer-large">
-							<span class="nav-btn__inner" data-text="Terms & Conditions">Terms & Conditions</span>
-						</a>
-					</li><!-- nav-btn-box end -->
-					<!-- nav-btn-box start -->
-					<li class="nav-btn-box">
-						<a href="contact.html" class="nav-btn large dropdown-hidden-btn js-animsition-link js-pointer-large">
-							<span class="nav-btn__inner" data-text="Contact Us">Contact Us</span>
-						</a>
-					</li><!-- nav-btn-box end -->
+                    
 				</ul><!-- menu-box end -->
 
 				<!-- nav-copyright start -->
 				<div class="nav-copyright text-right">
 					<p class="copyright-style nav-fade-anim js-nav-anim">
-						&copy; Copyright 2021 GRAPHICINDIA.COM 
+						&copy; Copyright 2025 SCRIPTXPRINCE.me 
 					</p>
 				</div><!-- nav-copyright end -->
 			</div><!-- pos-rel end -->

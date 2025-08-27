@@ -169,7 +169,7 @@
             align-items: center;
         }
 
-		form {
+        form {
             width: 100%;
         }
 
@@ -178,7 +178,8 @@
             justify-content: space-between;
             gap: 40px;
             margin-top: 40px;
-            flex-wrap: wrap; /* allows wrapping on small screens */
+            flex-wrap: wrap;
+            /* allows wrapping on small screens */
         }
 
         .form-group {
@@ -278,19 +279,12 @@
                         <div class="container small padding-top-bottom-120">
                             <h2 class="headline-xl">
                                 <span class="hidden-box d-block">
-                                    <span class="anim-slide tr-delay-02">Prince Kumar <span
-                                            class="text-color-red">scritpxprince!</span></span>
+                                    <span class="anim-slide tr-delay-02">Hi, I’m Prince Kumar — <span
+                                            class="text-color-red">Full‑Stack Developer!</span></span>
                                 </span>
-                                <!-- <span class="hidden-box d-block">
-                                        <span class="anim-slide tr-delay-02">We Generate</span>
-                                    </span>
-                                    <span class="hidden-box d-block">
-                                        <span class="anim-slide tr-delay-03">Creative &</span>
-                                    </span>
-                                    <span class="hidden-box d-block">
-                                        <span class="anim-slide tr-delay-04">Novation Ideas</span>
-                                    </span> -->
+
                             </h2>
+
                             <div class="margin-top-30 anim-fade tr-delay-08">
                                 <a href="#down" class="border-btn js-pointer-large">
                                     <span class="border-btn__inner">About</span>
@@ -298,13 +292,6 @@
                                     <span class="border-btn__lines-2"></span>
                                 </a>
                             </div>
-                            <!-- <div class="margin-top-30 anim-fade tr-delay-08">
-                                    <a href="#" class="border-btn js-pointer-large">
-                                        <span class="border-btn__inner">Read more</span>
-                                        <span class="border-btn__lines-1"></span>
-                                        <span class="border-btn__lines-2"></span>
-                                    </a>
-                                </div> -->
                         </div>
                     </div><!-- content end -->
                 </div><!-- swiper-slide end -->
@@ -321,26 +308,32 @@
                     <!-- content start -->
                     <div class="flex-min-height-100vh pos-rel" data-swiper-parallax-x="30%">
                         <div class="container small text-center padding-top-bottom-120">
-                            <!-- <h2 class="headline-xl">
-      <span class="hidden-box d-block">
-      <span class="anim-slide tr-delay-02">We’r Provided</span>
-      </span>
-      <span class="hidden-box d-block">
-      <span class="anim-slide tr-delay-03">
-      <span class="text-color-red">Best</span> Digital
-      </span>
-      </span>
-      <span class="hidden-box d-block">
-      <span class="anim-slide tr-delay-04 text-color-red">Services</span>
-      </span>
-       </h2>
-       <div class="margin-top-30 anim-fade tr-delay-08">
-       <a href="#" class="border-btn js-pointer-large">
-       <span class="border-btn__inner">Read more</span>
-       <span class="border-btn__lines-1"></span>
-       <span class="border-btn__lines-2"></span>
-       </a>
-       </div> -->
+                            <h2 class="headline-xl">
+                                <span class="hidden-box d-block">
+                                    <span class="anim-slide tr-delay-02"> Turning ideas</span>
+                                </span>
+                                <span class="hidden-box d-block">
+                                    <span class="anim-slide tr-delay-03">
+                                        <span class="text-color-red">into</span> production‑ready
+                                    </span>
+                                </span>
+                                <span class="hidden-box d-block">
+                                    <span class="anim-slide tr-delay-04 text-color-red">Apps</span>
+                                </span>
+                            </h2>
+                            <div class="margin-top-30 anim-fade tr-delay-08">
+                                <p class="body-text-s anim-text-reveal js-scrollanim">
+                                    I design reliable dashboards, solve backend challenges, and build clean UIs.<br />
+                                </p>
+                            </div>
+                            <br />
+                            <div class="margin-top-30 anim-fade tr-delay-08">
+                                <a href="#" class="border-btn js-pointer-large">
+                                    <span class="border-btn__inner">Read more</span>
+                                    <span class="border-btn__lines-1"></span>
+                                    <span class="border-btn__lines-2"></span>
+                                </a>
+                            </div>
                         </div>
                     </div><!-- content end -->
                 </div><!-- swiper-slide end -->
@@ -356,62 +349,33 @@
 
                     <!-- content start -->
                     <div class="flex-min-height-100vh pos-rel" data-swiper-parallax-x="30%">
-                        <div class="container small padding-top-bottom-120">
-                            <!-- <h2 class="headline-xl">
-        <span class="hidden-box d-block">
-        <span class="anim-slide tr-delay-02">Best Solutions</span>
-        </span>
-        <span class="hidden-box d-block">
-        <span class="anim-slide tr-delay-03">& Ideas for</span>
-        </span>
-        <span class="hidden-box d-block">
-        <span class="anim-slide tr-delay-04">Your Business</span>
-        </span>
-        </h2>
-        <div class="margin-top-30 anim-fade tr-delay-08">
-        <a href="#" class="border-btn js-pointer-large">
-        <span class="border-btn__inner">Read more</span>
-        <span class="border-btn__lines-1"></span>
-        <span class="border-btn__lines-2"></span>
-        </a>
-        </div> -->
+                        <div class="container small text-center padding-top-bottom-120">
+                            <h2 class="headline-xl">
+                                <span class="hidden-box d-block">
+                                    <span class="anim-slide tr-delay-02">Focused on</span>
+                                </span>
+                                <span class="hidden-box d-block">
+                                    <span class="anim-slide tr-delay-03 text-color-red">efficiency & clarity</span>
+                                </span>
+
+                            </h2>
+                            <div class="margin-top-30 anim-fade tr-delay-08">
+                                <p class="body-text-s anim-text-reveal js-scrollanim">
+                                    From algorithms to admin dashboards, I deliver features that scale.
+                                </p>
+                            </div>
+                            <br />
+                            <div class="margin-top-30 anim-fade tr-delay-08">
+                                <a href="#" class="border-btn js-pointer-large">
+                                    <span class="border-btn__inner">Read more</span>
+                                    <span class="border-btn__lines-1"></span>
+                                    <span class="border-btn__lines-2"></span>
+                                </a>
+                            </div>
                         </div>
                     </div><!-- content end -->
                 </div><!-- swiper-slide end -->
-                <!-- swiper-slide start -->
-                {{-- <div class="swiper-slide">
-												<!-- slide-bg -->
-												<div class="js-parallax-slide-bg bg-img-cover">
-													<video class="video-bg" src="assets/video/banner-video/Videos/Astra.mp4" autoplay="" loop="" muted=""></video>
-												</div>
-												<!-- bg-overlay -->
-												<!-- <div class="bg-overlay-black"></div> -->
 
-												<!-- content start -->
-												<div class="flex-min-height-100vh pos-rel" data-swiper-parallax-x="30%">
-													<div class="container small padding-top-bottom-120">
-														<!-- <h2 class="headline-xl">
-															<span class="hidden-box d-block">
-																<span class="anim-slide tr-delay-02">Best Solutions</span>
-															</span>
-															<span class="hidden-box d-block">
-																<span class="anim-slide tr-delay-03">& Ideas for</span>
-															</span>
-															<span class="hidden-box d-block">
-																<span class="anim-slide tr-delay-04">Your Business</span>
-															</span>
-														</h2>
-														<div class="margin-top-30 anim-fade tr-delay-08">
-															<a href="#" class="border-btn js-pointer-large">
-																<span class="border-btn__inner">Read more</span>
-																<span class="border-btn__lines-1"></span>
-																<span class="border-btn__lines-2"></span>
-															</a>
-														</div> -->
-													</div>
-												</div><!-- content end -->
-											</div> --}}
-                <!-- swiper-slide end -->
             </div><!-- swiper-wrapper end -->
 
             <!-- swiper-button-prev start -->
@@ -438,51 +402,56 @@
         <!-- about us start -->
         <section id="down" class="pos-rel section-bg-dark-2">
             <!-- pos-rel start -->
-            <div class="pos-rel padding-top-bottom-120">
+            <div class="pos-rel padding-top-bottom-100">
                 <!-- flex-container start -->
 
                 <div class="container flex-container padding-bottom-70">
                     <!-- title start -->
                     <h2 class="column-l-r-margin-10 headline-m js-scrollanim">
-                        <span class="hidden-box d-block">
+                        {{-- <span class="hidden-box d-block">
                             <span class="anim-slide">
                                 <span class="text-color-red"></span>
                             </span>
-                        </span>
+                        </span> --}}
                         <span class="hidden-box d-block">
                             <span class="anim-slide tr-delay-01 text-color-red">Prince Kumar (scriptxprince)</span>
                         </span>
                     </h2><!-- title end -->
                     <br><br>
                     <p class="body-text-s anim-text-reveal js-scrollanim">
-                        <br> Prince Kumar is a passionate Web & App Developer who is building modern digital experiences
-                        for the web and mobile world.<br><br>
-                        Just as technology is reshaping how we live and work, Prince is tapping into his creativity and
-                        coding skills to craft user-friendly websites, web apps, and mobile solutions. With expertise in
-                        MERN stack, Laravel, and modern frontend technologies, he develops applications that blend
-                        performance with design. <br><br>
+                        <br> I am a Full-Stack developer based in Kota, India. Hello there! 👋 I'm Prince Kumar, a
+                        passionate MERN stack developer on a journey to bring innovative web solutions to life. I find
+                        joy in turning ideas into reality through the art of coding. With a solid foundation in HTML,
+                        CSS, and JavaScript, coupled with the power of React, Node.js, and MongoDB, I embark on a
+                        mission to create seamless and engaging user experiences.<br>Beyond the lines of code, I thrive
+                        in the world of continuous learning. Exploring advanced JavaScript, diving into data structures,
+                        and delving into the basics of machine learning are just a few stops on my learning roadmap. I
+                        believe in the transformative power of technology and its ability to simplify
+                        complexities.<br><br>
+                        I began programming with C++ and DSA, which taught me to think about complexity and edge cases.
+                        That foundation quickly led me to web development — first PHP and MySQL for small projects and
+                        later React and Node.js for interactive UIs and APIs. Along the way I completed a virtual
+                        full‑stack internship at Bharat Intern (Mar 10–Apr 10, 2024) and built projects like a sorting
+                        visualizer, a real‑time Sudoku solver, and several admin dashboards that handle wallets, user
+                        status, and referral tracking.<br><br>
 
-                        Over the years, Prince has worked on multiple projects ranging from personal portfolios to
-                        freelance client work, delivering solutions that help businesses and individuals grow online.
-                        His projects span across responsive web design, scalable full-stack apps, and engaging UI/UX
-                        experiences. <br><br>
+                        I enjoy turning ambiguous product needs into simple UX and reliable backends: small, testable
+                        components on the frontend, clear REST endpoints on the backend, and thoughtful database schemas
+                        that avoid common pitfalls (N+1 queries, missing indexes). I prefer shipping usable features
+                        quickly and iterating with real user feedback.<br><br>
 
-                        Some of his notable achievements include:<br>
-
-                    <ul type="disc">
-                        <li>Developing custom portfolio websites with clean design and optimized performance.</li>
-                        <li>Creating web apps with real-time features using React, Node.js, and MongoDB.</li>
-                        <li>Working on Laravel-powered applications with API integration.</li>
-                        <li>Freelancing with global clients to deliver tailored digital solutions.</li>
-                    </ul>
-                    <br><br>
-                    Prince continues to expand his skills by exploring new frameworks, tools, and technologies, staying
-                    up to date with the fast-evolving tech industry.<br><br>
-
-                    In addition to development, he shares his work, experiments, and code on platforms like GitHub and
-                    collaborates with teams to bring ideas to life.
+                        What I care about:<br>
 
                     </p>
+
+                    <ul type="disc" style="line-height: 1.5">
+                        <li>Clear, testable UI components and helpful microcopy</li>
+                        <li>REST APIs that are simple to maintain and secure</li>
+                        <li>Databases with the right indexes and simple schema design</li>
+                        <li>Shipping functional features over theoretical perfection.</li>
+                    </ul>
+                   <br>
+                   
 
                     <!-- column start -->
                     <div class="six-columns padding-bottom-20">
@@ -504,7 +473,7 @@
 
                         @foreach ($main_lang as $lang)
                             @if ($loop->iteration % 2 == 1)
-                                <div class="swiper-slide" style="text-align: center;padding:10px 20px">
+                                <div class="swiper-slide" style="text-align: center;padding:10px 20px;width:140px">
                                     <h2 class="text">{{ $lang['name'] }}</h2>
                                     <img class="padding-top-20" src="assets/images/skills/lang1/{{ $lang['image'] }}"
                                         alt="{{ $lang['name'] }}">
@@ -551,8 +520,8 @@
                                             <div class="six-columns column-100-100 padding-top-30">
 
                                                 <div class="column-r-margin-40-999">
-                                                    <h3 style="font-size:40px;font-weight:bold"
-                                                        class="subhead-xl">{{ $project['title'] }}</h3>
+                                                    <h3 style="font-size:40px;font-weight:bold" class="subhead-xl">
+                                                        {{ $project['title'] }}</h3>
                                                     <p style="line-height: 1.2"
                                                         class="body-text-l text-color-dadada margin-top-20">
                                                         {{ $project['info'] }}</p>
@@ -713,28 +682,30 @@
                             or
                             freelance opportunities!</p>
 
-                       <form>
-        <div class="form-container">
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" placeholder="Enter Your Name" required>
+                        <form>
+                            <div class="form-container">
+                                <div class="form-group">
+                                    <label for="name">Name:</label>
+                                    <input type="text" id="name" name="name"
+                                        placeholder="Enter Your Name" required>
 
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="Enter Your Email" required>
-            </div>
+                                    <label for="email">Email:</label>
+                                    <input type="email" id="email" name="email"
+                                        placeholder="Enter Your Email" required>
+                                </div>
 
-            <div class="form-group">
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" rows="4" required></textarea>
-            </div>
-        </div>
+                                <div class="form-group">
+                                    <label for="message">Message:</label>
+                                    <textarea id="message" name="message" rows="4" required></textarea>
+                                </div>
+                            </div>
 
-        <button type="submit" class="border-btn js-pointer-large margin-top-20">
-            <span class="border-btn__inner">Send Message</span>
-            <span class="border-btn__lines-1"></span>
-            <span class="border-btn__lines-2"></span>
-        </button>
-    </form>
+                            <button type="submit" class="border-btn js-pointer-large margin-top-20">
+                                <span class="border-btn__inner">Send Message</span>
+                                <span class="border-btn__lines-1"></span>
+                                <span class="border-btn__lines-2"></span>
+                            </button>
+                        </form>
                     </div>
 
                 </div><!-- container end -->
