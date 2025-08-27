@@ -28,7 +28,7 @@
 
 <body class="preloader cursor-anim-enable dark-nav">
     <!-- preloader-loading start -->
-     <x-loader />
+    <x-loader />
 
     <!-- pointer start -->
     <!-- <div class="pointer js-pointer" id="js-pointer">
@@ -38,7 +38,7 @@
   </div> -->
     <!-- pointer end -->
 
-     <!-- to top btn start -->
+    <!-- to top btn start -->
     <a href="#up" class="scroll-to-btn js-headroom js-midnight-color js-smooth-scroll js-pointer-large">
         <span class="scroll-to-btn__box">
             <span class="scroll-to-btn__arrow"></span>
@@ -54,7 +54,7 @@
     </a><!-- scroll down btn end -->
 
     <!-- header start -->
-   <x-header />
+    <x-header />
     <!-- main start -->
     <main class="js-animsition-overlay" data-animsition-overlay="true">
         <!-- about start -->
@@ -438,7 +438,7 @@
             </div><!-- lines-container end -->
         </section><!-- about end -->
 
-		 <section class="lines-section pos-rel section-bg-dark-1">
+        <section class="lines-section pos-rel section-bg-dark-1">
             <!-- lines-container start -->
             <div class="lines-container pos-rel no-lines flex-min-height-40vh">
                 <!-- flex-container start -->
@@ -451,7 +451,8 @@
                                 <h2 class="headline-s hidden-box">
                                     <span class="anim-slide"> My Approach, Mission & Vision</span>
                                 </h2>
-                                <p class="body-text-s margin-top-20 anim-text-reveal tr-delay-02" style="font-size: 20px">
+                                <p class="body-text-s margin-top-20 anim-text-reveal tr-delay-02"
+                                    style="font-size: 20px">
                                     <strong>Mission:</strong> Build simple, reliable, and impactful software. <br>
                                     <strong>Vision:</strong> Become a versatile full-stack & mobile developer,
                                     creating projects that genuinely help people. <br><br>
@@ -483,11 +484,13 @@
                                 <h2 class="headline-s hidden-box">
                                     <span class="anim-slide"> A Fun Personal Touch</span>
                                 </h2>
-                                <p class="body-text-s margin-top-20 anim-text-reveal tr-delay-02" style="font-size: 20px">
-                                    Outside of coding, I love chai, sketching UI ideas, and learning little productivity hacks.  
-          I see coding as both a puzzle and an art.  
-          <br><br>
-          <em>“Dream big, start small, and ship often.”</em>
+                                <p class="body-text-s margin-top-20 anim-text-reveal tr-delay-02"
+                                    style="font-size: 20px">
+                                    Outside of coding, I love chai, sketching UI ideas, and learning little productivity
+                                    hacks.
+                                    I see coding as both a puzzle and an art.
+                                    <br><br>
+                                    <em>“Dream big, start small, and ship often.”</em>
                                 </p>
                             </div>
                         </div><!-- wo we are end -->
@@ -572,7 +575,7 @@
         </section><!-- clients end -->
 
 
-       
+
     </main><!-- main end -->
 
     @include('components.footer')

@@ -3,7 +3,7 @@
 			<!-- logo start -->
 			<div class="header-logo js-midnight-color js-headroom">
 				<div class="hidden-box">
-					<a href="index.html" class="header-logo__box js-pointer-large js-animsition-link">
+					<a href="/" class="header-logo__box js-pointer-large js-animsition-link">
 						<img class="header-logo__img white" src="{{ asset('assets/images/logo/Graphic_India_LOGO_White_350px.png') }}" alt="logo">
 						<img class="header-logo__img black" src="{{ asset('assets/images/logo/Graphic_India_LOGO_BLACK_350px.png') }}" alt="logo">
 					</a>
@@ -22,7 +22,7 @@
 			<div class="header-contact js-midnight-color js-headroom">
 				<div class="header-contact__flex">
 					<div class="header-contact__anim">
-						<a href="contact.html" class="header-contact__btn vertical-text center js-pointer-large">
+						<a href="/contact" class="header-contact__btn vertical-text center js-pointer-large">
 							<span class="vertical-text__inner"><i class="far fa-comment-dots"></i> Get in touch</span>
 						</a>
 					</div>
@@ -34,29 +34,36 @@
 				<ul class="list list_center list_margin-20px hidden-box">
 					<li class="list__item">
 						<div class="hidden-box d-inline-block">
-							<a href="https://www.facebook.com/graphicindia" class="anim-slide js-pointer-small">
-								<i class="fab fa-facebook-f"></i>
+							<a href="https://www.linkedin.com/in/prince-kumar-788673253/" class="anim-slide js-pointer-small">
+								<i class="fab fa-linkedin"></i>
 							</a>
 						</div>
 					</li>
 					<li class="list__item">
 						<div class="hidden-box d-inline-block">
-							<a href="https://twitter.com/graphicindia" class="anim-slide tr-delay-02 js-pointer-small">
+							<a href="https://x.com/Princek02057932" class="anim-slide tr-delay-02 js-pointer-small">
 								<i class="fab fa-twitter"></i>
 							</a>
 						</div>
 					</li>
 					<li class="list__item">
 						<div class="hidden-box d-inline-block">
-							<a href="https://www.instagram.com/graphicindia/" class="anim-slide tr-delay-04 js-pointer-small">
+							<a href="https://www.instagram.com/scriptxprince/" class="anim-slide tr-delay-04 js-pointer-small">
 								<i class="fab fa-instagram"></i>
 							</a>
 						</div>
 					</li>
 					<li class="list__item">
 						<div class="hidden-box d-inline-block">
-							<a href="https://www.youtube.com/graphicindia" class="anim-slide tr-delay-10 js-pointer-small">
-								<i class="fab fa-youtube"></i>
+							<a href="https://github.com/PrinceInScripts" class="anim-slide tr-delay-10 js-pointer-small">
+								<i class="fab fa-github"></i>
+							</a>
+						</div>
+					</li>
+					<li class="list__item">
+						<div class="hidden-box d-inline-block">
+							<a href="https://t.me/scriptxprince" class="anim-slide tr-delay-10 js-pointer-small">
+								<i class="fab fa-telegram"></i>
 							</a>
 						</div>
 					</li>
@@ -80,29 +87,29 @@
 				<ul class="menu-box">
 					<!-- nav-btn-box start -->
 					<li class="nav-btn-box">
-						<a href="index.html" class="nav-btn large dropdown-hidden-btn js-pointer-large">
+						<a href="/" class="nav-btn large dropdown-hidden-btn js-pointer-large">
 							<span class="nav-btn__inner" data-text="Home">Home</span>
 						</a>
 					</li>
                     <!-- nav-btn-box end -->
 					<!-- nav-btn-box start -->
 					<li class="nav-btn-box">
-						<a href="animation.html" class="nav-btn large dropdown-hidden-btn js-pointer-large">
-							<span class="nav-btn__inner" data-text="Animation">About Us</span>
+						<a href="/about" class="nav-btn large dropdown-hidden-btn js-pointer-large">
+							<span class="nav-btn__inner" data-text="About Us">About Us</span>
 						</a>
 					</li>
                     <!-- nav-btn-box end -->
 					<!-- nav-btn-box start -->
 					<li class="nav-btn-box">
-						<a href="motion-comics.html" class="nav-btn large dropdown-hidden-btn js-pointer-large">
-							<span class="nav-btn__inner" data-text="Motion Comics">Projects</span>
+						<a href="/projects" class="nav-btn large dropdown-hidden-btn js-pointer-large">
+							<span class="nav-btn__inner" data-text="Projects">Projects</span>
 						</a>
 					</li>
                     <!-- nav-btn-box end -->
 					<!-- nav-btn-box start -->
 					<li class="nav-btn-box">
-						<a href="audio-comics.html" class="nav-btn large dropdown-hidden-btn js-pointer-large">
-							<span class="nav-btn__inner" data-text="Audio Comics">Contact Me</span>
+						<a href="/contact" class="nav-btn large dropdown-hidden-btn js-pointer-large">
+							<span class="nav-btn__inner" data-text="Contact Me">Contact Me</span>
 						</a>
 					</li>
                     <!-- nav-btn-box end -->										

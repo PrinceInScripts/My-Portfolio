@@ -169,7 +169,7 @@
 
 
 
-                                                <a href="{{ $project['link'] }}" target="_blank"
+                                                <a href="project-details/{{ $project['slug'] }}" target="_blank"
                                                     class="border-btn js-pointer-large margin-top-20">
                                                     <span class="border-btn__inner">View Project</span>
                                                     <span class="border-btn__lines-1"></span>

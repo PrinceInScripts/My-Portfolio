@@ -286,7 +286,7 @@
                             </h2>
 
                             <div class="margin-top-30 anim-fade tr-delay-08">
-                                <a href="#down" class="border-btn js-pointer-large">
+                                <a href="/about" class="border-btn js-pointer-large">
                                     <span class="border-btn__inner">About</span>
                                     <span class="border-btn__lines-1"></span>
                                     <span class="border-btn__lines-2"></span>
@@ -328,7 +328,7 @@
                             </div>
                             <br />
                             <div class="margin-top-30 anim-fade tr-delay-08">
-                                <a href="#" class="border-btn js-pointer-large">
+                                <a href="/projects" class="border-btn js-pointer-large">
                                     <span class="border-btn__inner">Read more</span>
                                     <span class="border-btn__lines-1"></span>
                                     <span class="border-btn__lines-2"></span>
@@ -366,7 +366,7 @@
                             </div>
                             <br />
                             <div class="margin-top-30 anim-fade tr-delay-08">
-                                <a href="#" class="border-btn js-pointer-large">
+                                <a href="/about" class="border-btn js-pointer-large">
                                     <span class="border-btn__inner">Read more</span>
                                     <span class="border-btn__lines-1"></span>
                                     <span class="border-btn__lines-2"></span>
@@ -537,7 +537,7 @@
 
 
 
-                                                    <a href="{{ $project['link'] }}" target="_blank"
+                                                    <a href="project-details/{{ $project['slug'] }}" target="_blank"
                                                         class="border-btn js-pointer-large margin-top-20">
                                                         <span class="border-btn__inner">View Project</span>
                                                         <span class="border-btn__lines-1"></span>
