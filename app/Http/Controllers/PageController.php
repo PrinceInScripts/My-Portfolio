@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class PageController extends Controller
 {
@@ -72,9 +73,10 @@ class PageController extends Controller
         ['name' => 'XAMPP',      'image' => 'xampp.png'],
     ];
 
-     $projects = [
+      $projects = [
         [
             'title' => 'Sorting Visualizer',
+            'slug' => 'sorting-visualizer',
             'info' => 'A React + Redux project for visualizing sorting algorithms project for visualizing sorting algorithms project for visualizing sorting algorithms project for visualizing sorting algorithms.',
             'stack' => ['React', 'Redux', 'DSA'],
             'category' => 'DSA',
@@ -84,6 +86,7 @@ class PageController extends Controller
         ],
         [
             'title' => 'E-commerce Website',
+            'slug' => 'e-commerce-website',
             'info' => 'A PHP + Laravel based e-commerce application  based e-commerce application  based e-commerce application  based e-commerce application  based e-commerce application.',
             'stack' => ['Laravel', 'MySQL', 'PHP'],
             'category' => 'Laravel',
@@ -93,6 +96,7 @@ class PageController extends Controller
         ],
         [
             'title' => 'Blog App',
+            'slug' => 'blog-app',
             'info' => 'A MERN stack blog app with authentication blog app with authentication blog app with authentication blog app with authentication blog app with authentication.',
             'stack' => ['MongoDB', 'Express', 'React', 'Node.js'],
             'category' => 'MERN',
@@ -102,6 +106,7 @@ class PageController extends Controller
         ],
         [
             'title' => 'Sudoku Solver',
+            'slug' => 'sudoku-solver',
             'info' => 'A real-time Sudoku solver built with React & Vite. It allows users to input their Sudoku puzzles and provides step-by-step solutions.',
             'stack' => ['React', 'Vite', 'Game'],
             'category' => 'Game',
@@ -212,7 +217,54 @@ class PageController extends Controller
 
     public function projects()
     {
-        return view('projects');
+
+
+
+         $projects = [
+        [
+            'title' => 'Sorting Visualizer',
+            'slug' => 'sorting-visualizer',
+            'info' => 'A React + Redux project for visualizing sorting algorithms project for visualizing sorting algorithms project for visualizing sorting algorithms project for visualizing sorting algorithms.',
+            'stack' => ['React', 'Redux', 'DSA'],
+            'category' => 'DSA',
+            'status' => 'done',
+            'banner' => 'images/projects/sorting-visualizer.png',
+            'link' => 'https://github.com/yourusername/sorting-visualizer',
+        ],
+        [
+            'title' => 'E-commerce Website',
+            'slug' => 'e-commerce-website',
+            'info' => 'A PHP + Laravel based e-commerce application  based e-commerce application  based e-commerce application  based e-commerce application  based e-commerce application.',
+            'stack' => ['Laravel', 'MySQL', 'PHP'],
+            'category' => 'Laravel',
+            'status' => 'processing',
+            'banner' => 'images/projects/ecommerce.png',
+            'link' => 'https://github.com/yourusername/ecommerce-website',
+        ],
+        [
+            'title' => 'Blog App',
+            'slug' => 'blog-app',
+            'info' => 'A MERN stack blog app with authentication blog app with authentication blog app with authentication blog app with authentication blog app with authentication.',
+            'stack' => ['MongoDB', 'Express', 'React', 'Node.js'],
+            'category' => 'MERN',
+            'status' => 'started',
+            'banner' => 'images/projects/blog.png',
+            'link' => 'https://github.com/yourusername/blog-app',
+        ],
+        [
+            'title' => 'Sudoku Solver',
+            'slug' => 'sudoku-solver',
+            'info' => 'A real-time Sudoku solver built with React & Vite. It allows users to input their Sudoku puzzles and provides step-by-step solutions.',
+            'stack' => ['React', 'Vite', 'Game'],
+            'category' => 'Game',
+            'status' => 'done',
+            'banner' => 'images/projects/sudoku.png',
+            'link' => 'https://github.com/yourusername/sudoku-solver',
+        ]
+    ];
+
+    $filters = ['All', 'MERN', 'Laravel', 'DSA', 'App', 'Game'];
+        return view('projects', compact('projects', 'filters'));
     }
 
     public function notFound()
@@ -222,6 +274,77 @@ class PageController extends Controller
 
     public function projectDetails($id)
     {
-        return view('project-details', compact('id'));
+        // id== title for now 
+         $projects = [
+        [
+            'title' => 'Sorting Visualizer',
+            'slug' => 'sorting-visualizer',
+            'repo_name' => 'Sorting-Visualizer',
+            'info' => 'A React + Redux project for visualizing sorting algorithms project for visualizing sorting algorithms project for visualizing sorting algorithms project for visualizing sorting algorithms.',
+            'stack' => ['React', 'Redux', 'DSA'],
+            'category' => 'DSA',
+            'status' => 'done',
+            'banner' => 'images/projects/sorting-visualizer.png',
+            'link' => 'https://github.com/yourusername/sorting-visualizer',
+        ],
+        [
+            'title' => 'E-commerce Website',
+            'slug' => 'e-commerce-website',
+            'info' => 'A PHP + Laravel based e-commerce application  based e-commerce application  based e-commerce application  based e-commerce application  based e-commerce application.',
+            'stack' => ['Laravel', 'MySQL', 'PHP'],
+            'category' => 'Laravel',
+            'status' => 'processing',
+            'banner' => 'images/projects/ecommerce.png',
+            'link' => 'https://github.com/yourusername/ecommerce-website',
+        ],
+        [
+            'title' => 'Blog App',
+            'slug' => 'blog-app',
+            'info' => 'A MERN stack blog app with authentication blog app with authentication blog app with authentication blog app with authentication blog app with authentication.',
+            'stack' => ['MongoDB', 'Express', 'React', 'Node.js'],
+            'category' => 'MERN',
+            'status' => 'started',
+            'banner' => 'images/projects/blog.png',
+            'link' => 'https://github.com/yourusername/blog-app',
+        ],
+        [
+            'title' => 'Sudoku Solver',
+            'slug' => 'sudoku-solver',
+            'info' => 'A real-time Sudoku solver built with React & Vite. It allows users to input their Sudoku puzzles and provides step-by-step solutions.',
+            'stack' => ['React', 'Vite', 'Game'],
+            'category' => 'Game',
+            'status' => 'done',
+            'banner' => 'images/projects/sudoku.png',
+            'link' => 'https://github.com/yourusername/sudoku-solver',
+        ]
+    ];
+
+    // filter from $projects
+    $project = collect($projects)->firstWhere('slug', $id);
+
+    $repoPath = '';
+    if($project){
+        $repoPath="https://api.github.com/repos/PrinceInScripts/{$project['repo_name']}";
+
+        $response=Http::get($repoPath);
+
+        if ($response->successful()) {
+           $repoData = $response->json();
+
+            $project['github'] = [
+                'name' => $repoData['name'] ?? 'N/A',
+                'stars' => $repoData['stargazers_count'] ?? 0,
+                'forks' => $repoData['forks_count'] ?? 0,
+                'watchers' => $repoData['watchers_count'] ?? 0,
+                'open_issues' => $repoData['open_issues_count'] ?? 0,
+                'language' => $repoData['language'] ?? 'N/A',
+                'updated_at' => $repoData['pushed_at'] ?? null,
+            ];
+        }
     }
+
+    return view('project-details', compact('project'));
+    }
+  
 }
+

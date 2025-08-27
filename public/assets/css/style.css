@@ -1497,8 +1497,6 @@ pre code {
 	pointer-events: none;
 }
 
-.lines-section:before,
-.lines-section:after,
 .lines-container:before,
 .lines-container:after {
 	content: '';

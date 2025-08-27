@@ -1,6 +1,6 @@
  <!-- footer start -->
     <footer class="fixed-footer pos-rel bg-img-cover js-fixed-footer"
-        style="background-image:url(assets/images/footer/footer.png)">
+        style="background-image:url({{ asset('assets/images/footer/footer.png') }})">
         <!-- bg-overlay -->
         <div class="bg-overlay-black"></div>
         <!-- <div class="bg-overlay-black"></div> -->
@@ -11,7 +11,7 @@
             <div class="container padding-top-bottom-120">
                 <!-- footer-logo start -->
                 <div class="footer-logo footer-logo-desktop-hidden padding-bottom-90">
-                    <img class="footer-logo__img" src="assets/images/logo/logo-white.png" alt="logo">
+                    <img class="footer-logo__img" src="{{ asset('assets/images/logo/logo-white.png') }}" alt="logo">
                 </div><!-- footer-logo end -->
 
                 <!-- flex-container start -->

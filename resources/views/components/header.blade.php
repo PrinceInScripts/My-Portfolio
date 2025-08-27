@@ -4,8 +4,8 @@
 			<div class="header-logo js-midnight-color js-headroom">
 				<div class="hidden-box">
 					<a href="index.html" class="header-logo__box js-pointer-large js-animsition-link">
-						<img class="header-logo__img white" src="assets/images/logo/Graphic_India_LOGO_White_350px.png" alt="logo">
-						<img class="header-logo__img black" src="assets/images/logo/Graphic_India_LOGO_BLACK_350px.png" alt="logo">
+						<img class="header-logo__img white" src="{{ asset('assets/images/logo/Graphic_India_LOGO_White_350px.png') }}" alt="logo">
+						<img class="header-logo__img black" src="{{ asset('assets/images/logo/Graphic_India_LOGO_BLACK_350px.png') }}" alt="logo">
 					</a>
 				</div>
 			</div><!-- logo end -->
