@@ -1754,6 +1754,15 @@ pre code {
 	        transition: .5s cubic-bezier(.76, .06, .85, .07);
 }
 
+@media only screen and (max-width: 999px) {
+
+	.preloader__logoload-box {
+		left: calc(35% - 50px);
+		top:  calc(40% - 50px);
+	}
+
+}
+
 .js-page-in .preloader__logoload-box {
 	opacity: 0;
 }

@@ -21,6 +21,175 @@
         href="css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
 
+    <style>
+        .cards-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: transparent;
+            border: 2px solid #fff;
+            border-radius: 12px;
+            padding: 40px;
+            flex: 1 1 48%;
+            /* 👈 50% on large screens */
+            min-width: 320px;
+            /* 👈 ensures it doesn’t get too small */
+            box-sizing: border-box;
+        }
+
+        /* Profile section */
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .profile img {
+            border-radius: 50%;
+            width: 60px;
+        }
+
+        .name {
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .username {
+            color: #888;
+            font-size: 14px;
+        }
+
+        /* Stats section */
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            text-align: center;
+            margin-top: 20px;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .stats div {
+            flex: 1;
+            min-width: 80px;
+            border-right: 2px solid #ccc;
+            padding-right: 10px;
+        }
+
+        .stats div:last-child {
+            border-right: none;
+        }
+
+        .stats p {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .stats span {
+            font-size: 14px;
+        }
+
+        /* Info */
+        .info {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #ccc;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .lang {
+            color: #34d399;
+        }
+
+        /* Difficulty */
+        .difficulty {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .difficulty p {
+            font-weight: bold;
+        }
+
+        .difficulty .easy {
+            color: green;
+        }
+
+        .difficulty .medium {
+            color: orange;
+        }
+
+        .difficulty .hard {
+            color: red;
+        }
+
+        /* Heatmap */
+        .heatmap {
+            margin-top: 20px;
+        }
+
+        .heatmap p {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .heatmap .grid {
+            display: grid;
+            grid-template-columns: repeat(30, 10px);
+            gap: 3px;
+        }
+
+        .heatmap .grid div {
+            width: 10px;
+            height: 10px;
+            border-radius: 2px;
+        }
+
+        /* ✅ Responsive */
+        @media (max-width: 992px) {
+            .card {
+                flex: 1 1 100%;
+                /* full width on tablets/mobiles */
+            }
+
+            .stats {
+                justify-content: space-around;
+            }
+
+            .heatmap .grid {
+                grid-template-columns: repeat(20, 10px);
+            }
+        }
+
+        /* for small screens */
+        @media (max-width: 576px) {
+            .cards-container {
+                flex-direction: column;
+            }
+
+            .card {
+                flex: 1 1 100%;
+                /* full width on small screens */
+                padding: 10px
+            }
+
+            .stats {
+                justify-content: space-between
+            }
+
+            .heatmap .grid {
+                grid-template-columns: repeat(20, 10px);
+            }
+        }
+    </style>
+
     <!-- styles -->
     <link href="assets/css/plugins.css" rel="stylesheet" type="text/css">
     <link href="assets/css/style.css" rel="stylesheet" type="text/css">
@@ -71,22 +240,27 @@
                                 <h2 class="headline-s hidden-box">
                                     <span class="anim-slide"> My Journey in Web Development & Freelancing</span>
                                 </h2>
-                                <p class="body-text-s margin-top-20 anim-text-reveal tr-delay-02">I began my web
-                                    development journey in mid-2022 during my BCA. I started with the MERN stack — React
-                                    for interactive UIs and Node/Express for APIs — and spent a focused year mastering
-                                    both frontend and backend fundamentals. By the end of 2023 I had completed several
-                                    full-stack projects and deepened my problem-solving skills by studying data
-                                    structures & algorithms in C++.<br><br>
+                                <p class="body-text-s margin-top-20 anim-text-reveal tr-delay-02">I am Prince Kumar, a
+                                    passionate developer who loves building impactful projects and solving real-world
+                                    problems with technology. Over the years, I have explored different areas of
+                                    development, from frontend design to backend logic, and I continuously push myself
+                                    to learn and grow in every aspect of coding. I believe in writing clean, efficient
+                                    code and creating user-friendly solutions that make a difference.<br><br>
 
-                                    After graduating with a BCA, I moved into freelancing with friends, working mainly
-                                    with PHP/Laravel to gain paid, real-world experience. Over the last 1.5 years I’ve
-                                    built admin dashboards, implemented payment integrations, handled wallets and
-                                    multi-tier referral systems, and added real-time features using WebSockets. I also
-                                    adopted Docker to make development and deployments more predictable.<br><br>
+                                    Apart from my academic journey in BCA, I dedicate a lot of time to improving my
+                                    skills through platforms like GitHub, LeetCode, and other coding communities. These
+                                    platforms not only help me sharpen my problem-solving abilities but also allow me to
+                                    contribute to open-source projects and showcase my work. I regularly track my
+                                    progress through stats such as repositories, coding streaks, problem-solving
+                                    achievements, and other milestones, which reflect my consistency and dedication as a
+                                    developer.<br><br>
 
-                                    Now I’m enrolled in MCA at University of Kota, exploring Flutter for mobile apps and
-                                    continuing DSA practice in Java to strengthen fundamentals further. My path has
-                                    been: learn → build → ship → improve.<br><br>
+                                    I am also doing freelancing, where I get the opportunity to work on diverse projects
+                                    and collaborate with different clients. This experience helps me understand
+                                    real-world requirements better and polish my skills in delivering professional
+                                    solutions. Whether it’s web development, solving coding challenges, or experimenting
+                                    with new technologies, I always strive to give my best and keep growing in my
+                                    journey as a developer.<br><br>
 
                                     I enjoy turning ambiguous product needs into simple UX and reliable backends: small,
                                     testable components on the frontend, clear REST endpoints on the backend, and
@@ -453,14 +627,20 @@
                                 </h2>
                                 <p class="body-text-s margin-top-20 anim-text-reveal tr-delay-02"
                                     style="font-size: 20px">
-                                    <strong>Mission:</strong> Build simple, reliable, and impactful software. <br>
-                                    <strong>Vision:</strong> Become a versatile full-stack & mobile developer,
-                                    creating projects that genuinely help people. <br><br>
+                                    My mission as a developer is simple: to build software that is reliable, impactful,
+                                    and easy to use. I believe technology should solve problems without adding
+                                    complexity, and that’s what drives my work every single day.<br><br>
+                                    My vision is to grow into a versatile full-stack and mobile developer who creates
+                                    projects that genuinely help people in their daily lives. I aim to design solutions
+                                    that not only look good but also perform well under real-world challenges. For me,
+                                    development isn’t just about coding—it’s about making an impact. <br><br>
                                     <strong>How I Work:</strong>
-                                    - Start small, iterate fast. <br>
-                                    - Keep code clean and readable. <br>
-                                    - Design for users, not just for machines. <br>
-                                    - Protect data integrity and scalability. <br>
+                                    I follow a clear and practical approach. I always start small and iterate fast,
+                                    breaking down big ideas into manageable steps. I keep my code clean and readable
+                                    because I believe good code should be easy to understand for both humans and
+                                    machines. I design with users in mind, ensuring the experience is smooth and
+                                    intuitive. At the same time, I never compromise on data integrity or scalability,
+                                    because a strong foundation is what makes software truly reliable.
                                 </p>
                             </div>
                         </div><!-- wo we are end -->
@@ -486,12 +666,134 @@
                                 </h2>
                                 <p class="body-text-s margin-top-20 anim-text-reveal tr-delay-02"
                                     style="font-size: 20px">
-                                    Outside of coding, I love chai, sketching UI ideas, and learning little productivity
-                                    hacks.
-                                    I see coding as both a puzzle and an art.
+                                    Outside of coding, I’m someone who enjoys the simple things—like sipping chai while
+                                    sketching new UI ideas or exploring little productivity hacks that make life easier.
+                                    For me, coding is not just technical work; it feels like solving a puzzle while also
+                                    creating art. It’s this balance of logic and creativity that keeps me inspired every
+                                    day.
                                     <br><br>
-                                    <em>“Dream big, start small, and ship often.”</em>
+                                    <em>“I believe in the mindset: dream big, start small, and ship often—because
+                                        consistent progress always leads to meaningful results.”</em>
                                 </p>
+                            </div>
+                        </div><!-- wo we are end -->
+
+
+
+                    </div><!-- column end -->
+                </div><!-- flex-container end -->
+            </div><!-- lines-container end -->
+        </section>
+        <section class="lines-section pos-rel section-bg-dark-1">
+            <!-- lines-container start -->
+            <div class="lines-container pos-rel no-lines flex-min-height-40vh">
+                <!-- flex-container start -->
+                <div class="container flex-container reverse padding-top-40 padding-bottom-60">
+                    <!-- column start -->
+                    <div class="twelve-columns column-100-100">
+                        <!-- wo we are start -->
+                        <div class="">
+                            <div class="js-scrollanim">
+                                <h2 style="margin-bottom: 20px;" class="headline-s hidden-box">
+                                    <span class="anim-slide"> Coding Journey</span>
+                                </h2>
+                                <!-- about.blade.php -->
+                               <div class="cards-container">
+
+    <!-- GitHub Card -->
+    <div class="card github-card">
+        <h6 class="headline-xxs hidden-box" style="margin-bottom: 20px;">
+            <span class="anim-slide text-color-red">👨‍💻 My GitHub Journey</span>
+        </h6>
+
+        <!-- Profile Section -->
+        <div class="profile">
+            <img src="{{ $github['avatar_url'] }}" alt="Avatar">
+            <div>
+                <p class="name">{{ $github['name'] }}</p>
+                <p class="username">{{ '@' . $github['login'] }}</p>
+            </div>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="stats">
+            <div><p>{{ $github['followers'] }}</p><span>Followers</span></div>
+            <div><p>{{ $github['following'] }}</p><span>Following</span></div>
+            <div><p>{{ $github['public_repos'] }}</p><span>Repos</span></div>
+            <div><p>{{ $totalStars ?? 0 }}</p><span>Stars</span></div>
+            <div><p>{{ $totalForks ?? 0 }}</p><span>Forks</span></div>
+        </div>
+
+        <!-- Additional Info -->
+        <div class="info">
+            <p>📍 <span>{{ $github['location'] }}</span></p>
+            <p>📅 Since {{ \Carbon\Carbon::parse($github['created_at'])->format('M Y') }}</p>
+            <p>⏳ Updated {{ \Carbon\Carbon::parse($github['updated_at'])->diffForHumans() }}</p>
+            <p>🟢 Languages:
+                @foreach ($languages as $lang => $bytes)
+                    <span class="lang">{{ $lang }}</span>@if (!$loop->last), @endif
+                @endforeach
+            </p>
+        </div>
+
+        <a href="https://github.com/{{ $github['login'] }}" target="_blank"
+           class="border-btn js-pointer-large margin-top-20">
+            <span class="border-btn__inner">Visit Profile</span>
+            <span class="border-btn__lines-1"></span>
+            <span class="border-btn__lines-2"></span>
+        </a>
+    </div>
+
+    <!-- LeetCode Card -->
+    <div class="card leetcode-card">
+        <h6 class="headline-xxs hidden-box" style="margin-bottom: 20px;">
+            <span class="anim-slide text-color-red">🧩 My LeetCode Practice</span>
+        </h6>
+
+        <!-- Profile Section -->
+        <div class="profile">
+            <img src="{{ $github['avatar_url'] }}" alt="LeetCode Logo">
+            <div>
+                <p class="name">{{ $github['login'] }}</p>
+                <p class="username">Ranking #{{ number_format($leetcode['ranking']) }}</p>
+            </div>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="stats">
+            <div><p>{{ $leetcode['totalSolved'] }}</p><span>Solved</span></div>
+            <div><p>{{ $leetcode['acceptanceRate'] }}%</p><span>Acceptance</span></div>
+            <div><p>{{ $leetcode['contributionPoints'] }}</p><span>Points</span></div>
+        </div>
+
+        <!-- Difficulty Breakdown -->
+        <div class="difficulty">
+            <div><p class="easy">{{ $leetcode['easySolved'] }}</p><span>Easy</span></div>
+            <div><p class="medium">{{ $leetcode['mediumSolved'] }}</p><span>Medium</span></div>
+            <div><p class="hard">{{ $leetcode['hardSolved'] }}</p><span>Hard</span></div>
+        </div>
+
+        <!-- Submission Calendar -->
+        <div class="heatmap">
+            <p>🔥 Daily Streak</p>
+            <div class="grid">
+                @foreach ($leetcode['submissionCalendar'] as $day => $count)
+                    <div style="background: {{ $count > 0 ? '#34d399' : '#e5e7eb' }}"></div>
+                @endforeach
+            </div>
+        </div>
+
+        <a href="https://leetcode.com/{{ $github['login'] }}" target="_blank"
+           class="border-btn js-pointer-large margin-top-20">
+            <span class="border-btn__inner">Visit Profile</span>
+            <span class="border-btn__lines-1"></span>
+            <span class="border-btn__lines-2"></span>
+        </a>
+    </div>
+</div>
+
+
+
                             </div>
                         </div><!-- wo we are end -->
 
@@ -511,7 +813,7 @@
                     <!-- title start -->
                     <h2 class="headline-l js-scrollanim">
                         <span class="hidden-box d-block">
-                            <span class="anim-slide">
+                            <span class="">
                                 <span class="text-color-red">Skills</span>
                             </span>
                         </span>

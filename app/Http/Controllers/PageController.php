@@ -143,72 +143,89 @@ class PageController extends Controller
         return view('home', compact('main_lang', 'main_lang2', 'projects', 'filters', 'testimonials'));
     }
 
-    public function about()
-    {
-        $main_lang = [
-            [
-                'name' => 'C',
-                'image' => 'c.png'
-            ],
-            [
-                'name' => 'C++',
-                'image' => 'cpp.png'
-            ],
-            [
-                'name' => 'Express',
-                'image' => 'express.png'
-            ],
-            [
-                'name' => 'Java',
-                'image' => 'java.png'
-            ],
-            [
-                'name' => 'js',
-                'image' => 'js.png'
-            ],
-            [
-                'name' => 'Laravel',
-                'image' => 'laravel.png'
-            ],
-            [
-                'name' => 'PHP',
-                'image' => 'php.png'
-            ],
-            [
-                'name' => 'Python',
-                'image' => 'python.png'
-            ],
-            [
-                'name' => 'React',
-                'image' => 'react.png'
-            ],
-            [
-                'name' => 'Node Js',
-                'image' => 'nodejs.png'
-            ],
+public function about()
+{
+    $main_lang = [
+        ['name' => 'C', 'image' => 'c.png'],
+        ['name' => 'C++', 'image' => 'cpp.png'],
+        ['name' => 'Express', 'image' => 'express.png'],
+        ['name' => 'Java', 'image' => 'java.png'],
+        ['name' => 'js', 'image' => 'js.png'],
+        ['name' => 'Laravel', 'image' => 'laravel.png'],
+        ['name' => 'PHP', 'image' => 'php.png'],
+        ['name' => 'Python', 'image' => 'python.png'],
+        ['name' => 'React', 'image' => 'react.png'],
+        ['name' => 'Node Js', 'image' => 'nodejs.png'],
+    ];
 
-        ];
+    $main_lang2 = [
+        ['name' => 'Ajax', 'image' => 'ajax.png'],
+        ['name' => 'Bootstrap', 'image' => 'bootstrap.png'],
+        ['name' => 'CSS', 'image' => 'css.png'],
+        ['name' => 'Git', 'image' => 'git.png'],
+        ['name' => 'GitHub', 'image' => 'github.png'],
+        ['name' => 'HTML', 'image' => 'html.png'],
+        ['name' => 'jQuery', 'image' => 'jquery.png'],
+        ['name' => 'JSON', 'image' => 'json.png'],
+        ['name' => 'Linux', 'image' => 'linux.jpeg'],
+        ['name' => 'MongoDB', 'image' => 'mongodb.png'],
+        ['name' => 'MySQL', 'image' => 'mysql.png'],
+        ['name' => 'Postman', 'image' => 'postman.png'],
+        ['name' => 'Redux', 'image' => 'redux.png'],
+        ['name' => 'Tailwind', 'image' => 'tailwind.png'],
+        ['name' => 'Vite', 'image' => 'vite.jpeg'],
+        ['name' => 'XAMPP', 'image' => 'xampp.png'],
+    ];
 
-        $main_lang2 = [
-            ['name' => 'Ajax',       'image' => 'ajax.png'],
-            ['name' => 'Bootstrap',  'image' => 'bootstrap.png'],
-            ['name' => 'CSS',        'image' => 'css.png'],
-            ['name' => 'Git',        'image' => 'git.png'],
-            ['name' => 'GitHub',     'image' => 'github.png'],
-            ['name' => 'HTML',       'image' => 'html.png'],
-            ['name' => 'jQuery',     'image' => 'jquery.png'],
-            ['name' => 'JSON',       'image' => 'json.png'],
-            ['name' => 'Linux',      'image' => 'linux.jpeg'],
-            ['name' => 'MongoDB',    'image' => 'mongodb.png'],
-            ['name' => 'MySQL',      'image' => 'mysql.png'],
-            ['name' => 'Postman',    'image' => 'postman.png'],
-            ['name' => 'Redux',      'image' => 'redux.png'],
-            ['name' => 'Tailwind',   'image' => 'tailwind.png'],
-            ['name' => 'Vite',       'image' => 'vite.jpeg'],
-            ['name' => 'XAMPP',      'image' => 'xampp.png'],
-        ];
-        return view('about', compact('main_lang', 'main_lang2'));
+    $username = "PrinceInScripts";
+
+    // APIs
+    $github_user_api     = "https://api.github.com/users/$username";
+    $github_repos_api    = "https://api.github.com/users/$username/repos?per_page=100"; 
+    $leetcode_api        = "https://leetcode-stats-api.herokuapp.com/$username";
+
+    // Fetch user profile
+    $github = Http::withHeaders([
+        'User-Agent' => 'Laravel-App'
+    ])->get($github_user_api)->json();
+
+    // Fetch repos (for stars, forks, languages)
+    $repos = Http::withHeaders([
+        'User-Agent' => 'Laravel-App'
+    ])->get($github_repos_api)->json();
+
+    // Calculate stars & forks
+    $totalStars = collect($repos)->sum('stargazers_count');
+    $totalForks = collect($repos)->sum('forks_count');
+
+
+    // Most used languages (aggregate from repos)
+    $languages = [];
+    foreach ($repos as $repo) {
+        $lang = $repo['language'] ?? null;
+        if ($lang) {
+            if (!isset($languages[$lang])) {
+                $languages[$lang] = 0;
+            }
+            $languages[$lang] += 1;
+        }
     }
+    arsort($languages); // sort by most used
+
+    // Leetcode stats
+    $leetcode = Http::get($leetcode_api)->json();
+
+    return view('about', compact(
+        'main_lang',
+        'main_lang2',
+        'github',
+        'leetcode',
+        'totalStars',
+        'totalForks',
+        'languages'
+    ));
+}
+
 
     public function contact()
     {

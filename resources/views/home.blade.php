@@ -414,44 +414,53 @@
                             </span>
                         </span> --}}
                         <span class="hidden-box d-block">
-                            <span class="anim-slide tr-delay-01 text-color-red">Prince Kumar (scriptxprince)</span>
+                            <span class="anim-slide tr-delay-01 text-color-red">About Me (scriptxprince)</span>
                         </span>
                     </h2><!-- title end -->
                     <br><br>
                     <p class="body-text-s anim-text-reveal js-scrollanim">
-                        <br> I am a Full-Stack developer based in Kota, India. Hello there! 👋 I'm Prince Kumar, a
-                        passionate MERN stack developer on a journey to bring innovative web solutions to life. I find
-                        joy in turning ideas into reality through the art of coding. With a solid foundation in HTML,
-                        CSS, and JavaScript, coupled with the power of React, Node.js, and MongoDB, I embark on a
-                        mission to create seamless and engaging user experiences.<br>Beyond the lines of code, I thrive
-                        in the world of continuous learning. Exploring advanced JavaScript, diving into data structures,
-                        and delving into the basics of machine learning are just a few stops on my learning roadmap. I
-                        believe in the transformative power of technology and its ability to simplify
-                        complexities.<br><br>
-                        I began programming with C++ and DSA, which taught me to think about complexity and edge cases.
-                        That foundation quickly led me to web development — first PHP and MySQL for small projects and
-                        later React and Node.js for interactive UIs and APIs. Along the way I completed a virtual
-                        full‑stack internship at Bharat Intern (Mar 10–Apr 10, 2024) and built projects like a sorting
-                        visualizer, a real‑time Sudoku solver, and several admin dashboards that handle wallets, user
-                        status, and referral tracking.<br><br>
-
-                        I enjoy turning ambiguous product needs into simple UX and reliable backends: small, testable
-                        components on the frontend, clear REST endpoints on the backend, and thoughtful database schemas
-                        that avoid common pitfalls (N+1 queries, missing indexes). I prefer shipping usable features
-                        quickly and iterating with real user feedback.<br><br>
-
-                        What I care about:<br>
-
+                        <br> Hi 👋 I’m Prince Kumar, a Full-Stack Developer from Kota, India.
+                        <br><br>
+                        A passionate developer who loves building impactful projects and solving real-world problems
+                        with technology. Over the years, I have explored different areas of development, from frontend
+                        design to backend logic, and I continuously push myself to learn and grow in every aspect of
+                        coding. I believe in writing clean, efficient code and creating user-friendly solutions that
+                        make a difference.
+                        <br><br>
+                        Apart from my academic journey in BCA, I dedicate a lot of time to improving my skills through
+                        platforms like GitHub, LeetCode, and other coding communities. These platforms not only help me
+                        sharpen my problem-solving abilities but also allow me to contribute to open-source projects and
+                        showcase my work. I regularly track my progress through stats such as repositories, coding
+                        streaks, problem-solving achievements, and other milestones, which reflect my consistency and
+                        dedication as a developer.
+                        <br><br>
+                        I am also doing freelancing, where I get the opportunity to work on diverse projects and
+                        collaborate with different clients. This experience helps me understand real-world requirements
+                        better and polish my skills in delivering professional solutions. Whether it’s web development,
+                        solving coding challenges, or experimenting with new technologies, I always strive to give my
+                        best and keep growing in my journey as a developer.
                     </p>
 
-                    <ul type="disc" style="line-height: 1.5">
-                        <li>Clear, testable UI components and helpful microcopy</li>
-                        <li>REST APIs that are simple to maintain and secure</li>
-                        <li>Databases with the right indexes and simple schema design</li>
-                        <li>Shipping functional features over theoretical perfection.</li>
-                    </ul>
-                   <br>
-                   
+                  
+                    <br>
+
+                      <div style="gap:40px" class="container flex-container">
+									  <a href="#" target="_blank"
+                                                        class="border-btn js-pointer-large margin-top-20">
+                                                        <span class="border-btn__inner">Hire Me</span>
+                                                        <span class="border-btn__lines-1"></span>
+                                                        <span class="border-btn__lines-2"></span>
+                                                    </a>
+									  <a href="#" target="_blank"
+                                                        class="border-btn js-pointer-large margin-top-20">
+                                                        <span class="border-btn__inner">Contact Me</span>
+                                                        <span class="border-btn__lines-1"></span>
+                                                        <span class="border-btn__lines-2"></span>
+                                                    </a>
+									
+
+								</div>
+
 
                     <!-- column start -->
                     <div class="six-columns padding-bottom-20">
@@ -475,12 +484,12 @@
                             @if ($loop->iteration % 2 == 1)
                                 <div class="swiper-slide" style="text-align: center;padding:10px 20px;width:140px">
                                     <h2 class="text">{{ $lang['name'] }}</h2>
-                                    <img class="padding-top-20" src="assets/images/skills/lang1/{{ $lang['image'] }}"
+                                    <img style="width:60%" class="padding-top-20" src="assets/images/skills/lang1/{{ $lang['image'] }}"
                                         alt="{{ $lang['name'] }}">
                                 </div>
                             @else
                                 <div class="swiper-slide" style="text-align: center;padding:10px 20px">
-                                    <img src="assets/images/skills/lang1/{{ $lang['image'] }}"
+                                    <img style="width:60%" src="assets/images/skills/lang1/{{ $lang['image'] }}"
                                         alt="{{ $lang['name'] }}">
                                     <h2 class="padding-top-20 text">{{ $lang['name'] }}</h2>
                                 </div>

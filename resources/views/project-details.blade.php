@@ -390,13 +390,13 @@
                                     </li>
                                 </ul>
 								<div style="justify-content: center;align-items: center;gap:40px" class="container flex-container">
-									  <a href="https://github.com/PrinceKumar/sorting-visualizer/stargazers" target="_blank"
+									  <a href="https://github.com/PrinceInScripts/sorting-visualizer/stargazers" target="_blank"
                                                         class="border-btn js-pointer-large margin-top-20">
                                                         <span class="border-btn__inner">⭐ Star</span>
                                                         <span class="border-btn__lines-1"></span>
                                                         <span class="border-btn__lines-2"></span>
                                                     </a>
-									  <a href="https://github.com/PrinceKumar/sorting-visualizer/fork" target="_blank"
+									  <a href="https://github.com/PrinceInScripts/sorting-visualizer/fork" target="_blank"
                                                         class="border-btn js-pointer-large margin-top-20">
                                                         <span class="border-btn__inner">🍴 Fork</span>
                                                         <span class="border-btn__lines-1"></span>
