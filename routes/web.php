@@ -13,3 +13,4 @@ Route::get('/project-details/{id}',[PageController::class, 'projectDetails'])->n
 Route::get('/contact',[PageController::class, 'contact'])->name('contact');
 
 Route::post('contact',[PageController::class, 'submitContact'])->name('contact.submit');
+Route::get('/my-resume',[PageController::class, 'myResume'])->name('my.resume');

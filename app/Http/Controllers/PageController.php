@@ -276,4 +276,10 @@ public function about()
 
        return response()->json(['success' => true, 'message' => 'Your message has been sent successfully!']);
     }
+
+    public function myResume()
+    {
+        $resume_link="assets/images/resume.pdf";
+        return view('my-resume', compact('resume_link'));
+    }
 }

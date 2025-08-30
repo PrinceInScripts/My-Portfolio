@@ -483,15 +483,15 @@
                     <br>
 
                       <div style="gap:40px" class="container flex-container">
-									  <a href="#" target="_blank"
+									  <a href="/contact" target="_blank"
                                                         class="border-btn js-pointer-large margin-top-20">
                                                         <span class="border-btn__inner">Hire Me</span>
                                                         <span class="border-btn__lines-1"></span>
                                                         <span class="border-btn__lines-2"></span>
                                                     </a>
-									  <a href="#" target="_blank"
+									  <a href="/my-resume" target="_blank"
                                                         class="border-btn js-pointer-large margin-top-20">
-                                                        <span class="border-btn__inner">Contact Me</span>
+                                                        <span class="border-btn__inner">My Resume</span>
                                                         <span class="border-btn__lines-1"></span>
                                                         <span class="border-btn__lines-2"></span>
                                                     </a>
@@ -625,10 +625,17 @@
                     </div><!-- pos-rel end -->
                 </div><!-- padding-top-bottom-120 end -->
 
-                <div class="headline-m text-center">
-                    <button class="filter-btn">
+                <div class="text-center padding-bottom-60">
+                    {{-- <button class="filter-btn">
                         View All
-                    </button>
+                    </button> --}}
+
+                     <a href="/projects" target="_blank"
+                                        class="border-btn js-pointer-large margin-top-20">
+                                        <span class="border-btn__inner">View All</span>
+                                        <span class="border-btn__lines-1"></span>
+                                        <span class="border-btn__lines-2"></span>
+                                    </a>
                 </div>
 
             </div><!-- pos-rel end -->
