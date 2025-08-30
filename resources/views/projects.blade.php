@@ -146,20 +146,20 @@
                             <!-- swiper-wrapper start -->
                             @foreach ($projects as $project)
                                 <!-- swiper-slide start -->
-                                <div class="swiper-slide" data-category="{{ strtolower($project['category']) }}">
+                                <div class="swiper-slide" data-category="{{ strtolower($project->category) }}">
                                     <div style="flex-direction: column-reverse"
                                         class="flex-container reverse flex-align-center margin-left-right-10">
                                         <div class="six-columns column-100-100 padding-top-30">
 
                                             <div class="column-r-margin-40-999">
                                                 <h3 style="font-size:40px;font-weight:bold" class="subhead-xl">
-                                                    {{ $project['title'] }}</h3>
+                                                    {{ $project->title }}</h3>
                                                 <p style="line-height: 1.2"
                                                     class="body-text-l text-color-dadada margin-top-20">
-                                                    {{ $project['info'] }}</p>
+                                                    {{ $project->short_description }}</p>
 
                                                 <div class="stack-container">
-                                                    @foreach ($project['stack'] as $tech)
+                                                    @foreach (json_decode($project->tech_stack) as $tech)
                                                         <div class="stack-tag">
                                                             {{ $tech }}
                                                         </div>
@@ -169,7 +169,7 @@
 
 
 
-                                                <a href="project-details/{{ $project['slug'] }}" target="_blank"
+                                                <a href="project-details/{{ $project->slug }}" target="_blank"
                                                     class="border-btn js-pointer-large margin-top-20">
                                                     <span class="border-btn__inner">View Project</span>
                                                     <span class="border-btn__lines-1"></span>
@@ -180,8 +180,8 @@
                                         <div class="six-columns column-100-100 padding-top-30 pos-rel">
                                             <div class="anim-img-scale">
                                                 <img class="anim-img-scale__inner" style="border-radius: 20px"
-                                                    src="assets/images/graphic_universe/1920_1080/Animation/Baahubali.jpg"
-                                                    alt="Video background">
+                                                    src="{{ asset($project->banner_image) }}"
+                                                    alt="{{ $project->title }}">
                                             </div>
 
                                         </div>

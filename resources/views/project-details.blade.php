@@ -139,53 +139,27 @@
                             <!-- swiper-wrapper start -->
                             <div class="swiper-wrapper js-slider-scroll-anim">
                                 <!-- swiper-slide start -->
-                                <div class="swiper-slide" data-category="{{ strtolower($project['category']) }}">
+                                <div class="swiper-slide" data-category="{{ strtolower($project->category) }}">
                                     <div class="six-columns column-100-100 padding-top-30 pos-rel">
                                         <div class="anim-img-scale">
                                             <video class="video-background anim-img-scale__inner" autoplay muted loop>
-                                                <source src="{{ asset('assets/video/Baahubali.mp4') }}"
-                                                    type="video/mp4">
+                                                <source src="{{ asset($project->video_url) }}" type="video/mp4">
                                                 Your browser does not support the video tag.
                                             </video>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="swiper-slide" data-category="{{ strtolower($project['category']) }}">
-                                    <div class="six-columns column-100-100 padding-top-30 pos-rel">
-                                        <div class="anim-img-scale">
-                                            <img class="anim-img-scale__inner" style="border-radius: 20px"
-                                                src="{{ asset('assets/images/graphic_universe/1920_1080/Animation/Baahubali.jpg') }}"
-                                                alt="Video background">
+                                @foreach (json_decode($project->screenshot) as $screenshot)
+                                    <div class="swiper-slide" data-category="{{ strtolower($project->category) }}">
+                                        <div class="six-columns column-100-100 padding-top-30 pos-rel">
+                                            <div class="anim-img-scale">
+                                                <img class="anim-img-scale__inner" style="border-radius: 20px"
+                                                    src="{{ asset($screenshot) }}" alt="Screenshot">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="swiper-slide" data-category="{{ strtolower($project['category']) }}">
-                                    <div class="six-columns column-100-100 padding-top-30 pos-rel">
-                                        <div class="anim-img-scale">
-                                            <img class="anim-img-scale__inner" style="border-radius: 20px"
-                                                src="{{ asset('assets/images/graphic_universe/1920_1080/Animation/Baahubali.jpg') }}"
-                                                alt="Video background">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide" data-category="{{ strtolower($project['category']) }}">
-                                    <div class="six-columns column-100-100 padding-top-30 pos-rel">
-                                        <div class="anim-img-scale">
-                                            <img class="anim-img-scale__inner" style="border-radius: 20px"
-                                                src="{{ asset('assets/images/graphic_universe/1920_1080/Animation/Baahubali.jpg') }}"
-                                                alt="Video background">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide" data-category="{{ strtolower($project['category']) }}">
-                                    <div class="six-columns column-100-100 padding-top-30 pos-rel">
-                                        <div class="anim-img-scale">
-                                            <img class="anim-img-scale__inner" style="border-radius: 20px"
-                                                src="{{ asset('assets/images/graphic_universe/1920_1080/Animation/Baahubali.jpg') }}"
-                                                alt="Video background">
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
+
 
                             </div><!-- swiper-wrapper end -->
 
@@ -214,6 +188,32 @@
 
 
         </section>
+          <section class="lines-section pos-rel section-bg-dark-1">
+            <!-- lines-container start -->
+            <div class="lines-container pos-rel no-lines flex-min-height-40vh">
+                <!-- flex-container start -->
+                <div class="container flex-container reverse padding-top-40 padding-bottom-10">
+                    <!-- column start -->
+                    <div class="twelve-columns column-100-100">
+                        <!-- wo we are start -->
+                        <div class="">
+                            <div class="js-scrollanim">
+                                <h2 class="headline-m js-scrollanim">
+                                    <span class="hidden-box d-block text-color-red margin-bottom-20 ">
+                                        Description</span>
+                                    </span>
+                                </h2><!-- title end -->
+                             {!! html_entity_decode($project->long_description) !!}
+                            </div>
+                        </div><!-- wo we are end -->
+
+
+
+                    </div><!-- column end -->
+                </div><!-- flex-container end -->
+            </div><!-- lines-container end -->
+        </section>
+      
         <section class="lines-section pos-rel section-bg-dark-1">
             <!-- lines-container start -->
             <div class="lines-container pos-rel no-lines flex-min-height-40vh">
@@ -229,48 +229,14 @@
                                         <span>Tech</span> <span class="text-color-red">Stack</span>
                                     </span>
                                 </h2><!-- title end -->
-                                {{-- <div class="stack-container">
-                                    @foreach ($project['stack'] as $tech)
+                                <div class="stack-container">
+                                    @foreach (json_decode($project->tech_stack) as $tech)
                                         <div class="stack-tag">
                                             {{ $tech }}
                                         </div>
                                     @endforeach
-                                </div> --}}
+                                </div>
 
-                                <ul>
-                                    <li style="font-size: 26px;font-weight:bold">Frontend : <div
-                                            class="stack-container">
-                                            <div class="stack-tag">
-                                                React JS
-                                            </div>
-                                            <div class="stack-tag">
-                                                Redux
-                                            </div>
-
-                                        </div>
-                                    </li>
-                                    <li style="font-size: 26px;font-weight:bold">Styling CSS : <div
-                                            class="stack-container">
-                                            <div class="stack-tag">
-                                                Tailwind CSS
-                                            </div>
-
-
-                                        </div>
-                                    </li>
-                                    <li style="font-size: 26px;font-weight:bold">Other Tools : <div
-                                            class="stack-container">
-                                            <div class="stack-tag">
-                                                Vite
-                                            </div>
-                                            <div class="stack-tag">
-                                                React-Toastify for notifications
-                                            </div>
-
-
-                                        </div>
-                                    </li>
-                                </ul>
                             </div>
                         </div><!-- wo we are end -->
 
@@ -296,26 +262,7 @@
                                             class="text-color-red">Contribution</span>
                                     </span>
                                 </h2><!-- title end -->
-                                <ul>
-                                    <li>
-                                        Designed and developed the entire project from scratch.
-                                    </li>
-                                    <li>
-                                        Built an interactive UI with React and styled it using Tailwind CSS for
-                                        responsiveness.
-                                    </li>
-                                    <li>
-                                        Managed global state with Redux to handle array size, speed, and selected
-                                        sorting algorithm.
-                                    </li>
-                                    <li>
-                                        Implemented dynamic animations to visually represent sorting steps.
-                                    </li>
-                                    <li>
-                                        Wrote modular, reusable components to make the project scalable.
-                                    </li>
-                                </ul>
-
+                             {!! html_entity_decode($project->role_contribution) !!}
                             </div>
                         </div><!-- wo we are end -->
 
@@ -340,16 +287,8 @@
                                         <span>Feature </span> <span class="text-color-red">Implemented</span>
                                     </span>
                                 </h2><!-- title end -->
-                                <ul>
-                                    <li>Generate a new array with adjustable size and speed.</li>
-                                    <li>Visualize multiple sorting algorithms (Bubble, Selection, Insertion, Merge,
-                                        Quick).</li>
-                                    <li>Algorithm explanation panel with details and C++ & JavaScript pseudocode/code
-                                        snippets.</li>
-                                    <li>Play, pause, and reset controls for a smooth user experience.</li>
-                                    <li>Responsive UI design for both desktop and mobile.</li>
-                                </ul>
 
+                                {!! html_entity_decode($project->features) !!}
                             </div>
                         </div><!-- wo we are end -->
 
@@ -376,35 +315,36 @@
                                 </h2><!-- title end -->
                                 <div class="margin-top-10 anim-fade tr-delay-08">
                                     <p style="font-size: 25px" class="body-text-s">
-                                        {{ $project['github']['name'] }}
+                                        {{ $project->github['name'] }}
                                     </p>
                                 </div>
                                 <ul>
-                                    <li>⭐ Stars: {{ $project['github']['stars'] }}</li>
-                                    <li>🍴 Forks: {{ $project['github']['forks'] }}</li>
-                                    <li>👀 Watchers: {{ $project['github']['watchers'] }}</li>
-                                    <li>🐛 Open Issues: {{ $project['github']['open_issues'] }}</li>
-                                    <li>🌐 Language: {{ $project['github']['language'] }}</li>
+                                    <li>⭐ Stars: {{ $project->github['stars'] }}</li>
+                                    <li>🍴 Forks: {{ $project->github['forks'] }}</li>
+                                    <li>👀 Watchers: {{ $project->github['watchers'] }}</li>
+                                    <li>🐛 Open Issues: {{ $project->github['open_issues'] }}</li>
+                                    <li>🌐 Language: {{ $project->github['language'] }}</li>
                                     <li>🕒 Last Update:
-                                        {{ \Carbon\Carbon::parse($project['github']['updated_at'])->diffForHumans() }}
+                                        {{ \Carbon\Carbon::parse($project->github['updated_at'])->diffForHumans() }}
                                     </li>
                                 </ul>
-								<div style="justify-content: center;align-items: center;gap:40px" class="container flex-container">
-									  <a href="https://github.com/PrinceInScripts/sorting-visualizer/stargazers" target="_blank"
-                                                        class="border-btn js-pointer-large margin-top-20">
-                                                        <span class="border-btn__inner">⭐ Star</span>
-                                                        <span class="border-btn__lines-1"></span>
-                                                        <span class="border-btn__lines-2"></span>
-                                                    </a>
-									  <a href="https://github.com/PrinceInScripts/sorting-visualizer/fork" target="_blank"
-                                                        class="border-btn js-pointer-large margin-top-20">
-                                                        <span class="border-btn__inner">🍴 Fork</span>
-                                                        <span class="border-btn__lines-1"></span>
-                                                        <span class="border-btn__lines-2"></span>
-                                                    </a>
-									
+                                <div style="justify-content: center;align-items: center;gap:40px"
+                                    class="container flex-container">
+                                    <a href="https://github.com/PrinceInScripts/{{ $project->repo_name }}/stargazers"
+                                        target="_blank" class="border-btn js-pointer-large margin-top-20">
+                                        <span class="border-btn__inner">⭐ Star</span>
+                                        <span class="border-btn__lines-1"></span>
+                                        <span class="border-btn__lines-2"></span>
+                                    </a>
+                                    <a href="https://github.com/PrinceInScripts/{{ $project->repo_name }}/fork"
+                                        target="_blank" class="border-btn js-pointer-large margin-top-20">
+                                        <span class="border-btn__inner">🍴 Fork</span>
+                                        <span class="border-btn__lines-1"></span>
+                                        <span class="border-btn__lines-2"></span>
+                                    </a>
 
-								</div>
+
+                                </div>
 
 
                             </div>
@@ -432,22 +372,23 @@
                                         <span>Action </span> <span class="text-color-red"></span>
                                     </span>
                                 </h2><!-- title end -->
-                                <div style="justify-content: center;align-items: center;gap:40px" class="container flex-container">
-									  <a href="#" target="_blank"
-                                                        class="border-btn js-pointer-large margin-top-20">
-                                                        <span class="border-btn__inner">Live Demo</span>
-                                                        <span class="border-btn__lines-1"></span>
-                                                        <span class="border-btn__lines-2"></span>
-                                                    </a>
-									  <a href="#" target="_blank"
-                                                        class="border-btn js-pointer-large margin-top-20">
-                                                        <span class="border-btn__inner">Github Demo</span>
-                                                        <span class="border-btn__lines-1"></span>
-                                                        <span class="border-btn__lines-2"></span>
-                                                    </a>
-									
+                                <div style="justify-content: center;align-items: center;gap:40px"
+                                    class="container flex-container">
+                                    <a href="{{ $project->live_url }}" target="_blank"
+                                        class="border-btn js-pointer-large margin-top-20">
+                                        <span class="border-btn__inner">Live Demo</span>
+                                        <span class="border-btn__lines-1"></span>
+                                        <span class="border-btn__lines-2"></span>
+                                    </a>
+                                    <a href="{{ $project->github_url }}" target="_blank"
+                                        class="border-btn js-pointer-large margin-top-20">
+                                        <span class="border-btn__inner">Github Demo</span>
+                                        <span class="border-btn__lines-1"></span>
+                                        <span class="border-btn__lines-2"></span>
+                                    </a>
 
-								</div>
+
+                                </div>
                             </div>
                         </div><!-- wo we are end -->
 

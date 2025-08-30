@@ -175,52 +175,7 @@ public function about()
 
     public function projects()
     {
-
-
-
-        $projects = [
-            [
-                'title' => 'Sorting Visualizer',
-                'slug' => 'sorting-visualizer',
-                'info' => 'A React + Redux project for visualizing sorting algorithms project for visualizing sorting algorithms project for visualizing sorting algorithms project for visualizing sorting algorithms.',
-                'stack' => ['React', 'Redux', 'DSA'],
-                'category' => 'DSA',
-                'status' => 'done',
-                'banner' => 'images/projects/sorting-visualizer.png',
-                'link' => 'https://github.com/yourusername/sorting-visualizer',
-            ],
-            [
-                'title' => 'E-commerce Website',
-                'slug' => 'e-commerce-website',
-                'info' => 'A PHP + Laravel based e-commerce application  based e-commerce application  based e-commerce application  based e-commerce application  based e-commerce application.',
-                'stack' => ['Laravel', 'MySQL', 'PHP'],
-                'category' => 'Laravel',
-                'status' => 'processing',
-                'banner' => 'images/projects/ecommerce.png',
-                'link' => 'https://github.com/yourusername/ecommerce-website',
-            ],
-            [
-                'title' => 'Blog App',
-                'slug' => 'blog-app',
-                'info' => 'A MERN stack blog app with authentication blog app with authentication blog app with authentication blog app with authentication blog app with authentication.',
-                'stack' => ['MongoDB', 'Express', 'React', 'Node.js'],
-                'category' => 'MERN',
-                'status' => 'started',
-                'banner' => 'images/projects/blog.png',
-                'link' => 'https://github.com/yourusername/blog-app',
-            ],
-            [
-                'title' => 'Sudoku Solver',
-                'slug' => 'sudoku-solver',
-                'info' => 'A real-time Sudoku solver built with React & Vite. It allows users to input their Sudoku puzzles and provides step-by-step solutions.',
-                'stack' => ['React', 'Vite', 'Game'],
-                'category' => 'Game',
-                'status' => 'done',
-                'banner' => 'images/projects/sudoku.png',
-                'link' => 'https://github.com/yourusername/sudoku-solver',
-            ]
-        ];
-
+        $projects = DB::table('projects')->where('status', 1)->orderBy('sort', 'asc')->get();
         $filters = ['All', 'MERN', 'Laravel', 'DSA', 'App', 'Game'];
         return view('projects', compact('projects', 'filters'));
     }
@@ -230,79 +185,67 @@ public function about()
         return view('404');
     }
 
-    public function projectDetails($id)
-    {
-        // id== title for now 
-        $projects = [
-            [
-                'title' => 'Sorting Visualizer',
-                'slug' => 'sorting-visualizer',
-                'repo_name' => 'Sorting-Visualizer',
-                'info' => 'A React + Redux project for visualizing sorting algorithms project for visualizing sorting algorithms project for visualizing sorting algorithms project for visualizing sorting algorithms.',
-                'stack' => ['React', 'Redux', 'DSA'],
-                'category' => 'DSA',
-                'status' => 'done',
-                'banner' => 'images/projects/sorting-visualizer.png',
-                'link' => 'https://github.com/yourusername/sorting-visualizer',
-            ],
-            [
-                'title' => 'E-commerce Website',
-                'slug' => 'e-commerce-website',
-                'info' => 'A PHP + Laravel based e-commerce application  based e-commerce application  based e-commerce application  based e-commerce application  based e-commerce application.',
-                'stack' => ['Laravel', 'MySQL', 'PHP'],
-                'category' => 'Laravel',
-                'status' => 'processing',
-                'banner' => 'images/projects/ecommerce.png',
-                'link' => 'https://github.com/yourusername/ecommerce-website',
-            ],
-            [
-                'title' => 'Blog App',
-                'slug' => 'blog-app',
-                'info' => 'A MERN stack blog app with authentication blog app with authentication blog app with authentication blog app with authentication blog app with authentication.',
-                'stack' => ['MongoDB', 'Express', 'React', 'Node.js'],
-                'category' => 'MERN',
-                'status' => 'started',
-                'banner' => 'images/projects/blog.png',
-                'link' => 'https://github.com/yourusername/blog-app',
-            ],
-            [
-                'title' => 'Sudoku Solver',
-                'slug' => 'sudoku-solver',
-                'info' => 'A real-time Sudoku solver built with React & Vite. It allows users to input their Sudoku puzzles and provides step-by-step solutions.',
-                'stack' => ['React', 'Vite', 'Game'],
-                'category' => 'Game',
-                'status' => 'done',
-                'banner' => 'images/projects/sudoku.png',
-                'link' => 'https://github.com/yourusername/sudoku-solver',
-            ]
-        ];
+   public function projectDetails($id)
+{
+    // Fetch single project instead of get()->first()
+    $project = DB::table('projects')
+        ->where('slug', $id)
+        ->where('status', 1)
+        ->orderBy('sort', 'asc')
+        ->first();
 
-        // filter from $projects
-        $project = collect($projects)->firstWhere('slug', $id);
+    if ($project) {
+        $repoPath = "https://api.github.com/repos/PrinceInScripts/{$project->repo_name}";
 
-        $repoPath = '';
-        if ($project) {
-            $repoPath = "https://api.github.com/repos/PrinceInScripts/{$project['repo_name']}";
-
-            $response = Http::get($repoPath);
+        try {
+            // GitHub requires User-Agent header
+            $response = Http::withHeaders([
+                'User-Agent' => 'Laravel-App',
+                'Accept' => 'application/vnd.github.v3+json',
+            ])->get($repoPath);
 
             if ($response->successful()) {
                 $repoData = $response->json();
 
-                $project['github'] = [
-                    'name' => $repoData['name'] ?? 'N/A',
-                    'stars' => $repoData['stargazers_count'] ?? 0,
-                    'forks' => $repoData['forks_count'] ?? 0,
-                    'watchers' => $repoData['watchers_count'] ?? 0,
+                $project->github = [
+                    'name'        => $repoData['name'] ?? 'N/A',
+                    'stars'       => $repoData['stargazers_count'] ?? 0,
+                    'forks'       => $repoData['forks_count'] ?? 0,
+                    'watchers'    => $repoData['watchers_count'] ?? 0,
                     'open_issues' => $repoData['open_issues_count'] ?? 0,
-                    'language' => $repoData['language'] ?? 'N/A',
-                    'updated_at' => $repoData['pushed_at'] ?? null,
+                    'language'    => $repoData['language'] ?? 'N/A',
+                    'updated_at'  => $repoData['pushed_at'] ?? null,
+                ];
+            } else {
+                // If GitHub API fails, set default
+                $project->github = [
+                    'name'        => $project->repo_name,
+                    'stars'       => 0,
+                    'forks'       => 0,
+                    'watchers'    => 0,
+                    'open_issues' => 0,
+                    'language'    => 'N/A',
+                    'updated_at'  => null,
                 ];
             }
+        } catch (\Exception $e) {
+            // Handle exception (network issue, invalid repo, etc.)
+            $project->github = [
+                'name'        => $project->repo_name,
+                'stars'       => 0,
+                'forks'       => 0,
+                'watchers'    => 0,
+                'open_issues' => 0,
+                'language'    => 'N/A',
+                'updated_at'  => null,
+            ];
         }
-
-        return view('project-details', compact('project'));
     }
+
+    // return $project;
+
+    return view('project-details', compact('project'));
+}
 
       public function contact()
     {
