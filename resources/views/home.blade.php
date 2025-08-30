@@ -21,9 +21,47 @@
         href="css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
 
+         <style>
+       .select {
+    background: transparent;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 6px;
+    cursor: pointer;
+       vertical-align: middle;
+    outline: none;
+    background: none;
+        border-bottom: 1px solid #ccc;
+}
+
+
+.select option {
+    background: #111517;  /* gradient inside dropdown */
+    color: #fff; 
+    padding: 10px;
+     border: none;
+            border-bottom: 1px solid #ccc;
+            font-size: 15px; 
+}
+
+/* Custom hover and selected effect */
+.select option:checked,
+.select option:hover {
+    background: red !important;
+    color: #fff !important;
+}
+              
+    </style>
+
     <!-- styles -->
     <link href="assets/css/plugins.css" rel="stylesheet" type="text/css">
     <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+    {{-- meta csrf --}}
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <style>
         .video-bg {
@@ -524,19 +562,19 @@
                             <div class="swiper-wrapper js-slider-scroll-anim">
                                 @foreach ($projects as $project)
                                     <!-- swiper-slide start -->
-                                    <div class="swiper-slide" data-category="{{ strtolower($project['category']) }}">
+                                    <div class="swiper-slide" data-category="{{ strtolower($project->category) }}">
                                         <div class="flex-container reverse flex-align-center margin-left-right-10">
                                             <div class="six-columns column-100-100 padding-top-30">
 
                                                 <div class="column-r-margin-40-999">
                                                     <h3 style="font-size:40px;font-weight:bold" class="subhead-xl">
-                                                        {{ $project['title'] }}</h3>
+                                                        {{ $project->title }}</h3>
                                                     <p style="line-height: 1.2"
                                                         class="body-text-l text-color-dadada margin-top-20">
-                                                        {{ $project['info'] }}</p>
+                                                        {{ $project->short_description }}</p>
 
                                                     <div class="stack-container">
-                                                        @foreach ($project['stack'] as $tech)
+                                                        @foreach (json_decode($project->tech_stack) as $tech)
                                                             <div class="stack-tag">
                                                                 {{ $tech }}
                                                             </div>
@@ -546,7 +584,7 @@
 
 
 
-                                                    <a href="project-details/{{ $project['slug'] }}" target="_blank"
+                                                    <a href="project-details/{{ $project->slug }}" target="_blank"
                                                         class="border-btn js-pointer-large margin-top-20">
                                                         <span class="border-btn__inner">View Project</span>
                                                         <span class="border-btn__lines-1"></span>
@@ -557,8 +595,8 @@
                                             <div class="six-columns column-100-100 padding-top-30 pos-rel">
                                                 <div class="anim-img-scale">
                                                     <img class="anim-img-scale__inner" style="border-radius: 20px"
-                                                        src="assets/images/graphic_universe/1920_1080/Animation/Baahubali.jpg"
-                                                        alt="Video background">
+                                                        src="{{ asset($project->banner_image) }}"
+                                                        alt="{{ $project->title }}">
                                                 </div>
 
                                             </div>
@@ -622,7 +660,7 @@
 
                                 <div class="avatar">
                                     <img class="anim-img-scale__inner"
-                                        src="assets/images/comics/ComicBook/Avatarex.jpeg" alt="album">
+                                        src="{{ asset($feedback->image) }}" alt="album">
                                 </div>
 
 
@@ -631,17 +669,16 @@
                                 <div class="margin-top-20 margin-left-right-20 text-center">
                                     <h3 class="d-inline-block hidden-box">
                                         <span
-                                            class="headline-xxxs anim-reveal red tr-delay-01">“{{ $feedback['feedback'] }}”</span>
+                                            class="headline-xxxs anim-reveal red tr-delay-01">“{{ $feedback->message }}”</span>
                                     </h3><br>
                                     <span class="d-inline-block hidden-box padding-top-10">
                                         <span style="color: #d20120;font-weight:bold"
-                                            class="subhead-xxs text-color-b0b0b0 anim-reveal tr-delay-03">{{ $feedback['name'] }}</span>
+                                            class="subhead-xxs text-color-b0b0b0 anim-reveal tr-delay-03">{{ $feedback->name }}</span>
 
                                     </span>
                                     <br />
                                     <span class="d-inline-block hidden-box">
-                                        <span class="subhead-xxs text-color-b0b0b0 anim-reveal tr-delay-03">Creative
-                                            Director, Moonbeam Studio</span>
+                                        <span class="subhead-xxs text-color-b0b0b0 anim-reveal tr-delay-03">{{ $feedback->role }}</span>
                                     </span>
 
                                     <div class="lottie-wrapper" id="lottie-2"></div>
@@ -691,7 +728,8 @@
                             or
                             freelance opportunities!</p>
 
-                        <form>
+                        <form id="contactForm">
+                            @csrf
                             <div class="form-container">
                                 <div class="form-group">
                                     <label for="name">Name:</label>
@@ -701,15 +739,27 @@
                                     <label for="email">Email:</label>
                                     <input type="email" id="email" name="email"
                                         placeholder="Enter Your Email" required>
+
+                                    <label for="contact">Contact Number:</label>
+                                    <input type="text" id="contact" name="contact"
+                                        placeholder="Enter Your Contact Number" required>
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="reason">Reason:</label>
+                                    <select class="select" id="reason" name="reason" required>
+                                        <option value="">Select Reason</option>
+                                        <option value="collaboration">Collaboration</option>
+                                        <option value="freelance">Freelance Opportunity</option>
+                                        <option value="other">Other</option>
+                                    </select>
+
                                     <label for="message">Message:</label>
                                     <textarea id="message" name="message" rows="4" required></textarea>
                                 </div>
                             </div>
 
-                            <button type="submit" class="border-btn js-pointer-large margin-top-20">
+                            <button style="cursor: pointer" type="submit" class="border-btn js-pointer-large margin-top-20">
                                 <span class="border-btn__inner">Send Message</span>
                                 <span class="border-btn__lines-1"></span>
                                 <span class="border-btn__lines-2"></span>
@@ -725,11 +775,53 @@
 
     @include('components.footer')
 
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <!-- scripts -->
     <script src="assets/js/plugins.js"></script>
     <script src="assets/js/footer-reveal.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/footer-reveal_init.js"></script>
+
+
+<script>
+    $(document).ready(function() {
+        $('#contactForm').on('submit',function(e){
+            e.preventDefault();
+
+            $.ajax({
+                url:"{{ route('contact.submit') }}",
+                method:"POST",
+                data:$(this).serialize(),
+                success:function(response){
+                    Toastify({
+                        text: response.message,
+                        duration: 3000,
+                        close: true,
+                        gravity: "top",
+                        position: "right",
+                        backgroundColor: '#5cb85c	',
+                    }).showToast();
+
+                    $("#contactForm")[0].reset(); // reset form
+                },
+                error: function(xhr) {
+                Toastify({
+                    text: "Failed to send message. Try again!",
+                    duration: 3000,
+                    gravity: "top",
+                    position: "right",
+                    backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)"
+                }).showToast();
+            }
+                
+            })
+        })
+    });
+</script>
+
+
 </body>
 
 </html>

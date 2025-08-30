@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 
 class PageController extends Controller
@@ -73,72 +74,15 @@ class PageController extends Controller
             ['name' => 'XAMPP',      'image' => 'xampp.png'],
         ];
 
-        $projects = [
-            [
-                'title' => 'Sorting Visualizer',
-                'slug' => 'sorting-visualizer',
-                'info' => 'A React + Redux project for visualizing sorting algorithms project for visualizing sorting algorithms project for visualizing sorting algorithms project for visualizing sorting algorithms.',
-                'stack' => ['React', 'Redux', 'DSA'],
-                'category' => 'DSA',
-                'status' => 'done',
-                'banner' => 'images/projects/sorting-visualizer.png',
-                'link' => 'https://github.com/yourusername/sorting-visualizer',
-            ],
-            [
-                'title' => 'E-commerce Website',
-                'slug' => 'e-commerce-website',
-                'info' => 'A PHP + Laravel based e-commerce application  based e-commerce application  based e-commerce application  based e-commerce application  based e-commerce application.',
-                'stack' => ['Laravel', 'MySQL', 'PHP'],
-                'category' => 'Laravel',
-                'status' => 'processing',
-                'banner' => 'images/projects/ecommerce.png',
-                'link' => 'https://github.com/yourusername/ecommerce-website',
-            ],
-            [
-                'title' => 'Blog App',
-                'slug' => 'blog-app',
-                'info' => 'A MERN stack blog app with authentication blog app with authentication blog app with authentication blog app with authentication blog app with authentication.',
-                'stack' => ['MongoDB', 'Express', 'React', 'Node.js'],
-                'category' => 'MERN',
-                'status' => 'started',
-                'banner' => 'images/projects/blog.png',
-                'link' => 'https://github.com/yourusername/blog-app',
-            ],
-            [
-                'title' => 'Sudoku Solver',
-                'slug' => 'sudoku-solver',
-                'info' => 'A real-time Sudoku solver built with React & Vite. It allows users to input their Sudoku puzzles and provides step-by-step solutions.',
-                'stack' => ['React', 'Vite', 'Game'],
-                'category' => 'Game',
-                'status' => 'done',
-                'banner' => 'images/projects/sudoku.png',
-                'link' => 'https://github.com/yourusername/sudoku-solver',
-            ]
-        ];
+
+        $projects = DB::table('projects')->where('status', 1)->orderBy('sort', 'asc')->get();
 
         $filters = ['All', 'MERN', 'Laravel', 'DSA', 'App', 'Game'];
 
+        $testimonials=DB::table('testimonials')->where('status',1)->orderBy('sort','asc')->get();
 
-        $testimonials = [
-            [
-                'name' => 'John Doe',
-                'role' => 'Software Engineer',
-                'photo' => 'images/testimonials/john_doe.jpg',
-                'feedback' => 'This is an amazing portfolio! The projects showcased here are impressive and demonstrate a strong skill set.'
-            ],
-            [
-                'name' => 'Jane Smith',
-                'role' => 'Project Manager',
-                'photo' => 'images/testimonials/jane_smith.jpg',
-                'feedback' => 'I had the pleasure of working with this developer, and I can attest to their professionalism and expertise.'
-            ],
-            [
-                'name' => 'Alice Johnson',
-                'role' => 'UX Designer',
-                'photo' => 'images/testimonials/alice_johnson.jpg',
-                'feedback' => 'The attention to detail in the design and functionality of the projects is outstanding. Highly recommended!'
-            ]
-        ];
+
+        // return $projects1;
 
         return view('home', compact('main_lang', 'main_lang2', 'projects', 'filters', 'testimonials'));
     }
@@ -227,10 +171,7 @@ public function about()
 }
 
 
-    public function contact()
-    {
-        return view('contact');
-    }
+  
 
     public function projects()
     {
@@ -361,5 +302,35 @@ public function about()
         }
 
         return view('project-details', compact('project'));
+    }
+
+      public function contact()
+    {
+        return view('contact');
+    }
+
+    public function submitContact(Request $request){
+
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'message' => 'required|string|max:500',
+            'contact' => 'required|string|max:20',
+            'reason' => 'required|string|max:100',
+        ]);
+
+
+
+       DB::table('contact')->insert([
+           'name' => $validated['name'],
+           'email' => $validated['email'],
+           'message' => $validated['message'],
+           'mobile' => $validated['contact'],
+           'reason' => $validated['reason'],
+       ]);
+
+      
+
+       return response()->json(['success' => true, 'message' => 'Your message has been sent successfully!']);
     }
 }
