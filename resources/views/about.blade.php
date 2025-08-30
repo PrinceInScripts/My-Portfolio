@@ -698,99 +698,131 @@
                                     <span class="anim-slide"> Coding Journey</span>
                                 </h2>
                                 <!-- about.blade.php -->
-                               <div class="cards-container">
+                                <div class="cards-container">
 
-    <!-- GitHub Card -->
-    <div class="card github-card">
-        <h6 class="headline-xxs hidden-box" style="margin-bottom: 20px;">
-            <span class="anim-slide text-color-red">👨‍💻 My GitHub Journey</span>
-        </h6>
+                                    <!-- GitHub Card -->
+                                    <div class="card github-card">
+                                        <h6 class="headline-xxs hidden-box" style="margin-bottom: 20px;">
+                                            <span class="anim-slide text-color-red">👨‍💻 My GitHub Journey</span>
+                                        </h6>
 
-        <!-- Profile Section -->
-        <div class="profile">
-            <img src="{{ $github['avatar_url'] }}" alt="Avatar">
-            <div>
-                <p class="name">{{ $github['name'] }}</p>
-                <p class="username">{{ '@' . $github['login'] }}</p>
-            </div>
+                                        <!-- Profile Section -->
+                                        <div class="profile">
+                                            <img src="{{ $github['avatar_url'] }}" alt="Avatar">
+                                            <div>
+                                                <p class="name">{{ $github['name'] }}</p>
+                                                <p class="username">{{ '@' . $github['login'] }}</p>
+                                            </div>
+                                        </div>
+
+                                        <!-- Stats Section -->
+                                        <div class="stats">
+                                            <div>
+                                                <p>{{ $github['followers'] }}</p><span>Followers</span>
+                                            </div>
+                                            <div>
+                                                <p>{{ $github['following'] }}</p><span>Following</span>
+                                            </div>
+                                            <div>
+                                                <p>{{ $github['public_repos'] }}</p><span>Repos</span>
+                                            </div>
+                                            <div>
+                                                <p>{{ $totalStars ?? 0 }}</p><span>Stars</span>
+                                            </div>
+                                            <div>
+                                                <p>{{ $totalForks ?? 0 }}</p><span>Forks</span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Additional Info -->
+                                        <div class="info">
+                                            <p>📍 <span>{{ $github['location'] }}</span></p>
+                                            <p>📅 Since
+                                                {{ \Carbon\Carbon::parse($github['created_at'])->format('M Y') }}</p>
+                                            <p>⏳ Updated
+                                                {{ \Carbon\Carbon::parse($github['updated_at'])->diffForHumans() }}</p>
+                                            <p>🟢 Languages:
+                                                @foreach ($languages as $lang => $bytes)
+                                                    <span class="lang">{{ $lang }}</span>
+                                                    @if (!$loop->last)
+                                                        ,
+                                                    @endif
+                                                @endforeach
+                                            </p>
+                                        </div>
+
+                                        <a href="https://github.com/{{ $github['login'] }}" target="_blank"
+                                            class="border-btn js-pointer-large margin-top-20">
+                                            <span class="border-btn__inner">Visit Profile</span>
+                                            <span class="border-btn__lines-1"></span>
+                                            <span class="border-btn__lines-2"></span>
+                                        </a>
+                                    </div>
+
+                                    <!-- LeetCode Card -->
+                                    <div class="card leetcode-card">
+                                        <h6 class="headline-xxs hidden-box" style="margin-bottom: 20px;">
+                                            <span class="anim-slide text-color-red">🧩 My LeetCode Practice</span>
+                                        </h6>
+
+                                        <!-- Profile Section -->
+                                        <div class="profile">
+                                            <img src="{{ $leetcode['profile']['profile']['userAvatar'] }}" alt="LeetCode Logo">
+                                            <div>
+                                                <p class="name">{{ $leetcode['profile']['username'] }}</p>
+                                                <p class="username">Ranking #{{ number_format($leetcode['profile']['profile']['ranking']) }}
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <!-- Stats Section -->
+                                        <div class="stats">
+        <div>
+            <p>{{ collect($leetcode['problems']['numAcceptedQuestions'])->firstWhere('difficulty', 'EASY')['count']+collect($leetcode['problems']['numAcceptedQuestions'])->firstWhere('difficulty', 'MEDIUM')['count']+collect($leetcode['problems']['numAcceptedQuestions'])->firstWhere('difficulty', 'HARD')['count'] ?? 0 }}</p><span>Solved Problem</span>
         </div>
-
-        <!-- Stats Section -->
-        <div class="stats">
-            <div><p>{{ $github['followers'] }}</p><span>Followers</span></div>
-            <div><p>{{ $github['following'] }}</p><span>Following</span></div>
-            <div><p>{{ $github['public_repos'] }}</p><span>Repos</span></div>
-            <div><p>{{ $totalStars ?? 0 }}</p><span>Stars</span></div>
-            <div><p>{{ $totalForks ?? 0 }}</p><span>Forks</span></div>
+        <div>
+            <p>{{ round($leetcode['contest']['rating'], 2) }}</p><span>Rating</span>
         </div>
-
-        <!-- Additional Info -->
-        <div class="info">
-            <p>📍 <span>{{ $github['location'] }}</span></p>
-            <p>📅 Since {{ \Carbon\Carbon::parse($github['created_at'])->format('M Y') }}</p>
-            <p>⏳ Updated {{ \Carbon\Carbon::parse($github['updated_at'])->diffForHumans() }}</p>
-            <p>🟢 Languages:
-                @foreach ($languages as $lang => $bytes)
-                    <span class="lang">{{ $lang }}</span>@if (!$loop->last), @endif
-                @endforeach
-            </p>
+        <div>
+            <p>{{ $leetcode['contest']['globalRanking'] }}</p><span>Global Rank</span>
         </div>
-
-        <a href="https://github.com/{{ $github['login'] }}" target="_blank"
-           class="border-btn js-pointer-large margin-top-20">
-            <span class="border-btn__inner">Visit Profile</span>
-            <span class="border-btn__lines-1"></span>
-            <span class="border-btn__lines-2"></span>
-        </a>
     </div>
 
-    <!-- LeetCode Card -->
-    <div class="card leetcode-card">
-        <h6 class="headline-xxs hidden-box" style="margin-bottom: 20px;">
-            <span class="anim-slide text-color-red">🧩 My LeetCode Practice</span>
-        </h6>
-
-        <!-- Profile Section -->
-        <div class="profile">
-            <img src="{{ $github['avatar_url'] }}" alt="LeetCode Logo">
-            <div>
-                <p class="name">{{ $github['login'] }}</p>
-                <p class="username">Ranking #{{ number_format($leetcode['ranking']) }}</p>
-            </div>
+                                       <!-- Difficulty Breakdown -->
+    <div class="difficulty">
+        <div>
+            <p class="easy">{{ collect($leetcode['problems']['numAcceptedQuestions'])->firstWhere('difficulty', 'EASY')['count'] ?? 0 }}</p>
+            <span>Easy</span>
         </div>
-
-        <!-- Stats Section -->
-        <div class="stats">
-            <div><p>{{ $leetcode['totalSolved'] }}</p><span>Solved</span></div>
-            <div><p>{{ $leetcode['acceptanceRate'] }}%</p><span>Acceptance</span></div>
-            <div><p>{{ $leetcode['contributionPoints'] }}</p><span>Points</span></div>
+        <div>
+            <p class="medium">{{ collect($leetcode['problems']['numAcceptedQuestions'])->firstWhere('difficulty', 'MEDIUM')['count'] ?? 0 }}</p>
+            <span>Medium</span>
         </div>
-
-        <!-- Difficulty Breakdown -->
-        <div class="difficulty">
-            <div><p class="easy">{{ $leetcode['easySolved'] }}</p><span>Easy</span></div>
-            <div><p class="medium">{{ $leetcode['mediumSolved'] }}</p><span>Medium</span></div>
-            <div><p class="hard">{{ $leetcode['hardSolved'] }}</p><span>Hard</span></div>
+        <div>
+            <p class="hard">{{ collect($leetcode['problems']['numAcceptedQuestions'])->firstWhere('difficulty', 'HARD')['count'] ?? 0 }}</p>
+            <span>Hard</span>
         </div>
-
-        <!-- Submission Calendar -->
-        <div class="heatmap">
-            <p>🔥 Daily Streak</p>
-            <div class="grid">
-                @foreach ($leetcode['submissionCalendar'] as $day => $count)
-                    <div style="background: {{ $count > 0 ? '#34d399' : '#e5e7eb' }}"></div>
-                @endforeach
-            </div>
-        </div>
-
-        <a href="https://leetcode.com/{{ $github['login'] }}" target="_blank"
-           class="border-btn js-pointer-large margin-top-20">
-            <span class="border-btn__inner">Visit Profile</span>
-            <span class="border-btn__lines-1"></span>
-            <span class="border-btn__lines-2"></span>
-        </a>
     </div>
-</div>
+                                        <!-- Submission Calendar -->
+                                        <div class="heatmap">
+                                           <p>🔥 Daily Streak: {{ $leetcode['calendar']['streak'] }} days</p>
+        {{-- <div class="grid">
+            @foreach (json_decode($leetcode['calendar']['submissionCalendar'], true) as $day => $count)
+                <div style="width:10px;height:10px;display:inline-block;
+                            background: {{ $count > 0 ? '#34d399' : '#e5e7eb' }}">
+                </div>
+            @endforeach
+        </div> --}}
+                                        </div>
+
+                                        <a href="https://leetcode.com/{{ $github['login'] }}" target="_blank"
+                                            class="border-btn js-pointer-large margin-top-20">
+                                            <span class="border-btn__inner">Visit Profile</span>
+                                            <span class="border-btn__lines-1"></span>
+                                            <span class="border-btn__lines-2"></span>
+                                        </a>
+                                    </div>
+                                </div>
 
 
 
@@ -886,6 +918,7 @@
     <script src="assets/js/plugins.js"></script>
     <script src="assets/js/footer-reveal.js"></script>
     <script src="assets/js/main.js"></script>
+      <script src="assets/js/preloader.js"></script>
     <script src="assets/js/footer-reveal_init.js"></script>
 </body>
 

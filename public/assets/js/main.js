@@ -714,6 +714,10 @@ SOFTWARE.
 	});
 
 	/* 14. Accordion */
+
+	
+
+	
 /*
 Copyright (c) 2020 by Srdjan Pajdic (https://codepen.io/MightyShaban/pen/LqrCK)
 

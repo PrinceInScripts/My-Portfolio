@@ -3,7 +3,7 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '17cf117b96079fe5a6421051cad5e3d84b70ddc2',
+        'reference' => 'b172085fab75a320bacebccd83c64d602e858066',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -376,6 +376,15 @@
                 0 => '*',
             ),
         ),
+        'laracademy/generators' => array(
+            'pretty_version' => '3.7',
+            'version' => '3.7.0.0',
+            'reference' => '69010c4257ea190638978ef60674b44b318fe16d',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../laracademy/generators',
+            'aliases' => array(),
+            'dev_requirement' => true,
+        ),
         'laravel/framework' => array(
             'pretty_version' => 'v12.16.0',
             'version' => '12.16.0.0',
@@ -388,7 +397,7 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '17cf117b96079fe5a6421051cad5e3d84b70ddc2',
+            'reference' => 'b172085fab75a320bacebccd83c64d602e858066',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

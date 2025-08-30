@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Services\LeetCodeService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
@@ -87,6 +88,25 @@ class PageController extends Controller
         return view('home', compact('main_lang', 'main_lang2', 'projects', 'filters', 'testimonials'));
     }
 
+    public function leetcode($username = 'PrinceInScripts')
+    {
+        $leetcode = new LeetCodeService();
+
+        $profile  = $leetcode->getProfile($username);
+        $contest  = $leetcode->getContestStats($username);
+        $problems = $leetcode->getProblemStats($username);
+        $calendar = $leetcode->getCalendar($username);
+
+         return [
+        'profile'  => $profile,
+        'contest'  => $contest,
+        'problems' => $problems,
+        'calendar' => $calendar,
+    ];
+
+        // return view('leetcode', compact('leetcodeData'));
+    }
+
 public function about()
 {
     $main_lang = [
@@ -126,7 +146,7 @@ public function about()
     // APIs
     $github_user_api     = "https://api.github.com/users/$username";
     $github_repos_api    = "https://api.github.com/users/$username/repos?per_page=100"; 
-    $leetcode_api        = "https://leetcode-stats-api.herokuapp.com/$username";
+    // $leetcode_api        = "https://leetcode-stats-api.herokuapp.com/$username";
 
     // Fetch user profile
     $github = Http::withHeaders([
@@ -157,7 +177,11 @@ public function about()
     arsort($languages); // sort by most used
 
     // Leetcode stats
-    $leetcode = Http::get($leetcode_api)->json();
+    // $leetcode = Http::get($leetcode_api)->json();
+
+    $leetcode = $this->leetcode($username);
+
+    // return $leetcode;
 
     return view('about', compact(
         'main_lang',
