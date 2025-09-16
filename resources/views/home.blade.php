@@ -647,25 +647,18 @@
 
 
         <!-- albums start -->
-        <section class="pos-rel padding-top-60 section-bg-dark-1">
-            <!-- pos-rel start -->
+        {{-- <section class="pos-rel padding-top-60 section-bg-dark-1">
             <div class="pos-rel padding-top-bottom-30">
-                <!-- title start -->
                 <h2 class="headline-xxl text-center js-scrollanim">
-                    {{-- <span class="anim-text-fill" data-text="Graphic">Graphic</span> --}}
                     <span class="text-color-red anim-text-fill tr-delay-02"
                         data-text="Testimonials">Testimonials</span>
-                </h2><!-- title end -->
+                </h2>
 
-                <!-- js-3-view-slider start -->
                 <div class="js-3-view-slider padding-top-bottom-30 hidden-box pos-rel">
-                    <!-- swiper-wrapper start -->
                     <div class="swiper-wrapper js-slider-scroll-anim">
 
                         @foreach ($testimonials as $feedback)
-                            <!-- swiper-slide start -->
                             <div class="swiper-slide block">
-                                <!-- anim-img-scale start -->
 
                                 <div class="avatar">
                                     <img class="anim-img-scale__inner"
@@ -674,7 +667,6 @@
 
 
 
-                                <!-- content start -->
                                 <div class="margin-top-20 margin-left-right-20 text-center">
                                     <h3 class="d-inline-block hidden-box">
                                         <span
@@ -691,28 +683,24 @@
                                     </span>
 
                                     <div class="lottie-wrapper" id="lottie-2"></div>
-                                </div><!-- content end -->
-                            </div><!-- swiper-slide end -->
+                                </div>
+                            </div>
                         @endforeach
 
-                    </div><!-- swiper-wrapper end -->
+                    </div>
 
-                    <!-- swiper-button-prev start -->
                     <div class="swiper-button-prev-box">
                         <div class="swiper-button-prev"></div>
-                    </div><!-- swiper-button-prev end -->
-                    <!-- swiper-button-next start -->
+                    </div>
                     <div class="swiper-button-next-box">
                         <div class="swiper-button-next"></div>
-                    </div><!-- swiper-button-next end -->
-
-                    <!-- swiper-pagination start -->
+                    </div>
                     <div class="pagination-box">
                         <div class="swiper-pagination counter-pagination"></div>
-                    </div><!-- swiper-pagination end -->
-                </div><!-- js-3-view-slider end -->
-            </div><!-- pos-rel end -->
-        </section><!-- albums end -->
+                    </div>
+                </div>
+            </div>
+        </section> --}}
 
 
 

@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
       linesData = [
         "Initializing portfolio...",
         "Loading projects...",
-        "Compiling creativity...",
+        // "Compiling creativity...",
         "Access Granted!"
       ];
     } else if (currentPage.includes("about")) {
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
       linesData = [
         "Loading contact module...",
         "Connecting to servers...",
-        "Almost ready...",
+        // "Almost ready...",
         "Access Granted!"
       ];
     } else {

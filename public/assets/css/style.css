@@ -2505,6 +2505,10 @@ body.js-page-out .pointer {
   font-weight:bold
 }
 
+.midnightHeader .default{
+	height:200px;
+}
+
 /* Terminal container */
 .terminal {
   background: rgba(0, 0, 0, 0.85);
@@ -2538,7 +2542,7 @@ body.js-page-out .pointer {
 
 .header-social {
 	width: 20px;
-	height: 200px;
+	height: 200px !important;
 	position: fixed;
 	left: auto !important;
 	top: 50% !important;

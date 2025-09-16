@@ -30,7 +30,7 @@
 			</div><!-- header-contact end -->
 
 			<!-- header-social start -->
-			<div style="height: 200px" class="header-social after-preloader-anim js-midnight-color js-headroom">
+			<div class="header-social after-preloader-anim js-midnight-color js-headroom">
 				<ul class="list list_center list_margin-20px hidden-box">
 					<li class="list__item">
 						<div class="hidden-box d-inline-block">
