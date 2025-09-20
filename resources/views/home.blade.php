@@ -571,9 +571,11 @@
                                                 <div class="column-r-margin-40-999">
                                                     <h3 style="font-size:40px;font-weight:bold" class="subhead-xl">
                                                         {{ $project->title }}</h3>
-                                                    <p style="line-height: 1.2"
-                                                        class="body-text-l text-color-dadada margin-top-20">
-                                                        {{ $project->short_description }}</p>
+                                                    {{-- <p style="line-height: 1.2" --}}
+                                                        {{-- class="body-text-l text-color-dadada margin-top-20"> --}}
+                                                        {{-- {{ $project->short_description }} --}}
+                                                     {!! html_entity_decode($project->short_description) !!}
+                                                    {{-- </p> --}}
 
                                                     <div class="stack-container">
                                                         @foreach (json_decode($project->tech_stack) as $tech)

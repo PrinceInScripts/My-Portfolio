@@ -26,7 +26,16 @@ document.addEventListener("DOMContentLoaded", () => {
         // "Almost ready...",
         "Access Granted!"
       ];
-    } else {
+    }
+    else if (currentPage.includes("project-details")) {
+  linesData = [
+    "Opening project details...",
+    "Fetching case study...",
+    "Loading contributions...",
+    "Access Granted!"
+  ];
+}
+ else {
       // Default fallback
       linesData = [
         "Loading content...",

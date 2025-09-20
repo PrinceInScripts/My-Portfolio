@@ -9,10 +9,10 @@
     <meta name="keywords" content="creative, modern, graphic, India, animation, cartoons, novels, audio comics">
 
     <!-- favicon -->
-    <link rel="shortcut icon" href="assets/images/GI_favicon_io/favicon.ico">
-    <link rel="apple-touch-icon" href="assets/images/GI_favicon_io/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="32x32" href="assets/images/GI_favicon_io/favicon-32x32.png">
-    <link rel="apple-touch-icon" sizes="512x512" href="assets/images/GI_favicon_io/android-chrome-512x512.png">
+    <link rel="shortcut icon" href="{{ asset('assets/images/GI_favicon_io/favicon.ico') }}" type="image/x-icon">
+    <link rel="apple-touch-icon" href="{{ asset('assets/images/GI_favicon_io/apple-touch-icon.png') }}">
+    <link rel="apple-touch-icon" sizes="32x32" href="{{ asset('assets/images/GI_favicon_io/favicon-32x32.png') }}">
+    <link rel="apple-touch-icon" sizes="512x512" href="{{ asset('assets/images/GI_favicon_io/android-chrome-512x512.png') }}">
 
     <title>Prince Kumar | Hire Freelance Developer</title>
 
@@ -411,7 +411,7 @@
     <script src="{{ asset('assets/js/plugins.js') }}"></script>
     <script src="{{ asset('assets/js/footer-reveal.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
-      <script src="assets/js/preloader.js"></script>
+      <script src="{{ asset('assets/js/preloader.js') }}"></script>
     <script src="{{ asset('assets/js/footer-reveal_init.js') }}"></script>
 </body>
 
