@@ -1,827 +1,1121 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="Sumbhav">
-    <meta name="description" content="Graphic India: India's Leading Character Entertainment Company">
-    <meta name="keywords" content="creative, modern, graphic, India, animation, cartoons, novels, audio comics">
-
-    <!-- favicon -->
-    <link rel="shortcut icon" href="assets/images/GI_favicon_io/favicon.ico">
-    <link rel="apple-touch-icon" href="assets/images/GI_favicon_io/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="32x32" href="assets/images/GI_favicon_io/favicon-32x32.png">
-    <link rel="apple-touch-icon" sizes="512x512" href="assets/images/GI_favicon_io/android-chrome-512x512.png">
-
-    <title>Prince Kumar | Hire Freelance Developer</title>
-
-    <!-- fonts -->
-    <link
-        href="css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
-
-         <style>
-       .select {
-    background: transparent;
-    color: #fff;
-    border: none;
-    padding: 10px;
-    font-size: 15px;
-    border-radius: 6px;
-    cursor: pointer;
-       vertical-align: middle;
-    outline: none;
-    background: none;
-        border-bottom: 1px solid #ccc;
-}
-
-
-.select option {
-    background: #111517;  /* gradient inside dropdown */
-    color: #fff; 
-    padding: 10px;
-     border: none;
-            border-bottom: 1px solid #ccc;
-            font-size: 15px; 
-}
-
-/* Custom hover and selected effect */
-.select option:checked,
-.select option:hover {
-    background: red !important;
-    color: #fff !important;
-}
-              
-    </style>
-
-    <!-- styles -->
-    <link href="assets/css/plugins.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+    @include('partials.head', [
+        'title'       => 'Prince Kumar | Full-Stack Developer & Freelancer | Hire Me',
+        'description' => 'Prince Kumar (scriptxprince) — Full-Stack Developer from Kota, India. Expert in MERN stack, Laravel, PHP, React, Node.js. Available for freelance & full-time hire.',
+        'keywords'    => 'hire full stack developer India, freelance developer Kota Rajasthan, MERN developer, Laravel developer, React developer, Node.js developer, PHP developer, Prince Kumar scriptxprince',
+    ])
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 
-    {{-- meta csrf --}}
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <style>
-        .video-bg {
-            object-fit: cover;
-            width: 100%;
-            height: 100%;
+        /* ─── Variables ──────────────────────────── */
+        :root {
+            --red:       #d20120;
+            --red-dim:   rgba(210,1,32,0.12);
+            --red-glow:  rgba(210,1,32,0.3);
+            --bg:        #080808;
+            --bg2:       #0e0e0e;
+            --card:      #111111;
+            --border:    rgba(255,255,255,0.07);
+            --muted:     #5a5a5a;
+            --text:      #e0e0e0;
+            --white:     #ffffff;
         }
 
-        ul li {
-            margin-left: 40px;
-            list-style-type: disc;
+        /* ─── Scroll Reveal ──────────────────────── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(36px);
+            transition: opacity 0.75s cubic-bezier(.22,1,.36,1),
+                        transform 0.75s cubic-bezier(.22,1,.36,1);
         }
+        .reveal.from-left  { transform: translateX(-48px); }
+        .reveal.from-right { transform: translateX(48px); }
+        .reveal.from-scale { transform: scale(0.93); }
+        .reveal.visible    { opacity: 1; transform: none !important; }
 
-        .filter-btn {
-            color: #d20120;
-            background-color: #fff;
-            padding: 8px 50px;
-            border: 1px solid #d20120;
-            border-radius: 5px;
-            font-size: 20px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        /* Active button style */
-        .filter-btn.active {
-            color: #fff;
-            background-color: #d20120;
-        }
-
-        .filter-btn:hover {
-            color: #fff;
-            background-color: #d20120;
-        }
-
-        .stack-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 10px;
-        }
-
-        .stack-tag {
-            padding: 6px 14px;
-            background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
-            color: #d20120;
-            border-radius: 12px;
-            font-size: 14px;
-            font-weight: 600;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
-            transition: all 0.2s ease-in-out;
-            cursor: default;
-        }
-
-        .stack-tag:hover {
-            background: linear-gradient(135deg, #dbeafe, #93c5fd);
-            transform: scale(1.05);
-        }
-
-
-        .testimonial-section {
-            max-width: 1200px;
-            margin: auto;
-            padding: 80px 20px;
-        }
-
-        .testimonial {
+        /* ─── HERO ───────────────────────────────── */
+        .hero-section {
+            position: relative;
+            min-height: 100vh;
             display: flex;
             align-items: center;
-            background: linear-gradient(135deg, #1f1f1f, #2a2a2a);
-            border-radius: 20px;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
-            margin-bottom: 60px;
-            padding: 40px;
-            gap: 40px;
-            opacity: 0;
-            transform: translateY(50px);
-        }
-
-        .avatar {
-            flex-shrink: 0;
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
             overflow: hidden;
-            border: 4px solid #ffffff44;
+            background: var(--bg);
         }
 
-        .avatar img {
-            width: 100%;
-            height: 100%;
+        .hero-video-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%; height: 100%;
             object-fit: cover;
+            opacity: 0.18;
+            z-index: 0;
         }
 
-        .testimonial-content {
-            flex: 1;
+        /* Gradient vignette over video */
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 80% 60% at 50% 100%, rgba(210,1,32,0.07), transparent),
+                linear-gradient(to bottom, rgba(8,8,8,0.3) 0%, transparent 40%, rgba(8,8,8,0.9) 100%);
+            z-index: 1;
+            pointer-events: none;
         }
 
-        .quote {
-            font-size: 1.2rem;
-            line-height: 1.6;
+        .hero-inner {
+            position: relative;
+            z-index: 2;
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 160px 48px 120px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 480px;
+            gap: 60px;
+            align-items: center;
+        }
+
+        /* Animated noise grain overlay */
+        .hero-grain {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            opacity: 0.025;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--red);
+            margin-bottom: 24px;
+        }
+
+        .hero-eyebrow::before {
+            content: '';
+            width: 32px; height: 2px;
+            background: var(--red);
+            display: block;
+        }
+
+        .hero-name {
+            font-size: clamp(44px, 6vw, 80px);
+            font-weight: 900;
+            line-height: 1.0;
+            letter-spacing: -3px;
+            color: var(--white);
+            margin: 0 0 12px;
+        }
+
+        .hero-role {
+            font-size: clamp(18px, 2.5vw, 28px);
+            font-weight: 700;
+            color: var(--red);
+            letter-spacing: -0.5px;
+            margin: 0 0 28px;
+        }
+
+        .hero-desc {
+            font-size: 16px;
+            line-height: 1.85;
+            color: var(--muted);
+            max-width: 520px;
+            margin-bottom: 40px;
+        }
+
+        .hero-desc strong { color: #999; font-weight: 600; }
+
+        .hero-cta {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 56px;
+        }
+
+        /* Status pill */
+        .hero-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(74,222,128,0.08);
+            border: 1px solid rgba(74,222,128,0.2);
+            border-radius: 99px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #4ade80;
+        }
+
+        .status-dot {
+            width: 7px; height: 7px;
+            border-radius: 50%;
+            background: #4ade80;
+            animation: pulse-green 2s infinite;
+        }
+
+        @keyframes pulse-green {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(74,222,128,0.4); }
+            50%       { box-shadow: 0 0 0 6px rgba(74,222,128,0); }
+        }
+
+        /* Quick stats row */
+        .hero-stats {
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+
+        .hstat {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .hstat-num {
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--white);
+            letter-spacing: -1px;
+            line-height: 1;
+        }
+
+        .hstat-num span { color: var(--red); }
+        .hstat-lbl { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 1.5px; }
+
+        /* Right: terminal card */
+        .terminal-card {
+            background: #0d0d0d;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04);
+        }
+
+        .terminal-header {
+            background: #1a1a1a;
+            padding: 14px 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .t-dot {
+            width: 12px; height: 12px;
+            border-radius: 50%;
+        }
+        .t-red    { background: #ff5f57; }
+        .t-yellow { background: #ffbd2e; }
+        .t-green  { background: #28c840; }
+
+        .t-title {
+            margin-left: 8px;
+            font-size: 12px;
+            color: var(--muted);
+            font-family: monospace;
+        }
+
+        .terminal-body {
+            padding: 28px 24px;
+            font-family: 'Courier New', monospace;
+            font-size: 13.5px;
+            line-height: 2;
+        }
+
+        .t-prompt { color: var(--red); }
+        .t-cmd    { color: #e0e0e0; }
+        .t-out    { color: #888; padding-left: 16px; }
+        .t-key    { color: #60a5fa; }
+        .t-val    { color: #4ade80; }
+        .t-str    { color: #fbbf24; }
+        .t-cursor {
+            display: inline-block;
+            width: 8px; height: 16px;
+            background: var(--red);
+            animation: blink 1s step-end infinite;
+            vertical-align: text-bottom;
+            margin-left: 2px;
+        }
+
+        @keyframes blink {
+            0%,100% { opacity: 1; }
+            50%      { opacity: 0; }
+        }
+
+        /* ─── SECTION BASE ───────────────────────── */
+        .home-section {
+            padding: 110px 48px;
+            position: relative;
+        }
+
+        .home-section--alt { background: var(--bg2); }
+
+        .section-wrap {
+            max-width: 1240px;
+            margin: 0 auto;
+        }
+
+        .section-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--red);
+            margin-bottom: 18px;
+        }
+
+        .section-eyebrow::after {
+            content: '';
+            width: 36px; height: 1px;
+            background: var(--red);
+        }
+
+        .section-heading {
+            font-size: clamp(32px, 4vw, 54px);
+            font-weight: 900;
+            letter-spacing: -2px;
+            color: var(--white);
+            line-height: 1.1;
+            margin: 0 0 16px;
+        }
+
+        .section-heading em { font-style: normal; color: var(--red); }
+
+        .section-sub {
+            font-size: 16px;
+            color: var(--muted);
+            line-height: 1.7;
+            max-width: 580px;
+            margin-bottom: 56px;
+        }
+
+        /* ─── ABOUT SECTION ──────────────────────── */
+        .about-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+
+        .about-text p {
+            font-size: 16px;
+            color: var(--muted);
+            line-height: 1.85;
             margin-bottom: 20px;
         }
 
-        .author {
-            font-weight: bold;
-            font-size: 1.1rem;
-            color: #ff5e99;
+        .about-text strong { color: #bbb; font-weight: 600; }
+
+        .about-facts {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 36px;
         }
 
-        .role {
-            font-size: 0.9rem;
-            color: #aaa;
+        .fact-box {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: border-color 0.3s;
         }
 
-        .lottie-wrapper {
-            max-width: 100px;
+        .fact-box:hover { border-color: rgba(210,1,32,0.3); }
+
+        .fact-icon { font-size: 22px; margin-bottom: 8px; }
+        .fact-label { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--muted); margin-bottom: 4px; }
+        .fact-val   { font-size: 15px; font-weight: 600; color: var(--white); }
+
+        /* Skills ticker */
+        .skills-ticker-wrap {
+            margin-top: 56px;
+            overflow: hidden;
+            position: relative;
         }
 
-        @media (max-width: 768px) {
-            .testimonial {
-                flex-direction: column;
-                text-align: center;
-                padding: 30px;
-            }
-
-            .avatar {
-                width: 100px;
-                height: 100px;
-            }
-
-            .lottie-wrapper {
-                margin-top: 20px;
-            }
+        .skills-ticker-wrap::before,
+        .skills-ticker-wrap::after {
+            content: '';
+            position: absolute;
+            top: 0; bottom: 0;
+            width: 80px;
+            z-index: 2;
+            pointer-events: none;
         }
 
-        .block {
-            padding: 40px 20px;
+        .skills-ticker-wrap::before { left: 0;  background: linear-gradient(to right,  var(--bg2), transparent); }
+        .skills-ticker-wrap::after  { right: 0; background: linear-gradient(to left,   var(--bg2), transparent); }
+
+        .skills-ticker {
             display: flex;
-            flex-direction: column;
-            gap: 40px;
+            gap: 12px;
+            width: max-content;
+            animation: ticker 28s linear infinite;
+        }
+
+        .skills-ticker-wrap:hover .skills-ticker { animation-play-state: paused; }
+
+        @keyframes ticker {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-50%); }
+        }
+
+        .skill-chip {
+            display: flex;
             align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 99px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #aaa;
+            white-space: nowrap;
+            transition: border-color 0.2s, color 0.2s;
+            flex-shrink: 0;
         }
 
-        form {
-            width: 100%;
-        }
+        .skill-chip img { width: 20px; height: 20px; object-fit: contain; }
 
-        .form-container {
+        /* ─── PROJECTS SECTION ───────────────────── */
+        .projects-header {
             display: flex;
+            align-items: flex-end;
             justify-content: space-between;
-            gap: 40px;
-            margin-top: 40px;
+            margin-bottom: 48px;
             flex-wrap: wrap;
-            /* allows wrapping on small screens */
-        }
-
-        .form-group {
-            margin-bottom: 40px;
-            width: 48%;
-            display: flex;
-            flex-direction: column;
             gap: 20px;
         }
 
-        label {
-            font-size: 16px;
-            color: #fff;
+        /* Featured project card */
+        .featured-project {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 24px;
+            transition: border-color 0.3s, box-shadow 0.3s;
         }
 
-        input,
-        textarea {
-            border: none;
-            border-bottom: 1px solid #ccc;
-            padding: 10px;
-            color: #fff;
-            background: transparent;
+        .featured-project:hover {
+            border-color: rgba(210,1,32,0.35);
+            box-shadow: 0 24px 80px rgba(0,0,0,0.5);
+        }
+
+        .featured-img {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-img img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .featured-project:hover .featured-img img { transform: scale(1.04); }
+
+        .featured-cat {
+            position: absolute;
+            top: 16px; left: 16px;
+            padding: 5px 12px;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(210,1,32,0.35);
+            border-radius: 6px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--red);
+        }
+
+        .featured-body {
+            padding: 44px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .featured-label {
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--red);
+            margin-bottom: 16px;
+        }
+
+        .featured-title {
+            font-size: 30px;
+            font-weight: 800;
+            color: var(--white);
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+            margin-bottom: 16px;
+        }
+
+        .featured-desc {
+            font-size: 14px;
+            color: var(--muted);
+            line-height: 1.7;
+            margin-bottom: 24px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .stack-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 32px;
+        }
+
+        .stack-pill {
+            padding: 4px 10px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #888;
+            letter-spacing: 0.3px;
+        }
+
+        .view-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--red);
+            text-decoration: none;
+            letter-spacing: 0.3px;
+            transition: gap 0.2s;
+        }
+
+        .view-link:hover { gap: 14px; }
+
+        /* Project grid below featured */
+        .mini-projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .mini-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+
+        .mini-card:hover {
+            border-color: rgba(210,1,32,0.3);
+            transform: translateY(-4px);
+        }
+
+        .mini-card-img {
+            height: 160px;
+            overflow: hidden;
+        }
+
+        .mini-card-img img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+
+        .mini-card:hover .mini-card-img img { transform: scale(1.06); }
+
+        .mini-card-body { padding: 18px 20px 22px; }
+        .mini-card-title { font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 10px; }
+
+        .mini-card-stack { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 16px; }
+
+        .mini-view {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--red);
+            text-decoration: none;
+            transition: gap 0.2s;
+        }
+
+        .mini-view:hover { gap: 10px; }
+
+        /* ─── CONTACT SECTION ────────────────────── */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            gap: 64px;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 12px;
+        }
+
+        .contact-info p {
+            font-size: 15px;
+            color: var(--muted);
+            line-height: 1.7;
+            margin-bottom: 36px;
+        }
+
+        .contact-methods { display: flex; flex-direction: column; gap: 16px; }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 16px 20px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            text-decoration: none;
+            transition: border-color 0.25s, background 0.25s;
+        }
+
+        .contact-method:hover {
+            border-color: rgba(210,1,32,0.3);
+            background: rgba(210,1,32,0.04);
+        }
+
+        .contact-method-icon {
+            width: 40px; height: 40px;
+            background: var(--red-dim);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .contact-method-text { display: flex; flex-direction: column; }
+        .cm-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); }
+        .cm-val   { font-size: 14px; font-weight: 600; color: var(--white); }
+
+        /* Form styling */
+        .contact-form { display: flex; flex-direction: column; gap: 0; }
+
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+        .fgroup {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .fgroup label {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #666;
+        }
+
+        .fgroup input,
+        .fgroup textarea,
+        .fgroup select {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 14px 16px;
+            color: var(--white);
             font-size: 15px;
             outline: none;
+            transition: border-color 0.2s;
+            font-family: inherit;
+            width: 100%;
         }
 
-        textarea {
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            resize: vertical;
+        .fgroup input:focus,
+        .fgroup textarea:focus,
+        .fgroup select:focus { border-color: rgba(210,1,32,0.5); }
+
+        .fgroup textarea { min-height: 120px; resize: vertical; }
+
+        .fgroup select option { background: #111; }
+
+        /* ─── Responsive ─────────────────────────── */
+        @media (max-width: 1100px) {
+            .hero-inner   { grid-template-columns: 1fr; }
+            .terminal-card { display: none; }
+            .about-split  { grid-template-columns: 1fr; gap: 40px; }
+            .featured-project { grid-template-columns: 1fr; }
+            .featured-img { height: 260px; }
+            .mini-projects-grid { grid-template-columns: 1fr 1fr; }
+            .contact-grid { grid-template-columns: 1fr; gap: 40px; }
         }
 
-        /* Responsive Design */
-        @media screen and (max-width: 768px) {
-            .form-container {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .form-group {
-                width: 100%;
-                margin-bottom: 20px;
-            }
+        @media (max-width: 768px) {
+            .home-section { padding: 80px 24px; }
+            .hero-inner   { padding: 140px 24px 80px; }
+            .hero-name    { letter-spacing: -1.5px; }
+            .hero-stats   { gap: 20px; }
+            .about-facts  { grid-template-columns: 1fr; }
+            .mini-projects-grid { grid-template-columns: 1fr; }
+            .form-row     { grid-template-columns: 1fr; }
+            .featured-body { padding: 28px 24px; }
         }
-
-        
     </style>
 </head>
 
 <body class="preloader cursor-anim-enable dark-nav">
-    <!-- preloader-loading start -->
     <x-loader />
 
-    <!-- pointer start -->
-    <!-- <div class="pointer js-pointer" id="js-pointer">
-   <i class="pointer__inner fas fa-long-arrow-alt-right"></i>
-   <i class="pointer__inner fas fa-search"></i>
-   <i class="pointer__inner fas fa-link"></i>
-  </div> -->
-    <!-- pointer end -->
-
-    <!-- to top btn start -->
     <a href="#up" class="scroll-to-btn js-headroom js-midnight-color js-smooth-scroll js-pointer-large">
-        <span class="scroll-to-btn__box">
-            <span class="scroll-to-btn__arrow"></span>
-        </span>
-    </a><!-- to top btn end -->
-
-    <!-- scroll down btn start -->
-    <a href="#down"
-        class="scroll-to-btn to-down js-headroom js-midnight-color js-smooth-scroll js-pointer-large js-scroll-btn">
-        <span class="scroll-to-btn__box">
-            <span class="scroll-to-btn__arrow"></span>
-        </span>
-    </a><!-- scroll down btn end -->
+        <span class="scroll-to-btn__box"><span class="scroll-to-btn__arrow"></span></span>
+    </a>
+    <a href="#down" class="scroll-to-btn to-down js-headroom js-midnight-color js-smooth-scroll js-pointer-large js-scroll-btn">
+        <span class="scroll-to-btn__box"><span class="scroll-to-btn__arrow"></span></span>
+    </a>
 
     <x-header />
 
-    <!-- main start -->
     <main class="js-animsition-overlay" data-animsition-overlay="true">
-        <!-- home slider start -->
-        <section id="up" class="pos-rel section-bg-dark-1 js-home-slider fullscreen-slider">
-            <!-- swiper-wrapper start -->
-            <div class="swiper-wrapper">
 
+        {{-- ══════════════════════ HERO ══════════════════════ --}}
+        <section id="up" class="hero-section">
+            <video class="hero-video-bg" src="https://shyknytkian.s3.eu-north-1.amazonaws.com/vedio-1.mp4"
+                   autoplay loop muted playsinline></video>
+            <div class="hero-grain"></div>
 
-                <!-- swiper-slide start -->
-                <div class="swiper-slide">
-                    <!-- slide-bg -->
-                    <div class="js-parallax-slide-bg bg-img-cover">
-                        <video class="video-bg" src="https://shyknytkian.s3.eu-north-1.amazonaws.com/vedio-1.mp4"
-                            loop="" muted="" autoplay=""></video>
-                    </div>
-                    <!-- bg-overlay -->
-                    <div class="bg-overlay-black"></div>
+            <div class="hero-inner">
+                {{-- Left column --}}
+                <div>
+                    <div class="hero-eyebrow reveal">Full-Stack Developer · Freelancer</div>
 
-                    <!-- content start -->
-                    <div class="flex-min-height-100vh pos-rel" data-swiper-parallax-x="30%">
-                        <div class="container small padding-top-bottom-120">
-                            <h2 class="headline-xl">
-                                <span class="hidden-box d-block">
-                                    <span class="anim-slide tr-delay-02">Hi, I’m Prince Kumar — <span
-                                            class="text-color-red">Full‑Stack Developer!</span></span>
-                                </span>
+                    <h1 class="hero-name reveal">Prince<br>Kumar</h1>
+                    <p class="hero-role reveal">Building the web, one commit at a time.</p>
 
-                            </h2>
-
-                            <div class="margin-top-30 anim-fade tr-delay-08">
-                                <a href="/about" class="border-btn js-pointer-large">
-                                    <span class="border-btn__inner">About</span>
-                                    <span class="border-btn__lines-1"></span>
-                                    <span class="border-btn__lines-2"></span>
-                                </a>
-                            </div>
-                        </div>
-                    </div><!-- content end -->
-                </div><!-- swiper-slide end -->
-                <!-- swiper-slide start -->
-                <div class="swiper-slide">
-                    <!-- slide-bg -->
-                    <div class="js-parallax-slide-bg bg-img-cover">
-                        <video class="video-bg" src="https://shyknytkian.s3.eu-north-1.amazonaws.com/vedio-1.mp4"
-                            autoplay="" loop="" muted=""></video>
-                    </div>
-                    <!-- bg-overlay -->
-                    <!-- <div class="bg-overlay-black"></div> -->
-
-                    <!-- content start -->
-                    <div class="flex-min-height-100vh pos-rel" data-swiper-parallax-x="30%">
-                        <div class="container small text-center padding-top-bottom-120">
-                            <h2 class="headline-xl">
-                                <span class="hidden-box d-block">
-                                    <span class="anim-slide tr-delay-02"> Turning ideas</span>
-                                </span>
-                                <span class="hidden-box d-block">
-                                    <span class="anim-slide tr-delay-03">
-                                        <span class="text-color-red">into</span> production‑ready
-                                    </span>
-                                </span>
-                                <span class="hidden-box d-block">
-                                    <span class="anim-slide tr-delay-04 text-color-red">Apps</span>
-                                </span>
-                            </h2>
-                            <div class="margin-top-30 anim-fade tr-delay-08">
-                                <p class="body-text-s anim-text-reveal js-scrollanim">
-                                    I design reliable dashboards, solve backend challenges, and build clean UIs.<br />
-                                </p>
-                            </div>
-                            <br />
-                            <div class="margin-top-30 anim-fade tr-delay-08">
-                                <a href="/projects" class="border-btn js-pointer-large">
-                                    <span class="border-btn__inner">Read more</span>
-                                    <span class="border-btn__lines-1"></span>
-                                    <span class="border-btn__lines-2"></span>
-                                </a>
-                            </div>
-                        </div>
-                    </div><!-- content end -->
-                </div><!-- swiper-slide end -->
-                <!-- swiper-slide start -->
-                <div class="swiper-slide">
-                    <!-- slide-bg -->
-                    <div class="js-parallax-slide-bg bg-img-cover">
-                        <video class="video-bg" src="https://shyknytkian.s3.eu-north-1.amazonaws.com/vedio-1.mp4"
-                            autoplay="" loop="" muted=""></video>
-                    </div>
-                    <!-- bg-overlay -->
-                    <!-- <div class="bg-overlay-black"></div> -->
-
-                    <!-- content start -->
-                    <div class="flex-min-height-100vh pos-rel" data-swiper-parallax-x="30%">
-                        <div class="container small text-center padding-top-bottom-120">
-                            <h2 class="headline-xl">
-                                <span class="hidden-box d-block">
-                                    <span class="anim-slide tr-delay-02">Focused on</span>
-                                </span>
-                                <span class="hidden-box d-block">
-                                    <span class="anim-slide tr-delay-03 text-color-red">efficiency & clarity</span>
-                                </span>
-
-                            </h2>
-                            <div class="margin-top-30 anim-fade tr-delay-08">
-                                <p class="body-text-s anim-text-reveal js-scrollanim">
-                                    From algorithms to admin dashboards, I deliver features that scale.
-                                </p>
-                            </div>
-                            <br />
-                            <div class="margin-top-30 anim-fade tr-delay-08">
-                                <a href="/about" class="border-btn js-pointer-large">
-                                    <span class="border-btn__inner">Read more</span>
-                                    <span class="border-btn__lines-1"></span>
-                                    <span class="border-btn__lines-2"></span>
-                                </a>
-                            </div>
-                        </div>
-                    </div><!-- content end -->
-                </div><!-- swiper-slide end -->
-
-            </div><!-- swiper-wrapper end -->
-
-            <!-- swiper-button-prev start -->
-            <div class="swiper-button-prev-box fullscreen-slider-arrow after-preloader-anim">
-                <div class="anim-fade">
-                    <div class="swiper-button-prev"></div>
-                </div>
-            </div><!-- swiper-button-prev end -->
-            <!-- swiper-button-next start -->
-            <div class="swiper-button-next-box fullscreen-slider-arrow after-preloader-anim">
-                <div class="anim-fade tr-delay-06">
-                    <div class="swiper-button-next"></div>
-                </div>
-            </div><!-- swiper-button-next end -->
-
-            <!-- swiper-pagination start -->
-            <div class="pagination-box fullscreen-slider-pagination after-preloader-anim">
-                <div class="anim-fade tr-delay-03">
-                    <div class="swiper-pagination counter-pagination"></div>
-                </div>
-            </div><!-- swiper-pagination end -->
-        </section><!-- home slider end -->
-
-        <!-- about us start -->
-        <section id="down" class="pos-rel section-bg-dark-2">
-            <!-- pos-rel start -->
-            <div class="pos-rel padding-top-bottom-100">
-                <!-- flex-container start -->
-
-                <div class="container flex-container padding-bottom-70">
-                    <!-- title start -->
-                    <h2 class="column-l-r-margin-10 headline-m js-scrollanim">
-                        {{-- <span class="hidden-box d-block">
-                            <span class="anim-slide">
-                                <span class="text-color-red"></span>
-                            </span>
-                        </span> --}}
-                        <span class="hidden-box d-block">
-                            <span class="anim-slide tr-delay-01 text-color-red">About Me (scriptxprince)</span>
-                        </span>
-                    </h2><!-- title end -->
-                    <br><br>
-                    <p class="body-text-s anim-text-reveal js-scrollanim">
-                        <br> Hi 👋 I’m Prince Kumar, a Full-Stack Developer from Kota, India.
-                        <br><br>
-                        A passionate developer who loves building impactful projects and solving real-world problems
-                        with technology. Over the years, I have explored different areas of development, from frontend
-                        design to backend logic, and I continuously push myself to learn and grow in every aspect of
-                        coding. I believe in writing clean, efficient code and creating user-friendly solutions that
-                        make a difference.
-                        <br><br>
-                        Apart from my academic journey in BCA, I dedicate a lot of time to improving my skills through
-                        platforms like GitHub, LeetCode, and other coding communities. These platforms not only help me
-                        sharpen my problem-solving abilities but also allow me to contribute to open-source projects and
-                        showcase my work. I regularly track my progress through stats such as repositories, coding
-                        streaks, problem-solving achievements, and other milestones, which reflect my consistency and
-                        dedication as a developer.
-                        <br><br>
-                        I am also doing freelancing, where I get the opportunity to work on diverse projects and
-                        collaborate with different clients. This experience helps me understand real-world requirements
-                        better and polish my skills in delivering professional solutions. Whether it’s web development,
-                        solving coding challenges, or experimenting with new technologies, I always strive to give my
-                        best and keep growing in my journey as a developer.
+                    <p class="hero-desc reveal">
+                        I'm <strong>scriptxprince</strong> — a developer from <strong>Kota, India</strong>
+                        who turns ideas into production-ready software. MERN Stack, Laravel, PHP, React,
+                        Node.js. Available for <strong>freelance & full-time hire.</strong>
                     </p>
 
-                  
-                    <br>
+                    <div class="hero-cta reveal">
+                        <a href="/contact" class="border-btn js-pointer-large">
+                            <span class="border-btn__inner">Hire Me</span>
+                            <span class="border-btn__lines-1"></span>
+                            <span class="border-btn__lines-2"></span>
+                        </a>
+                        <a href="/projects" class="border-btn js-pointer-large">
+                            <span class="border-btn__inner">View Work</span>
+                            <span class="border-btn__lines-1"></span>
+                            <span class="border-btn__lines-2"></span>
+                        </a>
+                        <a href="/my-resume" class="border-btn js-pointer-large">
+                            <span class="border-btn__inner">Resume</span>
+                            <span class="border-btn__lines-1"></span>
+                            <span class="border-btn__lines-2"></span>
+                        </a>
+                    </div>
 
-                      <div style="gap:40px" class="container flex-container">
-									  <a href="/contact" target="_blank"
-                                                        class="border-btn js-pointer-large margin-top-20">
-                                                        <span class="border-btn__inner">Hire Me</span>
-                                                        <span class="border-btn__lines-1"></span>
-                                                        <span class="border-btn__lines-2"></span>
-                                                    </a>
-									  <a href="/my-resume" target="_blank"
-                                                        class="border-btn js-pointer-large margin-top-20">
-                                                        <span class="border-btn__inner">My Resume</span>
-                                                        <span class="border-btn__lines-1"></span>
-                                                        <span class="border-btn__lines-2"></span>
-                                                    </a>
-									
+                    <div class="hero-status reveal" style="margin-bottom:40px;">
+                        <span class="status-dot"></span>
+                        Open to freelance &amp; full-time opportunities
+                    </div>
 
-								</div>
-
-
-                    <!-- column start -->
-                    <div class="six-columns padding-bottom-20">
-
-                        <p class="body-text-s anim-text-reveal js-scrollanim"></p>
-                    </div><!-- column end -->
-
-                    <!-- column start -->
-                    <div class="six-columns padding-bottom-20">
-                        <div class="column-l-r-margin-10">
+                    <div class="hero-stats reveal">
+                        <div class="hstat">
+                            <div class="hstat-num">{{ $projects->count() }}<span>+</span></div>
+                            <div class="hstat-lbl">Projects Built</div>
                         </div>
-                    </div><!-- column end -->
-                </div><!-- flex-container end -->
-
-                <!-- js-infinite-slider start -->
-                <div class="js-infinite-slider about-slider hidden-box">
-                    <!-- swiper-wrapper start -->
-                    <div class="swiper-wrapper">
-
-                        @foreach ($main_lang as $lang)
-                            @if ($loop->iteration % 2 == 1)
-                                <div class="swiper-slide" style="text-align: center;padding:10px 20px;width:140px">
-                                    <h2 class="text">{{ $lang['name'] }}</h2>
-                                    <img style="width:60%" class="padding-top-20" src="assets/images/skills/lang1/{{ $lang['image'] }}"
-                                        alt="{{ $lang['name'] }}">
-                                </div>
-                            @else
-                                <div class="swiper-slide" style="text-align: center;padding:10px 20px">
-                                    <img style="width:60%" src="assets/images/skills/lang1/{{ $lang['image'] }}"
-                                        alt="{{ $lang['name'] }}">
-                                    <h2 class="padding-top-20 text">{{ $lang['name'] }}</h2>
-                                </div>
-                            @endif
-                        @endforeach
-
-
-                    </div><!-- swiper-wrapper end -->
-                </div><!-- js-infinite-slider end -->
-            </div><!-- pos-rel end -->
-        </section><!-- about us end -->
-
-        <!-- new videos start -->
-        <section class="pos-rel section-bg-dark-1">
-            <!-- pos-rel start -->
-            {{-- <div class="pos-rel flex-min-height-100vh"> --}}
-            <div class="pos-rel ">
-                <!-- padding-top-bottom-120 start -->
-                <div class="width-100perc padding-top-bottom-30">
-                    <!-- title start -->
-                    <h2 class="headline-xxl text-center js-scrollanim">
-                        <span class="hidden-box d-block">
-                            <span>My</span> <span class="text-color-red">Projects</span>
-                        </span>
-                    </h2><!-- title end -->
-
-                    <!-- pos-rel start -->
-                    <div class="padding-top-40 padding-bottom-90 pos-rel">
-                        <!-- js-1-view-slider start -->
-                        <div class="container hidden-box js-1-view-slider">
-                            <!-- swiper-wrapper start -->
-                            <div class="swiper-wrapper js-slider-scroll-anim">
-                                @foreach ($projects as $project)
-                                    <!-- swiper-slide start -->
-                                    <div class="swiper-slide" data-category="{{ strtolower($project->category) }}">
-                                        <div class="flex-container reverse flex-align-center margin-left-right-10">
-                                            <div class="six-columns column-100-100 padding-top-30">
-
-                                                <div class="column-r-margin-40-999">
-                                                    <h3 style="font-size:40px;font-weight:bold" class="subhead-xl">
-                                                        {{ $project->title }}</h3>
-                                                    {{-- <p style="line-height: 1.2" --}}
-                                                        {{-- class="body-text-l text-color-dadada margin-top-20"> --}}
-                                                        {{-- {{ $project->short_description }} --}}
-                                                     {!! html_entity_decode($project->short_description) !!}
-                                                    {{-- </p> --}}
-
-                                                    <div class="stack-container">
-                                                        @foreach (json_decode($project->tech_stack) as $tech)
-                                                            <div class="stack-tag">
-                                                                {{ $tech }}
-                                                            </div>
-                                                        @endforeach
-                                                    </div>
-
-
-
-
-                                                    <a href="project-details/{{ $project->slug }}" target="_blank"
-                                                        class="border-btn js-pointer-large margin-top-20">
-                                                        <span class="border-btn__inner">View Project</span>
-                                                        <span class="border-btn__lines-1"></span>
-                                                        <span class="border-btn__lines-2"></span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="six-columns column-100-100 padding-top-30 pos-rel">
-                                                <div class="anim-img-scale">
-                                                    <img class="anim-img-scale__inner" style="border-radius: 20px"
-                                                        src="{{ asset($project->banner_image) }}"
-                                                        alt="{{ $project->title }}">
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div><!-- swiper-slide end -->
-                                @endforeach
-
-                            </div><!-- swiper-wrapper end -->
-
-                            <!-- swiper-button-prev start -->
-                            <div class="swiper-button-prev-box">
-                                <div class="swiper-button-prev"></div>
-                            </div><!-- swiper-button-prev end -->
-                            <!-- swiper-button-next start -->
-                            <div class="swiper-button-next-box">
-                                <div class="swiper-button-next"></div>
-                            </div><!-- swiper-button-next end -->
-
-                            <!-- swiper-pagination start -->
-                            <div class="pagination-box">
-                                <div class="swiper-pagination counter-pagination"></div>
-                            </div><!-- swiper-pagination end -->
-                        </div><!-- js-1-view-slider end -->
-
-
-                    </div><!-- pos-rel end -->
-                </div><!-- padding-top-bottom-120 end -->
-
-                <div class="text-center padding-bottom-60">
-                    {{-- <button class="filter-btn">
-                        View All
-                    </button> --}}
-
-                     <a href="/projects" target="_blank"
-                                        class="border-btn js-pointer-large margin-top-20">
-                                        <span class="border-btn__inner">View All</span>
-                                        <span class="border-btn__lines-1"></span>
-                                        <span class="border-btn__lines-2"></span>
-                                    </a>
+                        <div class="hstat">
+                            <div class="hstat-num">2<span>+</span></div>
+                            <div class="hstat-lbl">Years Coding</div>
+                        </div>
+                        <div class="hstat">
+                            <div class="hstat-num">{{ count($main_lang) + count($main_lang2) }}<span>+</span></div>
+                            <div class="hstat-lbl">Technologies</div>
+                        </div>
+                        <div class="hstat">
+                            <div class="hstat-num">100<span>%</span></div>
+                            <div class="hstat-lbl">Client Focus</div>
+                        </div>
+                    </div>
                 </div>
 
-            </div><!-- pos-rel end -->
-
-
-        </section><!-- new videos end -->
-
-
-        <!-- albums start -->
-        {{-- <section class="pos-rel padding-top-60 section-bg-dark-1">
-            <div class="pos-rel padding-top-bottom-30">
-                <h2 class="headline-xxl text-center js-scrollanim">
-                    <span class="text-color-red anim-text-fill tr-delay-02"
-                        data-text="Testimonials">Testimonials</span>
-                </h2>
-
-                <div class="js-3-view-slider padding-top-bottom-30 hidden-box pos-rel">
-                    <div class="swiper-wrapper js-slider-scroll-anim">
-
-                        @foreach ($testimonials as $feedback)
-                            <div class="swiper-slide block">
-
-                                <div class="avatar">
-                                    <img class="anim-img-scale__inner"
-                                        src="{{ asset($feedback->image) }}" alt="album">
-                                </div>
-
-
-
-                                <div class="margin-top-20 margin-left-right-20 text-center">
-                                    <h3 class="d-inline-block hidden-box">
-                                        <span
-                                            class="headline-xxxs anim-reveal red tr-delay-01">“{{ $feedback->message }}”</span>
-                                    </h3><br>
-                                    <span class="d-inline-block hidden-box padding-top-10">
-                                        <span style="color: #d20120;font-weight:bold"
-                                            class="subhead-xxs text-color-b0b0b0 anim-reveal tr-delay-03">{{ $feedback->name }}</span>
-
-                                    </span>
-                                    <br />
-                                    <span class="d-inline-block hidden-box">
-                                        <span class="subhead-xxs text-color-b0b0b0 anim-reveal tr-delay-03">{{ $feedback->role }}</span>
-                                    </span>
-
-                                    <div class="lottie-wrapper" id="lottie-2"></div>
-                                </div>
-                            </div>
-                        @endforeach
-
-                    </div>
-
-                    <div class="swiper-button-prev-box">
-                        <div class="swiper-button-prev"></div>
-                    </div>
-                    <div class="swiper-button-next-box">
-                        <div class="swiper-button-next"></div>
-                    </div>
-                    <div class="pagination-box">
-                        <div class="swiper-pagination counter-pagination"></div>
+                {{-- Right: terminal card --}}
+                <div class="reveal from-right">
+                    <div class="terminal-card">
+                        <div class="terminal-header">
+                            <span class="t-dot t-red"></span>
+                            <span class="t-dot t-yellow"></span>
+                            <span class="t-dot t-green"></span>
+                            <span class="t-title">~/scriptxprince — bash</span>
+                        </div>
+                        <div class="terminal-body">
+                            <div><span class="t-prompt">❯ </span><span class="t-cmd">whoami</span></div>
+                            <div class="t-out">Prince Kumar · @scriptxprince</div>
+                            <br>
+                            <div><span class="t-prompt">❯ </span><span class="t-cmd">cat developer.json</span></div>
+                            <div class="t-out">{</div>
+                            <div class="t-out">&nbsp;&nbsp;<span class="t-key">"role"</span>: <span class="t-str">"Full-Stack Developer"</span>,</div>
+                            <div class="t-out">&nbsp;&nbsp;<span class="t-key">"location"</span>: <span class="t-str">"Kota, India 🇮🇳"</span>,</div>
+                            <div class="t-out">&nbsp;&nbsp;<span class="t-key">"stack"</span>: [<span class="t-str">"MERN"</span>, <span class="t-str">"Laravel"</span>, <span class="t-str">"PHP"</span>],</div>
+                            <div class="t-out">&nbsp;&nbsp;<span class="t-key">"available"</span>: <span class="t-val">true</span>,</div>
+                            <div class="t-out">&nbsp;&nbsp;<span class="t-key">"education"</span>: <span class="t-str">"BCA"</span>,</div>
+                            <div class="t-out">&nbsp;&nbsp;<span class="t-key">"freelance"</span>: <span class="t-val">true</span></div>
+                            <div class="t-out">}</div>
+                            <br>
+                            <div><span class="t-prompt">❯ </span><span class="t-cmd">git log --oneline -3</span></div>
+                            <div class="t-out"><span style="color:#888;">a4f2c1b</span> <span style="color:#ccc;">feat: add admin panel with project CRUD</span></div>
+                            <div class="t-out"><span style="color:#888;">9d3e5f2</span> <span style="color:#ccc;">fix: seo meta tags & sitemap</span></div>
+                            <div class="t-out"><span style="color:#888;">2b8a7d4</span> <span style="color:#ccc;">refactor: clean portfolio from scratch</span></div>
+                            <br>
+                            <div><span class="t-prompt">❯ </span><span class="t-cursor"></span></div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section> --}}
+        </section>
 
+        {{-- ══════════════════════ ABOUT ══════════════════════ --}}
+        <section id="down" class="home-section home-section--alt">
+            <div class="section-wrap">
+                <div class="about-split">
+                    {{-- Left: text --}}
+                    <div class="about-text">
+                        <div class="section-eyebrow reveal">Who I Am</div>
+                        <h2 class="section-heading reveal">
+                            Developer.<br><em>Problem-solver.</em><br>Freelancer.
+                        </h2>
+                        <p class="reveal">
+                            Hi 👋 I'm <strong>Prince Kumar</strong> — a passionate Full-Stack Developer from
+                            Kota, India. I love building impactful projects and solving real-world problems
+                            with technology. From pixel-perfect frontend to scalable backend APIs, I work
+                            across the entire stack.
+                        </p>
+                        <p class="reveal">
+                            Pursuing <strong>BCA</strong>, active on GitHub &amp; LeetCode, and doing
+                            <strong>freelance</strong> work with clients who need real solutions shipped fast.
+                            I believe in clean code, honest timelines, and delivering features that actually work.
+                        </p>
+                        <div class="hero-cta reveal" style="margin-top:32px;margin-bottom:0;">
+                            <a href="/about" class="border-btn js-pointer-large">
+                                <span class="border-btn__inner">Full Story</span>
+                                <span class="border-btn__lines-1"></span>
+                                <span class="border-btn__lines-2"></span>
+                            </a>
+                        </div>
+                    </div>
 
+                    {{-- Right: fact boxes --}}
+                    <div>
+                        <div class="about-facts reveal-group">
+                            <div class="fact-box reveal">
+                                <div class="fact-icon">🎓</div>
+                                <div class="fact-label">Education</div>
+                                <div class="fact-val">BCA — Bachelor of Computer Applications</div>
+                            </div>
+                            <div class="fact-box reveal">
+                                <div class="fact-icon">📍</div>
+                                <div class="fact-label">Location</div>
+                                <div class="fact-val">Kota, Rajasthan, India 🇮🇳</div>
+                            </div>
+                            <div class="fact-box reveal">
+                                <div class="fact-icon">💼</div>
+                                <div class="fact-label">Availability</div>
+                                <div class="fact-val" style="color:#4ade80;">Open to Work · Freelance &amp; Full-Time</div>
+                            </div>
+                            <div class="fact-box reveal">
+                                <div class="fact-icon">⚡</div>
+                                <div class="fact-label">Specialty</div>
+                                <div class="fact-val">MERN Stack · Laravel · REST APIs</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-        <!-- clients start -->
-        <section class="pos-rel section-bg-dark-1">
-            <!-- pos-rel start -->
-            <div class="pos-rel flex-min-height-100vh">
-                <!-- container start -->
-                <div class="padding-top-bottom-30 container">
-                    <!-- title start -->
-                    <h2 class="headline-l js-scrollanim">
-                        <span class="hidden-box d-block">
-                            <span class="anim-slide">
-                                <span class="text-color-red">Contact</span>
-                            </span>
-                        </span>
+                {{-- Skills ticker --}}
+                <div class="skills-ticker-wrap reveal" style="margin-top:64px;">
+                    @php
+                        $allSkills = array_merge($main_lang, $main_lang2);
+                        $doubled   = array_merge($allSkills, $allSkills); // doubled for seamless loop
+                    @endphp
+                    <div class="skills-ticker">
+                        @foreach ($doubled as $s)
+                            @php $folder = in_array($s, $main_lang) ? 'lang1' : 'lang2'; @endphp
+                            <div class="skill-chip">
+                                <img src="{{ asset('assets/images/skills/'.$folder.'/'.$s['image']) }}" alt="{{ $s['name'] }}" loading="lazy">
+                                {{ $s['name'] }}
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                    </h2><!-- title end -->
+        {{-- ══════════════════════ PROJECTS ══════════════════════ --}}
+        <section class="home-section">
+            <div class="section-wrap">
+                <div class="projects-header">
+                    <div>
+                        <div class="section-eyebrow reveal">Portfolio</div>
+                        <h2 class="section-heading reveal">Featured <em>Work</em></h2>
+                    </div>
+                    <a href="/projects" class="border-btn js-pointer-large reveal from-right">
+                        <span class="border-btn__inner">View All Projects</span>
+                        <span class="border-btn__lines-1"></span>
+                        <span class="border-btn__lines-2"></span>
+                    </a>
+                </div>
 
-                    <div class="padding-top-20">
-                        <p class="body-text-m anim-text-reveal js-scrollanim">Feel free to reach out for collaborations
-                            or
-                            freelance opportunities!</p>
+                {{-- First project as featured --}}
+                @if($projects->count() > 0)
+                    @php $featured = $projects->first(); @endphp
+                    <div class="featured-project reveal">
+                        <div class="featured-img">
+                            <img src="{{ asset($featured->banner_image) }}"
+                                 alt="{{ $featured->title }}" loading="lazy">
+                            <span class="featured-cat">{{ $featured->category }}</span>
+                        </div>
+                        <div class="featured-body">
+                            <div class="featured-label">Featured Project</div>
+                            <div class="featured-title">{{ $featured->title }}</div>
+                            <div class="featured-desc">{{ strip_tags(html_entity_decode($featured->short_description)) }}</div>
+                            <div class="stack-pills">
+                                @foreach(json_decode($featured->tech_stack) as $tech)
+                                    <span class="stack-pill">{{ $tech }}</span>
+                                @endforeach
+                            </div>
+                            <a href="/project-details/{{ $featured->slug }}" class="view-link">
+                                View Case Study
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                @endif
 
-                        <form id="contactForm">
-                            @csrf
-                            <div class="form-container">
-                                <div class="form-group">
-                                    <label for="name">Name:</label>
-                                    <input type="text" id="name" name="name"
-                                        placeholder="Enter Your Name" required>
-
-                                    <label for="email">Email:</label>
-                                    <input type="email" id="email" name="email"
-                                        placeholder="Enter Your Email" required>
-
-                                    <label for="contact">Contact Number:</label>
-                                    <input type="text" id="contact" name="contact"
-                                        placeholder="Enter Your Contact Number" required>
+                {{-- Rest of projects in mini grid (skip first) --}}
+                @if($projects->count() > 1)
+                    <div class="mini-projects-grid reveal-group">
+                        @foreach($projects->skip(1)->take(3) as $i => $project)
+                            <div class="mini-card reveal">
+                                <div class="mini-card-img">
+                                    <img src="{{ asset($project->banner_image) }}"
+                                         alt="{{ $project->title }}" loading="lazy">
                                 </div>
-
-                                <div class="form-group">
-                                    <label for="reason">Reason:</label>
-                                    <select class="select" id="reason" name="reason" required>
-                                        <option value="">Select Reason</option>
-                                        <option value="collaboration">Collaboration</option>
-                                        <option value="freelance">Freelance Opportunity</option>
-                                        <option value="other">Other</option>
-                                    </select>
-
-                                    <label for="message">Message:</label>
-                                    <textarea id="message" name="message" rows="4" required></textarea>
+                                <div class="mini-card-body">
+                                    <div class="mini-card-title">{{ $project->title }}</div>
+                                    <div class="mini-card-stack">
+                                        @foreach(json_decode($project->tech_stack) as $tech)
+                                            <span class="stack-pill">{{ $tech }}</span>
+                                        @endforeach
+                                    </div>
+                                    <a href="/project-details/{{ $project->slug }}" class="mini-view">
+                                        View
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                                        </svg>
+                                    </a>
                                 </div>
                             </div>
+                        @endforeach
+                    </div>
+                @endif
+            </div>
+        </section>
 
-                            <button style="cursor: pointer" type="submit" class="border-btn js-pointer-large margin-top-20">
-                                <span class="border-btn__inner">Send Message</span>
+        {{-- ══════════════════════ CONTACT ══════════════════════ --}}
+        <section class="home-section home-section--alt">
+            <div class="section-wrap">
+                <div class="section-eyebrow reveal">Let's Talk</div>
+                <h2 class="section-heading reveal">Get in <em>Touch</em></h2>
+                <p class="section-sub reveal">
+                    Open for freelance work, collaborations, or a quick chat about your project idea.
+                    I typically respond within 24 hours.
+                </p>
+
+                <div class="contact-grid">
+                    {{-- Left: contact info --}}
+                    <div class="reveal from-left">
+                        <div class="contact-methods">
+                            <a href="mailto:princepk7878kumar@gmail.com" class="contact-method">
+                                <div class="contact-method-icon">✉️</div>
+                                <div class="contact-method-text">
+                                    <span class="cm-label">Email</span>
+                                    <span class="cm-val">princepk7878kumar@gmail.com</span>
+                                </div>
+                            </a>
+                            <a href="tel:+918955783570" class="contact-method">
+                                <div class="contact-method-icon">📞</div>
+                                <div class="contact-method-text">
+                                    <span class="cm-label">Phone</span>
+                                    <span class="cm-val">+91 89557 83570</span>
+                                </div>
+                            </a>
+                            <a href="https://www.linkedin.com/in/prince-kumar-788673253/" target="_blank" rel="noopener noreferrer" class="contact-method">
+                                <div class="contact-method-icon">💼</div>
+                                <div class="contact-method-text">
+                                    <span class="cm-label">LinkedIn</span>
+                                    <span class="cm-val">Prince Kumar</span>
+                                </div>
+                            </a>
+                            <a href="https://github.com/PrinceInScripts" target="_blank" rel="noopener noreferrer" class="contact-method">
+                                <div class="contact-method-icon">🐙</div>
+                                <div class="contact-method-text">
+                                    <span class="cm-label">GitHub</span>
+                                    <span class="cm-val">PrinceInScripts</span>
+                                </div>
+                            </a>
+                            <a href="https://t.me/scriptxprince" target="_blank" rel="noopener noreferrer" class="contact-method">
+                                <div class="contact-method-icon">✈️</div>
+                                <div class="contact-method-text">
+                                    <span class="cm-label">Telegram</span>
+                                    <span class="cm-val">@scriptxprince</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    {{-- Right: form --}}
+                    <div class="reveal from-right">
+                        <form id="contactForm" class="contact-form" novalidate>
+                            @csrf
+                            <div class="form-row">
+                                <div class="fgroup">
+                                    <label for="name">Name</label>
+                                    <input type="text" id="name" name="name" placeholder="Your name" required>
+                                </div>
+                                <div class="fgroup">
+                                    <label for="email">Email</label>
+                                    <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="fgroup">
+                                    <label for="contact">Phone</label>
+                                    <input type="text" id="contact" name="contact" placeholder="+91 xxxxx xxxxx" required>
+                                </div>
+                                <div class="fgroup">
+                                    <label for="reason">Reason</label>
+                                    <select id="reason" name="reason" required>
+                                        <option value="">Select reason…</option>
+                                        <option value="freelance">Freelance Project</option>
+                                        <option value="collaboration">Collaboration</option>
+                                        <option value="job">Job / Internship</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="fgroup">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" placeholder="Tell me about your project or idea…" required></textarea>
+                            </div>
+                            <button type="submit" class="border-btn js-pointer-large" style="cursor:pointer;width:fit-content;">
+                                <span class="border-btn__inner">Send Message →</span>
                                 <span class="border-btn__lines-1"></span>
                                 <span class="border-btn__lines-2"></span>
                             </button>
                         </form>
                     </div>
+                </div>
+            </div>
+        </section>
 
-                </div><!-- container end -->
-            </div><!-- pos-rel end -->
-        </section><!-- clients end -->
-    </main><!-- main end -->
-
+    </main>
 
     @include('components.footer')
 
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-    <!-- scripts -->
-    <script src="assets/js/plugins.js"></script>
-    <script src="assets/js/footer-reveal.js"></script>
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/preloader.js"></script>
-    <script src="assets/js/footer-reveal_init.js"></script>
+    <script src="{{ asset('assets/js/plugins.js') }}"></script>
+    <script src="{{ asset('assets/js/footer-reveal.js') }}"></script>
+    <script src="{{ asset('assets/js/main.js') }}"></script>
+    <script src="{{ asset('assets/js/preloader.js') }}"></script>
+    <script src="{{ asset('assets/js/footer-reveal_init.js') }}"></script>
 
+    <script>
+    /* ─── Scroll Reveal ──────────────────────────────────── */
+    (function () {
+        const io = new IntersectionObserver(
+            entries => entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    io.unobserve(e.target);
+                }
+            }),
+            { threshold: 0.1, rootMargin: '0px 0px -60px 0px' }
+        );
 
-<script>
-    $(document).ready(function() {
-        $('#contactForm').on('submit',function(e){
-            e.preventDefault();
-
-            $.ajax({
-                url:"{{ route('contact.submit') }}",
-                method:"POST",
-                data:$(this).serialize(),
-                success:function(response){
-                    Toastify({
-                        text: response.message,
-                        duration: 3000,
-                        close: true,
-                        gravity: "top",
-                        position: "right",
-                        backgroundColor: '#5cb85c	',
-                    }).showToast();
-
-                    $("#contactForm")[0].reset(); // reset form
-                },
-                error: function(xhr) {
-                Toastify({
-                    text: "Failed to send message. Try again!",
-                    duration: 3000,
-                    gravity: "top",
-                    position: "right",
-                    backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)"
-                }).showToast();
+        document.querySelectorAll('.reveal').forEach((el, i) => {
+            // stagger siblings in a reveal-group
+            if (el.closest('.reveal-group')) {
+                const siblings = el.closest('.reveal-group').querySelectorAll('.reveal');
+                const idx = Array.from(siblings).indexOf(el);
+                el.style.transitionDelay = (idx * 80) + 'ms';
             }
-                
-            })
-        })
+            io.observe(el);
+        });
+    })();
+
+    /* ─── Contact Form ───────────────────────────────────── */
+    $(document).ready(function () {
+        $('#contactForm').on('submit', function (e) {
+            e.preventDefault();
+            const btn = $(this).find('button[type=submit]');
+            btn.prop('disabled', true);
+            $.ajax({
+                url: "{{ route('contact.submit') }}",
+                method: "POST",
+                data: $(this).serialize(),
+                success: function (response) {
+                    Toastify({
+                        text: "✅ " + response.message,
+                        duration: 4000, close: true,
+                        gravity: "top", position: "right",
+                        style: { background: '#166534', border: '1px solid #4ade80' }
+                    }).showToast();
+                    $("#contactForm")[0].reset();
+                    btn.prop('disabled', false);
+                },
+                error: function () {
+                    Toastify({
+                        text: "❌ Failed to send. Try again!",
+                        duration: 4000, gravity: "top", position: "right",
+                        style: { background: '#7f1d1d', border: '1px solid #f87171' }
+                    }).showToast();
+                    btn.prop('disabled', false);
+                }
+            });
+        });
     });
-</script>
-
-
+    </script>
 </body>
-
 </html>

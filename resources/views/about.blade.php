@@ -1,925 +1,909 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="Sumbhav">
-    <meta name="description" content="Graphic India: India's Leading Character Entertainment Company">
-    <meta name="keywords" content="creative, modern, graphic, India, animation, cartoons, novels, audio comics">
-
-    <!-- favicon -->
-    <link rel="shortcut icon" href="assets/images/GI_favicon_io/favicon.ico">
-    <link rel="apple-touch-icon" href="assets/images/GI_favicon_io/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="32x32" href="assets/images/GI_favicon_io/favicon-32x32.png">
-    <link rel="apple-touch-icon" sizes="512x512" href="assets/images/GI_favicon_io/android-chrome-512x512.png">
-
-    <title>Prince Kumar | Hire Freelance Developer</title>
-
-    <!-- fonts -->
-    <link
-        href="css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
+    @include('partials.head', [
+        'title'       => 'About Prince Kumar | Full-Stack Developer — scriptxprince',
+        'description' => 'Learn about Prince Kumar (scriptxprince) — Full-Stack Developer from Kota, India. BCA student, freelancer, GitHub & LeetCode enthusiast.',
+        'keywords'    => 'Prince Kumar about, scriptxprince developer, full stack developer Kota India, BCA developer, freelance developer India, GitHub LeetCode',
+    ])
 
     <style>
-        .cards-container {
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-            flex-wrap: wrap;
+        /* ───────────────────────────────────────────────────
+           CSS VARIABLES
+        ─────────────────────────────────────────────────── */
+        :root {
+            --red:      #d20120;
+            --red-dim:  rgba(210,1,32,0.12);
+            --red-glow: rgba(210,1,32,0.25);
+            --white:    #ffffff;
+            --off:      #f5f0eb;
+            --muted:    #666;
+            --border:   rgba(255,255,255,0.08);
+            --card-bg:  #111111;
+            --page-bg:  #0a0a0a;
         }
 
-        .card {
-            background: transparent;
-            border: 2px solid #fff;
-            border-radius: 12px;
-            padding: 40px;
-            flex: 1 1 48%;
-            /* 👈 50% on large screens */
-            min-width: 320px;
-            /* 👈 ensures it doesn’t get too small */
-            box-sizing: border-box;
+        /* ───────────────────────────────────────────────────
+           SCROLL REVEAL — base state
+        ─────────────────────────────────────────────────── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s cubic-bezier(.22,1,.36,1),
+                        transform 0.7s cubic-bezier(.22,1,.36,1);
+        }
+        .reveal.reveal--left  { transform: translateX(-50px); }
+        .reveal.reveal--right { transform: translateX(50px); }
+        .reveal.reveal--scale { transform: scale(0.94); }
+        .reveal.in-view {
+            opacity: 1;
+            transform: none;
         }
 
-        /* Profile section */
-        .profile {
+        /* stagger siblings */
+        .reveal-group .reveal:nth-child(1) { transition-delay: 0ms; }
+        .reveal-group .reveal:nth-child(2) { transition-delay: 100ms; }
+        .reveal-group .reveal:nth-child(3) { transition-delay: 200ms; }
+        .reveal-group .reveal:nth-child(4) { transition-delay: 300ms; }
+        .reveal-group .reveal:nth-child(5) { transition-delay: 400ms; }
+
+        /* ───────────────────────────────────────────────────
+           HERO SECTION
+        ─────────────────────────────────────────────────── */
+        .about-hero {
+            position: relative;
+            min-height: 100vh;
             display: flex;
             align-items: center;
-            gap: 20px;
+            overflow: hidden;
+            background: var(--page-bg);
+            padding: 140px 40px 80px;
         }
 
-        .profile img {
-            border-radius: 50%;
-            width: 60px;
+        /* Big decorative background number */
+        .about-hero::before {
+            content: "01";
+            position: absolute;
+            right: -60px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: clamp(200px, 30vw, 400px);
+            font-weight: 900;
+            color: rgba(255,255,255,0.02);
+            line-height: 1;
+            pointer-events: none;
+            user-select: none;
         }
 
-        .name {
-            font-weight: bold;
-            font-size: 20px;
+        /* Red accent line left */
+        .about-hero::after {
+            content: '';
+            position: absolute;
+            left: 0; top: 20%; bottom: 20%;
+            width: 3px;
+            background: linear-gradient(to bottom, transparent, var(--red), transparent);
         }
 
-        .username {
-            color: #888;
-            font-size: 14px;
+        .hero-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
         }
 
-        /* Stats section */
-        .stats {
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--red);
+            margin-bottom: 24px;
+        }
+
+        .hero-eyebrow::before {
+            content: '';
+            display: block;
+            width: 28px;
+            height: 2px;
+            background: var(--red);
+        }
+
+        .hero-title {
+            font-size: clamp(42px, 5vw, 72px);
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -2px;
+            color: var(--white);
+            margin: 0 0 28px;
+        }
+
+        .hero-title em {
+            font-style: normal;
+            color: var(--red);
+            display: block;
+        }
+
+        .hero-body {
+            font-size: 16px;
+            line-height: 1.85;
+            color: var(--muted);
+            max-width: 520px;
+        }
+
+        .hero-body strong { color: #ccc; font-weight: 600; }
+
+        .hero-cta-row {
             display: flex;
-            justify-content: space-between;
-            text-align: center;
-            margin-top: 20px;
-            gap: 20px;
+            gap: 16px;
+            margin-top: 40px;
             flex-wrap: wrap;
         }
 
-        .stats div {
-            flex: 1;
-            min-width: 80px;
-            border-right: 2px solid #ccc;
-            padding-right: 10px;
+        /* Right — identity card */
+        .identity-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
         }
 
-        .stats div:last-child {
-            border-right: none;
+        .identity-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--red), transparent);
         }
 
-        .stats p {
-            font-size: 22px;
-            font-weight: bold;
+        .id-label {
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 28px;
         }
 
-        .stats span {
+        .id-name {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 4px;
+        }
+
+        .id-handle {
             font-size: 14px;
+            color: var(--red);
+            font-family: monospace;
+            margin-bottom: 28px;
         }
 
-        /* Info */
-        .info {
-            margin-top: 20px;
-            font-size: 14px;
-            color: #ccc;
+        .id-badges {
             display: flex;
-            flex-direction: column;
+            flex-wrap: wrap;
             gap: 8px;
+            margin-bottom: 28px;
         }
 
-        .lang {
-            color: #34d399;
+        .id-badge {
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
         }
 
-        /* Difficulty */
-        .difficulty {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
+        .id-badge--red  { background: var(--red-dim); color: #ff7070; border: 1px solid var(--red-glow); }
+        .id-badge--gray { background: rgba(255,255,255,0.05); color: #aaa; border: 1px solid rgba(255,255,255,0.08); }
+
+        .id-meta {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
         }
 
-        .difficulty p {
-            font-weight: bold;
+        .id-meta-item { display: flex; flex-direction: column; gap: 4px; }
+        .id-meta-item .label { font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: var(--muted); }
+        .id-meta-item .val   { font-size: 14px; color: #ccc; font-weight: 500; }
+
+        /* ───────────────────────────────────────────────────
+           SECTION COMMON
+        ─────────────────────────────────────────────────── */
+        .about-section {
+            padding: 100px 40px;
+            position: relative;
+            overflow: hidden;
         }
 
-        .difficulty .easy {
-            color: green;
+        .about-section--alt { background: #0d0d0d; }
+
+        .section-inner {
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .difficulty .medium {
-            color: orange;
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--red);
+            margin-bottom: 20px;
         }
 
-        .difficulty .hard {
-            color: red;
+        .section-label::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 1px;
+            background: var(--red);
         }
 
-        /* Heatmap */
-        .heatmap {
-            margin-top: 20px;
+        .section-title {
+            font-size: clamp(32px, 4vw, 54px);
+            font-weight: 900;
+            color: var(--white);
+            line-height: 1.1;
+            letter-spacing: -1.5px;
+            margin: 0 0 32px;
         }
 
-        .heatmap p {
-            font-weight: bold;
+        .section-title span { color: var(--red); }
+
+        /* ───────────────────────────────────────────────────
+           APPROACH PILLARS
+        ─────────────────────────────────────────────────── */
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 48px;
+        }
+
+        .pillar-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            position: relative;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+
+        .pillar-card:hover {
+            border-color: rgba(210,1,32,0.35);
+            transform: translateY(-4px);
+        }
+
+        .pillar-number {
+            font-size: 56px;
+            font-weight: 900;
+            color: rgba(255,255,255,0.04);
+            line-height: 1;
+            margin-bottom: 16px;
+            font-family: monospace;
+        }
+
+        .pillar-icon {
+            font-size: 28px;
+            margin-bottom: 14px;
+            display: block;
+        }
+
+        .pillar-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--white);
             margin-bottom: 10px;
         }
 
-        .heatmap .grid {
+        .pillar-body {
+            font-size: 14px;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        /* ───────────────────────────────────────────────────
+           QUOTE BANNER
+        ─────────────────────────────────────────────────── */
+        .quote-section {
+            padding: 100px 40px;
+            background: var(--page-bg);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quote-section::before,
+        .quote-section::after {
+            content: '"';
+            position: absolute;
+            font-size: 300px;
+            font-weight: 900;
+            color: rgba(210,1,32,0.04);
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .quote-section::before { left: -20px; top: -40px; }
+        .quote-section::after  { right: -20px; bottom: -80px; transform: scaleX(-1); }
+
+        .big-quote {
+            max-width: 860px;
+            margin: 0 auto;
+            font-size: clamp(22px, 3vw, 36px);
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.5;
+            letter-spacing: -0.5px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .big-quote em {
+            font-style: normal;
+            color: var(--red);
+        }
+
+        .quote-attr {
+            margin-top: 24px;
+            font-size: 14px;
+            color: var(--muted);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ───────────────────────────────────────────────────
+           CODING JOURNEY CARDS
+        ─────────────────────────────────────────────────── */
+        .journey-grid {
             display: grid;
-            grid-template-columns: repeat(30, 10px);
-            gap: 3px;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+            margin-top: 48px;
         }
 
-        .heatmap .grid div {
-            width: 10px;
-            height: 10px;
-            border-radius: 2px;
+        .journey-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 36px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s, box-shadow 0.3s;
         }
 
-        /* ✅ Responsive */
-        @media (max-width: 992px) {
-            .card {
-                flex: 1 1 100%;
-                /* full width on tablets/mobiles */
-            }
-
-            .stats {
-                justify-content: space-around;
-            }
-
-            .heatmap .grid {
-                grid-template-columns: repeat(20, 10px);
-            }
+        .journey-card:hover {
+            border-color: rgba(210,1,32,0.3);
+            box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(210,1,32,0.08);
         }
 
-        /* for small screens */
-        @media (max-width: 576px) {
-            .cards-container {
-                flex-direction: column;
-            }
+        /* Subtle corner glow on hover */
+        .journey-card::after {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            width: 120px; height: 120px;
+            background: radial-gradient(circle at top right, var(--red-dim), transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s;
+            pointer-events: none;
+        }
 
-            .card {
-                flex: 1 1 100%;
-                /* full width on small screens */
-                padding: 10px
-            }
+        .journey-card:hover::after { opacity: 1; }
 
-            .stats {
-                justify-content: space-between
-            }
+        .journey-card-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--red);
+            margin-bottom: 28px;
+        }
 
-            .heatmap .grid {
-                grid-template-columns: repeat(20, 10px);
-            }
+        /* Profile row */
+        .dev-profile {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 28px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .dev-avatar {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            border: 2px solid rgba(210,1,32,0.3);
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .dev-name  { font-size: 17px; font-weight: 700; color: var(--white); }
+        .dev-handle{ font-size: 13px; color: var(--muted); margin-top: 2px; }
+
+        /* Stat grid inside cards */
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .stat-box {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 14px 10px;
+            text-align: center;
+        }
+
+        .stat-box .val  { font-size: 22px; font-weight: 800; color: var(--white); line-height: 1; }
+        .stat-box .lbl  { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-top: 4px; }
+
+        /* Github card stat grid — 5 cols */
+        .stat-grid--5 { grid-template-columns: repeat(5, 1fr); }
+
+        .meta-row {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .meta-item { font-size: 13px; color: #888; display: flex; align-items: center; gap: 6px; }
+        .meta-item .lang-dot { color: #34d399; font-weight: 600; }
+
+        /* Difficulty row */
+        .diff-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .diff-box {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 14px 10px;
+            text-align: center;
+        }
+
+        .diff-box .dval { font-size: 24px; font-weight: 800; }
+        .diff-box .dlbl { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-top: 4px; }
+        .diff-easy   { color: #4ade80; }
+        .diff-medium { color: #fbbf24; }
+        .diff-hard   { color: #f87171; }
+
+        .streak-banner {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(210,1,32,0.08);
+            border: 1px solid rgba(210,1,32,0.2);
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #ff9999;
+            margin-bottom: 20px;
+        }
+
+        /* ───────────────────────────────────────────────────
+           SKILLS SECTION
+        ─────────────────────────────────────────────────── */
+        .skills-section {
+            padding: 100px 40px;
+            background: var(--page-bg);
+        }
+
+        .skills-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* ───────────────────────────────────────────────────
+           MOBILE
+        ─────────────────────────────────────────────────── */
+        @media (max-width: 1024px) {
+            .hero-inner    { grid-template-columns: 1fr; gap: 48px; }
+            .pillars-grid  { grid-template-columns: 1fr 1fr; }
+            .about-hero::before { display: none; }
+        }
+
+        @media (max-width: 768px) {
+            .about-hero, .about-section, .quote-section, .skills-section { padding: 80px 24px; }
+            .hero-title    { font-size: 38px; letter-spacing: -1px; }
+            .pillars-grid  { grid-template-columns: 1fr; }
+            .journey-grid  { grid-template-columns: 1fr; }
+            .stat-grid--5  { grid-template-columns: repeat(3, 1fr); }
+            .id-meta       { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 480px) {
+            .stat-grid     { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
-
-    <!-- styles -->
-    <link href="assets/css/plugins.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/style.css" rel="stylesheet" type="text/css">
 </head>
 
 <body class="preloader cursor-anim-enable dark-nav">
-    <!-- preloader-loading start -->
     <x-loader />
 
-    <!-- pointer start -->
-    <!-- <div class="pointer js-pointer" id="js-pointer">
-   <i class="pointer__inner fas fa-long-arrow-alt-right"></i>
-   <i class="pointer__inner fas fa-search"></i>
-   <i class="pointer__inner fas fa-link"></i>
-  </div> -->
-    <!-- pointer end -->
-
-    <!-- to top btn start -->
     <a href="#up" class="scroll-to-btn js-headroom js-midnight-color js-smooth-scroll js-pointer-large">
-        <span class="scroll-to-btn__box">
-            <span class="scroll-to-btn__arrow"></span>
-        </span>
-    </a><!-- to top btn end -->
+        <span class="scroll-to-btn__box"><span class="scroll-to-btn__arrow"></span></span>
+    </a>
+    <a href="#down" class="scroll-to-btn to-down js-headroom js-midnight-color js-smooth-scroll js-pointer-large js-scroll-btn">
+        <span class="scroll-to-btn__box"><span class="scroll-to-btn__arrow"></span></span>
+    </a>
 
-    <!-- scroll down btn start -->
-    <a href="#down"
-        class="scroll-to-btn to-down js-headroom js-midnight-color js-smooth-scroll js-pointer-large js-scroll-btn">
-        <span class="scroll-to-btn__box">
-            <span class="scroll-to-btn__arrow"></span>
-        </span>
-    </a><!-- scroll down btn end -->
-
-    <!-- header start -->
     <x-header />
-    <!-- main start -->
+
     <main class="js-animsition-overlay" data-animsition-overlay="true">
-        <!-- about start -->
-        <section id="up" class="lines-section pos-rel section-bg-dark-1">
-            <!-- lines-container start -->
-            <div class="lines-container pos-rel no-lines flex-min-height-100vh">
-                <!-- flex-container start -->
-                <div class="container flex-container reverse padding-top-30 padding-bottom-60">
-                    <!-- column start -->
-                    <div class="twelve-columns column-100-100">
-                        <!-- wo we are start -->
-                        <div class="padding-top-90">
-                            <div class="js-scrollanim">
-                                <h2 class="headline-s hidden-box">
-                                    <span class="anim-slide"> My Journey in Web Development & Freelancing</span>
-                                </h2>
-                                <p class="body-text-s margin-top-20 anim-text-reveal tr-delay-02">I am Prince Kumar, a
-                                    passionate developer who loves building impactful projects and solving real-world
-                                    problems with technology. Over the years, I have explored different areas of
-                                    development, from frontend design to backend logic, and I continuously push myself
-                                    to learn and grow in every aspect of coding. I believe in writing clean, efficient
-                                    code and creating user-friendly solutions that make a difference.<br><br>
 
-                                    Apart from my academic journey in BCA, I dedicate a lot of time to improving my
-                                    skills through platforms like GitHub, LeetCode, and other coding communities. These
-                                    platforms not only help me sharpen my problem-solving abilities but also allow me to
-                                    contribute to open-source projects and showcase my work. I regularly track my
-                                    progress through stats such as repositories, coding streaks, problem-solving
-                                    achievements, and other milestones, which reflect my consistency and dedication as a
-                                    developer.<br><br>
+        {{-- ══════════════════════════════════════════
+             HERO
+        ══════════════════════════════════════════ --}}
+        <section id="up" class="about-hero">
+            <div class="hero-inner">
 
-                                    I am also doing freelancing, where I get the opportunity to work on diverse projects
-                                    and collaborate with different clients. This experience helps me understand
-                                    real-world requirements better and polish my skills in delivering professional
-                                    solutions. Whether it’s web development, solving coding challenges, or experimenting
-                                    with new technologies, I always strive to give my best and keep growing in my
-                                    journey as a developer.<br><br>
+                {{-- Left: text --}}
+                <div>
+                    <div class="hero-eyebrow reveal">About Me</div>
 
-                                    I enjoy turning ambiguous product needs into simple UX and reliable backends: small,
-                                    testable components on the frontend, clear REST endpoints on the backend, and
-                                    thoughtful database schemas that avoid common pitfalls (N+1 queries, missing
-                                    indexes). I prefer shipping usable features quickly and iterating with real user
-                                    feedback.<br><br>
+                    <h1 class="hero-title reveal">
+                        Building the web,
+                        <em>one commit at a time.</em>
+                    </h1>
 
-                                </p>
-                            </div>
-                        </div><!-- wo we are end -->
+                    <p class="hero-body reveal">
+                        I'm <strong>Prince Kumar</strong> — a Full-Stack Developer from Kota, India.
+                        I love turning complex ideas into clean, fast, production-ready software.
+                        From pixel-perfect UIs to scalable backends, I work across the entire stack.<br><br>
+                        Pursuing <strong>BCA</strong>, active on GitHub &amp; LeetCode, and doing
+                        <strong>freelance</strong> work for clients who need real solutions shipped fast.
+                    </p>
 
-                        <!-- what we do start -->
-                        {{-- <div class="padding-top-90">
-                            <h2 class="headline-s hidden-box">
-                                <span class="anim-slide js-scrollanim">What We Do</span>
-                            </h2>
-                            <!-- accordion start -->
-                            <div
-                                class="accordion accordion_underline js-accordion js-accordion-first-active margin-top-60">
-                                <!-- accordion__tab start -->
-                                <div class="accordion__tab js-accordion-tab">
-                                    <div class="accordion__btn js-accordion-btn js-pointer-large">
-                                        <h6 class="accordion__btn-title headline-xxs margin-top-bottom-20">What type of
-                                            information is collected and How?</h6>
-                                    </div>
-                                    <div class="accordion__content js-accordion-content">
-                                        <p class="body-text-xs">Personal information (also known as personally
-                                            identifiable information) as used in this Privacy Policy is information that
-                                            directly identifies you and that may also be used to contact you either
-                                            online or offline. Graphic India collects personal information on our
-                                            websites and apps. Graphic India may also collect personal information in
-                                            connection with marketing or email campaigns. The type of personal
-                                            information collected will vary depending upon the activity and may include
-                                            your first and last name, e-mail address, account information for certain
-                                            third party sites or networks such as Facebook or Twitter, phone numbers
-                                            (including cell phone numbers), home address, and zip code.<br><br>
-                                            In addition, we may collect demographic information such as gender;
-                                            information about your computer, hardware, software and/or platform;
-                                            Internet IP address and connection; information about online activity such
-                                            as website/ mobile app usage and time spent on the Graphic Pop app; and,
-                                            other data that you may provide.<br><br>
-                                        </p>
-                                    </div>
-                                </div><!-- accordion__tab end -->
-
-                                <!-- accordion__tab start -->
-                                <div class="accordion__tab js-accordion-tab">
-                                    <div class="accordion__btn js-accordion-btn js-pointer-large">
-                                        <h6 class="accordion__btn-title headline-xxs margin-top-bottom-20">Cookies and
-                                            Analytics</h6>
-                                    </div>
-                                    <div class="accordion__content js-accordion-content">
-                                        <p class="body-text-xs">Graphic India uses "cookies" in connection with the
-                                            Services. A cookie is a piece of data stored on a website visitor's hard
-                                            drive to help us improve your access to our website and identify repeat
-                                            visitors to our website. For instance, when we use a cookie to identify you,
-                                            you would not have to log in a password more than once, thereby saving time
-                                            while on our website. Usage of a cookie is in no way linked to any personal
-                                            information on our website. The information that we collect with cookies may
-                                            include your IP address, information about how you interact with
-                                            advertisements and other content, browser type, system type, device type,
-                                            the content and pages that you access, the date and time you view pages, and
-                                            the page from which you navigated. In addition to cookies, we may use
-                                            analytics tools and other third party technologies to collect non-personal
-                                            information in the form of various usage and user metrics when you use our
-                                            online products and services. These tools and technologies collect and
-                                            analyze certain types of information, including cookies, IP addresses,
-                                            device and software identifiers, referring and exit URLs, onsite behavior
-                                            and usage information, app use metrics and statistics, feature use metrics
-                                            and statistics, usage and purchase history, MAC Address, mobile unique
-                                            device ID, and/or other similar information.<br><br>
-
-                                            The third party analytics companies who collect information on our websites,
-                                            apps and other online products and/or services may combine the information
-                                            collected with other information they have independently collected from
-                                            other websites and/or apps or other online products and services relating to
-                                            your activities across their network of websites as well as apps and/or
-                                            online products and services. Many of these companies collect and use
-                                            information under their own privacy policies. Some of these companies may
-                                            also help us tailor advertising that we think may be of interest to our
-                                            users and to collect and use other data about user activities on our
-                                            services (e.g., to allow them to tailor ads on third party
-                                            services).<br><br>
-
-                                            If you wish to not have this information used for the purpose of serving you
-                                            targeted ads, you may opt-out as described below.<br><br>
-
-                                            Please note this does not opt you out of being served advertising. To the
-                                            extent we permit such advertising to occur, you will continue to receive
-                                            generic ads.<br><br>
-
-                                        </p>
-                                    </div>
-                                </div><!-- accordion__tab end -->
-
-                                <!-- accordion__tab start -->
-                                <div class="accordion__tab js-accordion-tab">
-                                    <div class="accordion__btn js-accordion-btn js-pointer-large">
-                                        <h6 class="accordion__btn-title headline-xxs margin-top-bottom-20">Children
-                                            (Below the age of 13 years): Special Note</h6>
-                                    </div>
-                                    <div class="accordion__content js-accordion-content">
-                                        <p class="body-text-xs">We do not knowingly seek or collect personal information
-                                            from children under the age of thirteen (13), nor do we provide it to third
-                                            parties. If we determine we have inadvertently gathered any personal
-                                            information from a user under the age of 13, we will promptly delete any and
-                                            all such personal information from our records.<br><br></p>
-                                    </div>
-                                </div><!-- accordion__tab end -->
-
-                                <!-- accordion__tab start -->
-                                <div class="accordion__tab js-accordion-tab">
-                                    <div class="accordion__btn js-accordion-btn js-pointer-large">
-                                        <h6 class="accordion__btn-title headline-xxs margin-top-bottom-20">How Personal
-                                            Information is Used?</h6>
-                                    </div>
-                                    <div class="accordion__content js-accordion-content">
-                                        <p class="body-text-xs">We may use information from users of our mobile app and
-                                            website, including personal information, behavioral metrics, and other
-                                            non-personally identifiable information to operate, provide, improve, and
-                                            maintain our app, websites and services, to develop new products and
-                                            services, to prevent abuse and fraud, to personalize and display
-                                            advertisements and other content for you, and for other administrative and
-                                            internal business purposes. The personal information you provide us will
-                                            allow you to access the Services and also allow us to deliver messages to
-                                            your personal accounts on certain third party sites or networks, such as
-                                            Facebook and Twitter. It will also be used to alert you of new products;
-                                            handle and route your customer service or technical support questions or
-                                            issues; and, notify you of promotions, special events, and offers. By
-                                            providing us with a cell phone number, you agree that we may send you text
-                                            messages either directly or through a third party site or service (and you
-                                            are responsible for any data rates or text fees that may apply).<br><br>
-
-                                            We may also need to use your personal information to: (1) respond to
-                                            subpoenas or court orders; (2) establish or exercise our legal rights or
-                                            defend against legal claims; (3) protect ourselves, our employees,
-                                            contractors, customers, users and others and our Services from fraudulent,
-                                            abusive, or unlawful uses; (4) investigate and defend ourselves against
-                                            third party claims or allegations; (5) enforce our Terms of Use; or, (6) the
-                                            extent otherwise required by applicable law.<br><br>
-
-                                            If you provide us account information for a third-party service, such as
-                                            Facebook or Twitter, we may also contact you on such third-party service to
-                                            provide information or updates about our Services. This Privacy Policy is
-                                            implemented pursuant to the framework of the U.S/EU Safe Harbor and the
-                                            U.S./Swiss Safe Harbor and adheres to the Safe Harbor privacy principles
-                                            contained therein and complies with the European Union Directive on Data
-                                            Protection or the Federal Data Protection and Information Commission of
-                                            Switzerland. If at any time you wish to opt-out from having your personal
-                                            information used in order to deliver information from Graphic Pop about new
-                                            products, services, or promotions, you may contact us at
-                                            info@graphicindia.com with the words “Opt Out” in the subject line of your
-                                            email.<br><br>
-
-                                        </p>
-                                    </div>
-                                </div><!-- accordion__tab end -->
-                                <!-- accordion__tab start -->
-                                <div class="accordion__tab js-accordion-tab">
-                                    <div class="accordion__btn js-accordion-btn js-pointer-large">
-                                        <h6 class="accordion__btn-title headline-xxs margin-top-bottom-20">Disclosure of
-                                            Personal Information</h6>
-                                    </div>
-                                    <div class="accordion__content js-accordion-content">
-                                        <p class="body-text-xs">We do not sell, rent, or give any retained customer
-                                            information to third parties outside of what is necessary to provide the
-                                            Services. Such third parties have access to personal information needed to
-                                            perform their functions, but may not use it for other purposes. We may
-                                            provide personal information to third parties for their use in performing
-                                            internal business functions (e.g., payment processing, customer service,
-                                            maintenance, security, data analysis, email transmission, beta testing, or
-                                            data hosting) on our behalf. Additionally, some third party service
-                                            providers may collect information, including personal information, on our
-                                            behalf. Whenever possible, we require such third-parties to only collect and
-                                            use personal information in accordance with this Privacy Policy, to maintain
-                                            the confidentiality, security, and integrity of such personal information,
-                                            and for no purpose other than providing us with our requested services. In
-                                            the event we are acquired by or merged with another company we may transfer
-                                            your personal information to the new company.<br><br>
-                                        </p>
-                                    </div>
-                                </div><!-- accordion__tab end -->
-                                <!-- accordion__tab start -->
-                                <div class="accordion__tab js-accordion-tab">
-                                    <div class="accordion__btn js-accordion-btn js-pointer-large">
-                                        <h6 class="accordion__btn-title headline-xxs margin-top-bottom-20">Your Access
-                                            to and Control Over Your Personal Information</h6>
-                                    </div>
-                                    <div class="accordion__content js-accordion-content">
-                                        <p class="body-text-xs">You may request that we modify or delete your user
-                                            account(s) and any related data at any time. If you wish to delete your user
-                                            account(s), please email us at info@graphicindia.com<br><br>
-
-                                            with the words “Delete Account” in the subject line of your email. You may,
-                                            at any time, update or correct personal information that you have provided
-                                            to us by contacting us at the mailing or email address provided
-                                            below.<br><br>
-                                        </p>
-                                    </div>
-                                </div><!-- accordion__tab end -->
-                                <!-- accordion__tab start -->
-                                <div class="accordion__tab js-accordion-tab">
-                                    <div class="accordion__btn js-accordion-btn js-pointer-large">
-                                        <h6 class="accordion__btn-title headline-xxs margin-top-bottom-20">Personal
-                                            Information Protection</h6>
-                                    </div>
-                                    <div class="accordion__content js-accordion-content">
-                                        <p class="body-text-xs">The security of your personal information is important
-                                            to us. We have implemented technical, administrative and physical security
-                                            measures to attempt to protect your personal information from unauthorized
-                                            access and improper use. However, please understand that no security measure
-                                            is perfect or impenetrable and therefore we cannot and do not guarantee the
-                                            security of your personal information. We also protect your information
-                                            offline. Only employees who need the information to perform a specific job
-                                            (for example, customer service) are granted access to personal information.
-                                            The computers/servers in which we store personal information are kept in a
-                                            secure environment.<br><br>
-                                        </p>
-                                    </div>
-                                </div><!-- accordion__tab end -->
-                                <!-- accordion__tab start -->
-                                <div class="accordion__tab js-accordion-tab">
-                                    <div class="accordion__btn js-accordion-btn js-pointer-large">
-                                        <h6 class="accordion__btn-title headline-xxs margin-top-bottom-20">Submitting
-                                            Personal Information</h6>
-                                    </div>
-                                    <div class="accordion__content js-accordion-content">
-                                        <p class="body-text-xs">In some of our email messages, we may use a
-                                            "click-through URL" linked to content on an app/ website. When you click one
-                                            of these URLs, you pass through a separate web server before arriving at the
-                                            destination page. We track this click-through data to help us determine
-                                            interest in particular topics and measure the effectiveness of our customer
-                                            communications. If you prefer not to be tracked in this way, you should not
-                                            click text or graphic links in the email messages.<br><br>
-                                        </p>
-                                    </div>
-                                </div><!-- accordion__tab end -->
-                                <!-- accordion__tab start -->
-                                <div class="accordion__tab js-accordion-tab">
-                                    <div class="accordion__btn js-accordion-btn js-pointer-large">
-                                        <h6 class="accordion__btn-title headline-xxs margin-top-bottom-20">Interactive
-                                            Features</h6>
-                                    </div>
-                                    <div class="accordion__content js-accordion-content">
-                                        <p class="body-text-xs">If you use a forum, blog, bulletin board, chat room,
-                                            user commenting features, or other interactive or social features that may
-                                            be offered through any of our Services, you should be aware that any
-                                            personal information you submit, display, or publish there is considered
-                                            publicly available and can be read, collected, used, and disclosed by other
-                                            users of those features, by us, and other third parties without restriction.
-                                            To request removal of your personal information from our blog or community
-                                            forum, contact us at info@graphicindia.com. In some cases, we may not be
-                                            able to remove your personal information, in which case we will let you know
-                                            if we are unable to do so and why.<br><br>
-                                        </p>
-                                    </div>
-                                </div><!-- accordion__tab end -->
-                                <!-- accordion__tab start -->
-                                <div class="accordion__tab js-accordion-tab">
-                                    <div class="accordion__btn js-accordion-btn js-pointer-large">
-                                        <h6 class="accordion__btn-title headline-xxs margin-top-bottom-20">Submitting
-                                            Personal Information
-                                        </h6>
-                                    </div>
-                                    <div class="accordion__content js-accordion-content">
-                                        <p class="body-text-xs">If you use a forum, blog, bulletin board, chat room,
-                                            user commenting features, or other interactive or social features that may
-                                            be offered through any of our Services, you should be aware that any
-                                            personal information you submit, display, or publish there is considered
-                                            publicly available and can be read, collected, used, and disclosed by other
-                                            users of those features, by us, and other third parties without restriction.
-                                            To request removal of your personal information from our blog or community
-                                            forum, contact us at info@graphicindia.com. In some cases, we may not be
-                                            able to remove your personal information, in which case we will let you know
-                                            if we are unable to do so and why.<br><br>
-                                        </p>
-                                    </div>
-                                </div><!-- accordion__tab end -->
-                                <!-- accordion__tab start -->
-                                <div class="accordion__tab js-accordion-tab">
-                                    <div class="accordion__btn js-accordion-btn js-pointer-large">
-                                        <h6 class="accordion__btn-title headline-xxs margin-top-bottom-20">Links and
-                                            Third Party Messaging
-                                        </h6>
-                                    </div>
-                                    <div class="accordion__content js-accordion-content">
-                                        <p class="body-text-xs">The mobile app/ website may contain links to other
-                                            websites including social networking sites and services. Please be aware
-                                            that we are not responsible for the content or privacy practices of such
-                                            other websites. This Privacy Policy does not apply to third party websites
-                                            and we encourage our users to be aware when they leave our app/ website and
-                                            to read the privacy statements of any other website that collects personal
-                                            information since your rights will be governed by those third party policies
-                                            (and not by this Privacy Policy or Graphic India). Additionally, when using
-                                            the Services if you choose to download apps or other products you may be
-                                            redirected to a third party site or service in order to complete the
-                                            download. Those third party sites and services may employ cookies. You may
-                                            receive messages or other forms of communication in connection with your use
-                                            of the app or other products both from us and from third parties.
-                                            Additionally, your use of the app or other products is governed by and
-                                            subject to the applicable terms of use and/or privacy policy associated with
-                                            the third party site or service, and we are not responsible for the content
-                                            or privacy practices of such other sites or services.<br><br>
-                                        </p>
-                                    </div>
-                                </div><!-- accordion__tab end -->
-                                <!-- accordion__tab start -->
-                                <div class="accordion__tab js-accordion-tab">
-                                    <div class="accordion__btn js-accordion-btn js-pointer-large">
-                                        <h6 class="accordion__btn-title headline-xxs margin-top-bottom-20">How You Can
-                                            Ask Questions or Send Us Comments About This Privacy Policy
-                                        </h6>
-                                    </div>
-                                    <div class="accordion__content js-accordion-content">
-                                        <p class="body-text-xs">Graphic India welcomes your comments regarding this
-                                            Privacy Policy. If you have any questions about this Privacy Policy or have
-                                            technical or general support questions, please contact us at
-                                            info@graphicindia.com.<br><br>
-                                        </p>
-                                    </div>
-                                </div><!-- accordion__tab end -->
-                                <!-- accordion__tab start -->
-                                <div class="accordion__tab js-accordion-tab">
-                                    <div class="accordion__btn js-accordion-btn js-pointer-large">
-                                        <h6 class="accordion__btn-title headline-xxs margin-top-bottom-20">Notice of
-                                            Changes to the Privacy Policy
-                                        </h6>
-                                    </div>
-                                    <div class="accordion__content js-accordion-content">
-                                        <p class="body-text-xs">We may update this Privacy Policy from time to time. If
-                                            we do, we will update the “Last Updated” date at the bottom of the Privacy
-                                            Policy. If we make material changes to how we use personal information, we
-                                            will attempt to notify you of the change and to give you the opportunity to
-                                            exercise choice as to how your personal information is used. For all changes
-                                            to this Privacy Policy, we will post the updated Privacy Policy on Graphic
-                                            Pop app or website. We encourage you to review this Privacy Policy
-                                            periodically to stay informed about our collection, use and disclosure of
-                                            personal information.<br><br>
-                                        </p>
-                                    </div>
-                                </div><!-- accordion__tab end -->
-
-                            </div><!-- accordion end -->
-                        </div> --}}
-                        <!-- what we do end -->
-
-                    </div><!-- column end -->
-                </div><!-- flex-container end -->
-            </div><!-- lines-container end -->
-        </section><!-- about end -->
-
-        <section class="lines-section pos-rel section-bg-dark-1">
-            <!-- lines-container start -->
-            <div class="lines-container pos-rel no-lines flex-min-height-40vh">
-                <!-- flex-container start -->
-                <div class="container flex-container reverse padding-top-10 padding-bottom-10">
-                    <!-- column start -->
-                    <div class="twelve-columns column-100-100">
-                        <!-- wo we are start -->
-                        <div class="">
-                            <div class="js-scrollanim">
-                                <h2 class="headline-s hidden-box">
-                                    <span class="anim-slide"> My Approach, Mission & Vision</span>
-                                </h2>
-                                <p class="body-text-s margin-top-20 anim-text-reveal tr-delay-02"
-                                    style="font-size: 20px">
-                                    My mission as a developer is simple: to build software that is reliable, impactful,
-                                    and easy to use. I believe technology should solve problems without adding
-                                    complexity, and that’s what drives my work every single day.<br><br>
-                                    My vision is to grow into a versatile full-stack and mobile developer who creates
-                                    projects that genuinely help people in their daily lives. I aim to design solutions
-                                    that not only look good but also perform well under real-world challenges. For me,
-                                    development isn’t just about coding—it’s about making an impact. <br><br>
-                                    <strong>How I Work:</strong>
-                                    I follow a clear and practical approach. I always start small and iterate fast,
-                                    breaking down big ideas into manageable steps. I keep my code clean and readable
-                                    because I believe good code should be easy to understand for both humans and
-                                    machines. I design with users in mind, ensuring the experience is smooth and
-                                    intuitive. At the same time, I never compromise on data integrity or scalability,
-                                    because a strong foundation is what makes software truly reliable.
-                                </p>
-                            </div>
-                        </div><!-- wo we are end -->
-
-
-
-                    </div><!-- column end -->
-                </div><!-- flex-container end -->
-            </div><!-- lines-container end -->
-        </section>
-        <section class="lines-section pos-rel section-bg-dark-1">
-            <!-- lines-container start -->
-            <div class="lines-container pos-rel no-lines flex-min-height-40vh">
-                <!-- flex-container start -->
-                <div class="container flex-container reverse padding-top-40 padding-bottom-60">
-                    <!-- column start -->
-                    <div class="twelve-columns column-100-100">
-                        <!-- wo we are start -->
-                        <div class="">
-                            <div class="js-scrollanim">
-                                <h2 class="headline-s hidden-box">
-                                    <span class="anim-slide"> A Fun Personal Touch</span>
-                                </h2>
-                                <p class="body-text-s margin-top-20 anim-text-reveal tr-delay-02"
-                                    style="font-size: 20px">
-                                    Outside of coding, I’m someone who enjoys the simple things—like sipping chai while
-                                    sketching new UI ideas or exploring little productivity hacks that make life easier.
-                                    For me, coding is not just technical work; it feels like solving a puzzle while also
-                                    creating art. It’s this balance of logic and creativity that keeps me inspired every
-                                    day.
-                                    <br><br>
-                                    <em>“I believe in the mindset: dream big, start small, and ship often—because
-                                        consistent progress always leads to meaningful results.”</em>
-                                </p>
-                            </div>
-                        </div><!-- wo we are end -->
-
-
-
-                    </div><!-- column end -->
-                </div><!-- flex-container end -->
-            </div><!-- lines-container end -->
-        </section>
-        <section class="lines-section pos-rel section-bg-dark-1">
-            <!-- lines-container start -->
-            <div class="lines-container pos-rel no-lines flex-min-height-40vh">
-                <!-- flex-container start -->
-                <div class="container flex-container reverse padding-top-40 padding-bottom-60">
-                    <!-- column start -->
-                    <div class="twelve-columns column-100-100">
-                        <!-- wo we are start -->
-                        <div class="">
-                            <div class="js-scrollanim">
-                                <h2 style="margin-bottom: 20px;" class="headline-s hidden-box">
-                                    <span class="anim-slide"> Coding Journey</span>
-                                </h2>
-                                <!-- about.blade.php -->
-                                <div class="cards-container">
-
-                                    <!-- GitHub Card -->
-                                    <div class="card github-card">
-                                        <h6 class="headline-xxs hidden-box" style="margin-bottom: 20px;">
-                                            <span class="anim-slide text-color-red">👨‍💻 My GitHub Journey</span>
-                                        </h6>
-
-                                        <!-- Profile Section -->
-                                        <div class="profile">
-                                            <img src="{{ $github['avatar_url'] }}" alt="Avatar">
-                                            <div>
-                                                <p class="name">{{ $github['name'] }}</p>
-                                                <p class="username">{{ '@' . $github['login'] }}</p>
-                                            </div>
-                                        </div>
-
-                                        <!-- Stats Section -->
-                                        <div class="stats">
-                                            <div>
-                                                <p>{{ $github['followers'] }}</p><span>Followers</span>
-                                            </div>
-                                            <div>
-                                                <p>{{ $github['following'] }}</p><span>Following</span>
-                                            </div>
-                                            <div>
-                                                <p>{{ $github['public_repos'] }}</p><span>Repos</span>
-                                            </div>
-                                            <div>
-                                                <p>{{ $totalStars ?? 0 }}</p><span>Stars</span>
-                                            </div>
-                                            <div>
-                                                <p>{{ $totalForks ?? 0 }}</p><span>Forks</span>
-                                            </div>
-                                        </div>
-
-                                        <!-- Additional Info -->
-                                        <div class="info">
-                                            <p>📍 <span>{{ $github['location'] }}</span></p>
-                                            <p>📅 Since
-                                                {{ \Carbon\Carbon::parse($github['created_at'])->format('M Y') }}</p>
-                                            <p>⏳ Updated
-                                                {{ \Carbon\Carbon::parse($github['updated_at'])->diffForHumans() }}</p>
-                                            <p>🟢 Languages:
-                                                @foreach ($languages as $lang => $bytes)
-                                                    <span class="lang">{{ $lang }}</span>
-                                                    @if (!$loop->last)
-                                                        ,
-                                                    @endif
-                                                @endforeach
-                                            </p>
-                                        </div>
-
-                                        <a href="https://github.com/{{ $github['login'] }}" target="_blank"
-                                            class="border-btn js-pointer-large margin-top-20">
-                                            <span class="border-btn__inner">Visit Profile</span>
-                                            <span class="border-btn__lines-1"></span>
-                                            <span class="border-btn__lines-2"></span>
-                                        </a>
-                                    </div>
-
-                                    <!-- LeetCode Card -->
-                                    <div class="card leetcode-card">
-                                        <h6 class="headline-xxs hidden-box" style="margin-bottom: 20px;">
-                                            <span class="anim-slide text-color-red">🧩 My LeetCode Practice</span>
-                                        </h6>
-
-                                        <!-- Profile Section -->
-                                        <div class="profile">
-                                            <img src="{{ $leetcode['profile']['profile']['userAvatar'] }}" alt="LeetCode Logo">
-                                            <div>
-                                                <p class="name">{{ $leetcode['profile']['username'] }}</p>
-                                                <p class="username">Ranking #{{ number_format($leetcode['profile']['profile']['ranking']) }}
-                                                </p>
-                                            </div>
-                                        </div>
-
-                                        <!-- Stats Section -->
-                                        <div class="stats">
-        <div>
-            <p>{{ collect($leetcode['problems']['numAcceptedQuestions'])->firstWhere('difficulty', 'EASY')['count']+collect($leetcode['problems']['numAcceptedQuestions'])->firstWhere('difficulty', 'MEDIUM')['count']+collect($leetcode['problems']['numAcceptedQuestions'])->firstWhere('difficulty', 'HARD')['count'] ?? 0 }}</p><span>Solved Problem</span>
-        </div>
-        <div>
-            <p>{{ round($leetcode['contest']['rating'], 2) }}</p><span>Rating</span>
-        </div>
-        <div>
-            <p>{{ $leetcode['contest']['globalRanking'] }}</p><span>Global Rank</span>
-        </div>
-    </div>
-
-                                       <!-- Difficulty Breakdown -->
-    <div class="difficulty">
-        <div>
-            <p class="easy">{{ collect($leetcode['problems']['numAcceptedQuestions'])->firstWhere('difficulty', 'EASY')['count'] ?? 0 }}</p>
-            <span>Easy</span>
-        </div>
-        <div>
-            <p class="medium">{{ collect($leetcode['problems']['numAcceptedQuestions'])->firstWhere('difficulty', 'MEDIUM')['count'] ?? 0 }}</p>
-            <span>Medium</span>
-        </div>
-        <div>
-            <p class="hard">{{ collect($leetcode['problems']['numAcceptedQuestions'])->firstWhere('difficulty', 'HARD')['count'] ?? 0 }}</p>
-            <span>Hard</span>
-        </div>
-    </div>
-                                        <!-- Submission Calendar -->
-                                        <div class="heatmap">
-                                           <p>🔥 Daily Streak: {{ $leetcode['calendar']['streak'] }} days</p>
-        {{-- <div class="grid">
-            @foreach (json_decode($leetcode['calendar']['submissionCalendar'], true) as $day => $count)
-                <div style="width:10px;height:10px;display:inline-block;
-                            background: {{ $count > 0 ? '#34d399' : '#e5e7eb' }}">
+                    <div class="hero-cta-row reveal">
+                        <a href="/contact" class="border-btn js-pointer-large">
+                            <span class="border-btn__inner">Hire Me</span>
+                            <span class="border-btn__lines-1"></span>
+                            <span class="border-btn__lines-2"></span>
+                        </a>
+                        <a href="/my-resume" class="border-btn js-pointer-large">
+                            <span class="border-btn__inner">My Resume</span>
+                            <span class="border-btn__lines-1"></span>
+                            <span class="border-btn__lines-2"></span>
+                        </a>
+                    </div>
                 </div>
-            @endforeach
-        </div> --}}
-                                        </div>
 
-                                        <a href="https://leetcode.com/{{ $github['login'] }}" target="_blank"
-                                            class="border-btn js-pointer-large margin-top-20">
-                                            <span class="border-btn__inner">Visit Profile</span>
-                                            <span class="border-btn__lines-1"></span>
-                                            <span class="border-btn__lines-2"></span>
-                                        </a>
-                                    </div>
-                                </div>
+                {{-- Right: identity card --}}
+                <div class="reveal reveal--right">
+                    <div class="identity-card">
+                        <div class="id-label">Developer Profile</div>
+                        <div class="id-name">Prince Kumar</div>
+                        <div class="id-handle">@scriptxprince</div>
 
+                        <div class="id-badges">
+                            <span class="id-badge id-badge--red">Full-Stack Dev</span>
+                            <span class="id-badge id-badge--red">Freelancer</span>
+                            <span class="id-badge id-badge--gray">MERN Stack</span>
+                            <span class="id-badge id-badge--gray">Laravel</span>
+                            <span class="id-badge id-badge--gray">BCA Student</span>
+                        </div>
 
-
+                        <div class="id-meta">
+                            <div class="id-meta-item">
+                                <span class="label">Location</span>
+                                <span class="val">🇮🇳 Kota, Rajasthan</span>
                             </div>
-                        </div><!-- wo we are end -->
+                            <div class="id-meta-item">
+                                <span class="label">Status</span>
+                                <span class="val" style="color:#4ade80;">● Open to Work</span>
+                            </div>
+                            <div class="id-meta-item">
+                                <span class="label">GitHub</span>
+                                <span class="val">PrinceInScripts</span>
+                            </div>
+                            <div class="id-meta-item">
+                                <span class="label">Email</span>
+                                <span class="val" style="font-size:12px;">princepk7878kumar@gmail.com</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-
-
-                    </div><!-- column end -->
-                </div><!-- flex-container end -->
-            </div><!-- lines-container end -->
+            </div>
         </section>
 
-        <!-- clients start -->
-        <section id="down" class="pos-rel section-bg-dark-1">
-            <!-- pos-rel start -->
-            <div class="pos-rel flex-min-height-100vh">
-                <!-- container start -->
-                <div class="padding-top-bottom-30 container">
-                    <!-- title start -->
-                    <h2 class="headline-l js-scrollanim">
-                        <span class="hidden-box d-block">
-                            <span class="">
-                                <span class="text-color-red">Skills</span>
-                            </span>
-                        </span>
+        {{-- ══════════════════════════════════════════
+             APPROACH / PILLARS
+        ══════════════════════════════════════════ --}}
+        <section class="about-section about-section--alt">
+            <div class="section-inner">
+                <div class="reveal">
+                    <div class="section-label">How I Work</div>
+                    <h2 class="section-title">Mission, <span>Vision</span> & Approach</h2>
+                    <p style="color:var(--muted);font-size:16px;line-height:1.8;max-width:680px;">
+                        My mission is to build software that is reliable, impactful and easy to use.
+                        Technology should solve problems without adding complexity — that's the north star
+                        for every line of code I write.
+                    </p>
+                </div>
 
-                    </h2><!-- title end -->
+                <div class="pillars-grid reveal-group">
+                    <div class="pillar-card reveal">
+                        <div class="pillar-number">01</div>
+                        <span class="pillar-icon">🎯</span>
+                        <div class="pillar-title">Start Small, Ship Fast</div>
+                        <div class="pillar-body">Break big ideas into small, testable steps. Ship an MVP, gather real feedback, then iterate. No analysis paralysis.</div>
+                    </div>
+                    <div class="pillar-card reveal">
+                        <div class="pillar-number">02</div>
+                        <span class="pillar-icon">🧹</span>
+                        <div class="pillar-title">Clean Code First</div>
+                        <div class="pillar-body">Readable, maintainable, documented code. Avoid N+1 queries, missing indexes, and tangled logic that haunts future-you.</div>
+                    </div>
+                    <div class="pillar-card reveal">
+                        <div class="pillar-number">03</div>
+                        <span class="pillar-icon">👤</span>
+                        <div class="pillar-title">User-Centric Design</div>
+                        <div class="pillar-body">Every feature is designed around the user journey — smooth UX, intuitive flows, and accessible interfaces that just feel right.</div>
+                    </div>
+                    <div class="pillar-card reveal">
+                        <div class="pillar-number">04</div>
+                        <span class="pillar-icon">📐</span>
+                        <div class="pillar-title">Scalable Architecture</div>
+                        <div class="pillar-body">REST APIs with clear contracts, thoughtful DB schemas, and decoupled components that grow without rewriting everything.</div>
+                    </div>
+                    <div class="pillar-card reveal">
+                        <div class="pillar-number">05</div>
+                        <span class="pillar-icon">🔄</span>
+                        <div class="pillar-title">Continuous Learning</div>
+                        <div class="pillar-body">GitHub streaks, LeetCode grind, new frameworks. Staying sharp isn't optional — it's how I stay valuable to clients.</div>
+                    </div>
+                    <div class="pillar-card reveal">
+                        <div class="pillar-number">06</div>
+                        <span class="pillar-icon">🤝</span>
+                        <div class="pillar-title">Client First</div>
+                        <div class="pillar-body">Clear communication, honest timelines, and deliverables that match requirements. I treat every project like it's my own.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
+        {{-- ══════════════════════════════════════════
+             QUOTE BANNER
+        ══════════════════════════════════════════ --}}
+        <section class="quote-section">
+            <p class="big-quote reveal">
+                "Dream big, start small, and <em>ship often</em> —
+                because consistent progress always leads to
+                meaningful results."
+            </p>
+            <p class="quote-attr reveal">— Prince Kumar, scriptxprince</p>
+        </section>
 
-                    <!-- clients-lines start -->
-                    <div class="clients-lines padding-top-90">
+        {{-- ══════════════════════════════════════════
+             CODING JOURNEY (GitHub + LeetCode)
+        ══════════════════════════════════════════ --}}
+        <section class="about-section about-section--alt">
+            <div class="section-inner">
+                <div class="reveal">
+                    <div class="section-label">By the Numbers</div>
+                    <h2 class="section-title">Coding <span>Journey</span></h2>
+                    <p style="color:var(--muted);font-size:16px;line-height:1.8;max-width:640px;">
+                        Every repository, star, and solved problem is a step forward.
+                        Here's what the data says.
+                    </p>
+                </div>
 
-                        @foreach ($main_lang as $lang)
-                            <div class="clients-lines__column">
-                                <div class="clients-lines__inner hover-box pos-rel">
-                                    <div class=" client-hover-out pos-abs pos-center-center text-color-white"
-                                        style="font-size: 40px;width: 100%;display: flex;justify-content: center;align-items: center;">
-                                        <img class="client-logo client-hover-out pos-abs pos-center-center"
-                                            src="assets/images/skills/lang1/{{ $lang['image'] }}" alt="clients logo"
-                                            style="width: 70px">
-                                    </div>
-                                    <div class="client-logo client-hover-in pos-abs pos-center-center">
-                                        <span style="font-size: 40px;font-weight:bold"
-                                            class="text-color-red">{{ $lang['name'] }}</span>
-                                    </div>
-                                </div>
+                <div class="journey-grid">
+
+                    {{-- GitHub Card --}}
+                    <div class="journey-card reveal reveal--left">
+                        <div class="journey-card-title">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.1.82-.26.82-.57v-2c-3.34.73-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.08-.74.08-.73.08-.73 1.2.08 1.83 1.23 1.83 1.23 1.06 1.82 2.8 1.3 3.48.99.1-.77.41-1.3.75-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02.005 2.04.14 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.65.24 2.87.12 3.17.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.68.82.57C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/>
+                            </svg>
+                            My GitHub Journey
+                        </div>
+
+                        <div class="dev-profile">
+                            <img class="dev-avatar" src="{{ $github['avatar_url'] }}" alt="Prince Kumar GitHub">
+                            <div>
+                                <div class="dev-name">{{ $github['name'] }}</div>
+                                <div class="dev-handle">@{{ $github['login'] }} · Since {{ \Carbon\Carbon::parse($github['created_at'])->format('M Y') }}</div>
                             </div>
-                        @endforeach
-                        @foreach ($main_lang2 as $lang)
-                            <div class="clients-lines__column">
-                                <div class="clients-lines__inner hover-box pos-rel">
-                                    <div class=" client-hover-out pos-abs pos-center-center text-color-white"
-                                        style="font-size: 40px;width: 100%;display: flex;justify-content: center;align-items: center;">
-                                        <img class="client-logo client-hover-out pos-abs pos-center-center"
-                                            src="assets/images/skills/lang2/{{ $lang['image'] }}" alt="clients logo"
-                                            style="width: 70px">
-                                    </div>
-                                    <div class="client-logo client-hover-in pos-abs pos-center-center">
-                                        <span style="font-size: 40px;font-weight:bold"
-                                            class="text-color-red">{{ $lang['name'] }}</span>
-                                    </div>
-                                </div>
+                        </div>
+
+                        <div class="stat-grid stat-grid--5">
+                            <div class="stat-box">
+                                <div class="val">{{ $github['followers'] }}</div>
+                                <div class="lbl">Followers</div>
                             </div>
-                        @endforeach
-                        <!-- clients-lines__column start -->
-                        {{-- <div class="clients-lines__column">
+                            <div class="stat-box">
+                                <div class="val">{{ $github['following'] }}</div>
+                                <div class="lbl">Following</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="val">{{ $github['public_repos'] }}</div>
+                                <div class="lbl">Repos</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="val">{{ $totalStars ?? 0 }}</div>
+                                <div class="lbl">Stars</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="val">{{ $totalForks ?? 0 }}</div>
+                                <div class="lbl">Forks</div>
+                            </div>
+                        </div>
+
+                        <div class="meta-row">
+                            <div class="meta-item">📍 {{ $github['location'] }}</div>
+                            <div class="meta-item">
+                                🟢 Languages:
+                                @foreach ($languages as $lang => $bytes)
+                                    <span class="lang-dot">{{ $lang }}</span>@if(!$loop->last),&nbsp;@endif
+                                @endforeach
+                            </div>
+                            <div class="meta-item">⏳ Updated {{ \Carbon\Carbon::parse($github['updated_at'])->diffForHumans() }}</div>
+                        </div>
+
+                        <a href="https://github.com/{{ $github['login'] }}" target="_blank" rel="noopener noreferrer" class="border-btn js-pointer-large">
+                            <span class="border-btn__inner">Visit GitHub Profile</span>
+                            <span class="border-btn__lines-1"></span>
+                            <span class="border-btn__lines-2"></span>
+                        </a>
+                    </div>
+
+                    {{-- LeetCode Card --}}
+                    <div class="journey-card reveal reveal--right">
+                        <div class="journey-card-title">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/>
+                            </svg>
+                            My LeetCode Practice
+                        </div>
+
+                        <div class="dev-profile">
+                            <img class="dev-avatar" src="{{ $leetcode['profile']['profile']['userAvatar'] }}" alt="LeetCode Avatar">
+                            <div>
+                                <div class="dev-name">{{ $leetcode['profile']['username'] }}</div>
+                                <div class="dev-handle">Ranking #{{ number_format($leetcode['profile']['profile']['ranking']) }} worldwide</div>
+                            </div>
+                        </div>
+
+                        <div class="stat-grid">
+                            <div class="stat-box">
+                                <div class="val">{{ collect($leetcode['problems']['numAcceptedQuestions'])->sum('count') }}</div>
+                                <div class="lbl">Solved</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="val">{{ round($leetcode['contest']['rating'], 0) }}</div>
+                                <div class="lbl">Rating</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="val">{{ number_format($leetcode['contest']['globalRanking']) }}</div>
+                                <div class="lbl">Global Rank</div>
+                            </div>
+                        </div>
+
+                        <div class="diff-row">
+                            <div class="diff-box">
+                                <div class="dval diff-easy">{{ collect($leetcode['problems']['numAcceptedQuestions'])->firstWhere('difficulty','EASY')['count'] ?? 0 }}</div>
+                                <div class="dlbl">Easy</div>
+                            </div>
+                            <div class="diff-box">
+                                <div class="dval diff-medium">{{ collect($leetcode['problems']['numAcceptedQuestions'])->firstWhere('difficulty','MEDIUM')['count'] ?? 0 }}</div>
+                                <div class="dlbl">Medium</div>
+                            </div>
+                            <div class="diff-box">
+                                <div class="dval diff-hard">{{ collect($leetcode['problems']['numAcceptedQuestions'])->firstWhere('difficulty','HARD')['count'] ?? 0 }}</div>
+                                <div class="dlbl">Hard</div>
+                            </div>
+                        </div>
+
+                        <div class="streak-banner">
+                            🔥 Daily Streak: {{ $leetcode['calendar']['streak'] }} days — Keep it going!
+                        </div>
+
+                        <a href="https://leetcode.com/PrinceInScripts" target="_blank" rel="noopener noreferrer" class="border-btn js-pointer-large">
+                            <span class="border-btn__inner">Visit LeetCode Profile</span>
+                            <span class="border-btn__lines-1"></span>
+                            <span class="border-btn__lines-2"></span>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        {{-- ══════════════════════════════════════════
+             SKILLS GRID
+        ══════════════════════════════════════════ --}}
+        <section id="down" class="skills-section">
+            <div class="skills-inner">
+                <div class="reveal">
+                    <div class="section-label">Tech Stack</div>
+                    <h2 class="section-title">My <span>Skills</span></h2>
+                    <p style="color:var(--muted);font-size:16px;line-height:1.8;max-width:600px;margin-bottom:60px;">
+                        The tools, languages and frameworks I use to build things that work.
+                    </p>
+                </div>
+
+                <div class="clients-lines reveal">
+                    @foreach (array_merge($main_lang, $main_lang2) as $lang)
+                        <div class="clients-lines__column">
                             <div class="clients-lines__inner hover-box pos-rel">
-                                <img class="client-logo client-hover-out pos-abs pos-center-center"
-                                    src="assets/images/GI_Partners_Logo/White/Hotstar.png" alt="clients logo">
-                                <img class="client-logo client-hover-in pos-abs pos-center-center"
-                                    src="assets/images/GI_Partners_Logo/Red/HotStar_R.png" alt="clients logo">
+                                <div class="client-hover-out pos-abs pos-center-center text-color-white"
+                                    style="font-size:40px;width:100%;display:flex;justify-content:center;align-items:center;">
+                                    @php $folder = in_array($lang, $main_lang) ? 'lang1' : 'lang2'; @endphp
+                                    <img class="client-logo client-hover-out pos-abs pos-center-center"
+                                        src="{{ asset('assets/images/skills/'.$folder.'/'.$lang['image']) }}"
+                                        alt="{{ $lang['name'] }} skill"
+                                        style="width:70px"
+                                        loading="lazy">
+                                </div>
+                                <div class="client-logo client-hover-in pos-abs pos-center-center">
+                                    <span style="font-size:36px;font-weight:800;color:var(--red)">{{ $lang['name'] }}</span>
+                                </div>
                             </div>
-                        </div> --}}
-                        <!-- clients-lines__column end -->
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
 
-
-                        <!-- clients-lines__column end -->
-                    </div><!-- clients-lines end -->
-
-
-                </div><!-- container end -->
-            </div><!-- pos-rel end -->
-        </section><!-- clients end -->
-
-
-
-    </main><!-- main end -->
+    </main>
 
     @include('components.footer')
 
-    <!-- scripts -->
-    <script src="assets/js/plugins.js"></script>
-    <script src="assets/js/footer-reveal.js"></script>
-    <script src="assets/js/main.js"></script>
-      <script src="assets/js/preloader.js"></script>
-    <script src="assets/js/footer-reveal_init.js"></script>
-</body>
+    <script src="{{ asset('assets/js/plugins.js') }}"></script>
+    <script src="{{ asset('assets/js/footer-reveal.js') }}"></script>
+    <script src="{{ asset('assets/js/main.js') }}"></script>
+    <script src="{{ asset('assets/js/preloader.js') }}"></script>
+    <script src="{{ asset('assets/js/footer-reveal_init.js') }}"></script>
 
+    <script>
+    /* ─── Scroll Reveal using IntersectionObserver ─────────── */
+    (function () {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.12, rootMargin: '0px 0px -60px 0px' }
+        );
+
+        /* Observe all .reveal elements */
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        /* Stagger children inside .reveal-group */
+        document.querySelectorAll('.reveal-group').forEach(group => {
+            group.querySelectorAll('.reveal').forEach((child, i) => {
+                child.style.transitionDelay = (i * 80) + 'ms';
+                observer.observe(child);
+            });
+        });
+    })();
+    </script>
+</body>
 </html>
