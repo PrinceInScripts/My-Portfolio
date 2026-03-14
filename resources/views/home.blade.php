@@ -670,7 +670,7 @@
         /* ─── Responsive ─────────────────────────── */
         @media (max-width: 1100px) {
             .hero-inner   { grid-template-columns: 1fr; }
-            .terminal-card { display: none; }
+            /* .terminal-card { display: none; } */
             .about-split  { grid-template-columns: 1fr; gap: 40px; }
             .featured-project { grid-template-columns: 1fr; }
             .featured-img { height: 260px; }

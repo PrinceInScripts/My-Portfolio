@@ -41,7 +41,7 @@
                     <div class="padding-top-40 padding-bottom-90 pos-rel">
                         <div class="container hidden-box js-1-view-slider">
                             <div class="swiper-wrapper js-slider-scroll-anim">
-                                @if($project->video_url)
+                                @if($project->video_url!='null')
                                 <div class="swiper-slide">
                                     <div class="six-columns column-100-100 padding-top-30 pos-rel">
                                         <div class="anim-img-scale">
