@@ -74,6 +74,7 @@
         <nav>
             <a href="{{ route('admin.dashboard') }}" class="nav-link">📊 <span>Dashboard</span></a>
             <a href="{{ route('admin.projects') }}" class="nav-link active">🗂 <span>Projects</span></a>
+            <a href="{{ route('admin.dsa.index') }}" class="nav-link">🧩 <span>DSA Tracker</span></a>
             <a href="{{ route('admin.contacts') }}" class="nav-link">📬 <span>Messages</span></a>
             <a href="/" target="_blank" class="nav-link">🌐 <span>View Site</span></a>
         </nav>

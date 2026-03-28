@@ -100,6 +100,11 @@
                 </a>
             </li>
             <li class="nav-btn-box">
+                <a href="/dsa" class="nav-btn large dropdown-hidden-btn js-pointer-large">
+						<span class="nav-btn__inner" data-text="DSA Tracker">DSA Tracker</span>
+					</a>
+				</li>
+            <li class="nav-btn-box">
                 <a href="/my-resume" class="nav-btn large dropdown-hidden-btn js-pointer-large">
                     <span class="nav-btn__inner" data-text="Resume">Resume</span>
                 </a>

@@ -48,3 +48,18 @@ Route::get('/sitemap.xml', function () {
     $xml = view('sitemap', compact('projects'));
     return response($xml, 200)->header('Content-Type', 'application/xml');
 });
+
+
+Route::get('/dsa', [\App\Http\Controllers\DsaController::class, 'index'])->name('dsa.index');
+Route::get('/dsa/{id}', [\App\Http\Controllers\DsaController::class, 'show'])->name('dsa.show');
+
+// ─── DSA Tracker (Admin) ──────────────────────────────────────────────────────
+Route::prefix('admin/dsa')->name('admin.dsa.')->group(function () {
+    Route::get('/',           [\App\Http\Controllers\DsaController::class, 'adminIndex'])->name('index');
+    Route::get('/create',     [\App\Http\Controllers\DsaController::class, 'adminCreate'])->name('create');
+    Route::post('/',          [\App\Http\Controllers\DsaController::class, 'adminStore'])->name('store');
+    Route::get('/{id}/edit',  [\App\Http\Controllers\DsaController::class, 'adminEdit'])->name('edit');
+    Route::put('/{id}',       [\App\Http\Controllers\DsaController::class, 'adminUpdate'])->name('update');
+    Route::delete('/{id}',    [\App\Http\Controllers\DsaController::class, 'adminDelete'])->name('delete');
+    Route::patch('/{id}/toggle', [\App\Http\Controllers\DsaController::class, 'adminToggle'])->name('toggle');
+});

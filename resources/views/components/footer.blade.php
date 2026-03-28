@@ -35,6 +35,9 @@
                             <a href="/my-resume" class="footer-nav__btn js-pointer-small js-footer-hover-link">Resume</a>
                         </li>
                         <li style="list-style-type: none">
+                            <a href="/dsa" class="footer-nav__btn js-pointer-small js-footer-hover-link">DSA Tracker</a>
+                            </li>
+                        <li style="list-style-type: none">
                             <a href="/contact" class="footer-nav__btn js-pointer-small js-footer-hover-link">Contact</a>
                         </li>
                     </ul>
